@@ -2,8 +2,8 @@
 //  Identifier.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Identifier) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Identifier) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A technical identifier - identifies some entity uniquely and unambiguously.
  */
-public class Identifier: Element {
-	override public class var resourceType: String {
+open class Identifier: Element {
+	override open class var resourceType: String {
 		get { return "Identifier" }
 	}
 	
@@ -43,7 +43,7 @@ public class Identifier: Element {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["assigner"] {
@@ -104,7 +104,7 @@ public class Identifier: Element {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let assigner = self.assigner {

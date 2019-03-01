@@ -2,8 +2,8 @@
 //  Composition.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Composition) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Composition) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -18,8 +18,8 @@ import Foundation
  *  rather the full content of a document is contained in a Bundle, of which the Composition is the first resource
  *  contained.
  */
-public class Composition: DomainResource {
-	override public class var resourceType: String {
+open class Composition: DomainResource {
+	override open class var resourceType: String {
 		get { return "Composition" }
 	}
 	
@@ -82,7 +82,7 @@ public class Composition: DomainResource {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["attester"] {
@@ -233,7 +233,7 @@ public class Composition: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let attester = self.attester {
@@ -289,8 +289,8 @@ public class Composition: DomainResource {
  *
  *  A participant who has attested to the accuracy of the composition/document.
  */
-public class CompositionAttester: BackboneElement {
-	override public class var resourceType: String {
+open class CompositionAttester: BackboneElement {
+	override open class var resourceType: String {
 		get { return "CompositionAttester" }
 	}
 	
@@ -315,7 +315,7 @@ public class CompositionAttester: BackboneElement {
 		self.mode = mode
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["mode"] {
@@ -324,7 +324,7 @@ public class CompositionAttester: BackboneElement {
 					self.mode = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "mode", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "mode", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -336,7 +336,7 @@ public class CompositionAttester: BackboneElement {
 					self.party = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "party", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "party", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["time"] {
@@ -345,14 +345,14 @@ public class CompositionAttester: BackboneElement {
 					self.time = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "time", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "time", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let mode = self.mode {
@@ -379,8 +379,8 @@ public class CompositionAttester: BackboneElement {
  *
  *  The clinical service, such as a colonoscopy or an appendectomy, being documented.
  */
-public class CompositionEvent: BackboneElement {
-	override public class var resourceType: String {
+open class CompositionEvent: BackboneElement {
+	override open class var resourceType: String {
 		get { return "CompositionEvent" }
 	}
 	
@@ -399,7 +399,7 @@ public class CompositionEvent: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -408,7 +408,7 @@ public class CompositionEvent: BackboneElement {
 					self.code = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["detail"] {
@@ -417,7 +417,7 @@ public class CompositionEvent: BackboneElement {
 					self.detail = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "detail", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "detail", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["period"] {
@@ -426,14 +426,14 @@ public class CompositionEvent: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {
@@ -456,8 +456,8 @@ public class CompositionEvent: BackboneElement {
  *
  *  The root of the sections that make up the composition.
  */
-public class CompositionSection: BackboneElement {
-	override public class var resourceType: String {
+open class CompositionSection: BackboneElement {
+	override open class var resourceType: String {
 		get { return "CompositionSection" }
 	}
 	
@@ -491,7 +491,7 @@ public class CompositionSection: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -500,7 +500,7 @@ public class CompositionSection: BackboneElement {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["emptyReason"] {
@@ -509,7 +509,7 @@ public class CompositionSection: BackboneElement {
 					self.emptyReason = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "emptyReason", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "emptyReason", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["entry"] {
@@ -518,7 +518,7 @@ public class CompositionSection: BackboneElement {
 					self.entry = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entry", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entry", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["mode"] {
@@ -527,7 +527,7 @@ public class CompositionSection: BackboneElement {
 					self.mode = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "mode", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "mode", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["orderedBy"] {
@@ -536,7 +536,7 @@ public class CompositionSection: BackboneElement {
 					self.orderedBy = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "orderedBy", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "orderedBy", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["section"] {
@@ -545,7 +545,7 @@ public class CompositionSection: BackboneElement {
 					self.section = CompositionSection.instantiate(fromArray: val, owner: self) as? [CompositionSection]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "section", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "section", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["text"] {
@@ -554,7 +554,7 @@ public class CompositionSection: BackboneElement {
 					self.text = Narrative(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "text", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "text", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["title"] {
@@ -563,14 +563,14 @@ public class CompositionSection: BackboneElement {
 					self.title = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "title", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "title", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {

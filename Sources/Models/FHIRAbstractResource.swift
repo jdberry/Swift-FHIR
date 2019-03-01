@@ -10,15 +10,15 @@ import Foundation
 
 
 /**
-Abstract superclass for all FHIR resource models.
-*/
+ *  Abstract superclass for all FHIR resource models.
+ */
 open class FHIRAbstractResource: FHIRAbstractBase {
 	
 	/// A specific version id, if the instance was created using `vread`.
-	public var _versionId: String?
+	open var _versionId: String?
 	
 	/// If this instance lives on a server, this property represents that server.
-	public var _server: FHIRServer? {
+	open var _server: FHIRServer? {
 		get { return __server ?? owningResource?._server }
 		set { __server = newValue }
 	}
@@ -50,13 +50,13 @@ open class FHIRAbstractResource: FHIRAbstractBase {
 	/** Serialize the receiver to JSON. */
 	open override func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
-		json["resourceType"] = type(of: self).resourceType
+		json["resourceType"] = Swift.type(of: self).resourceType
 		
 		return json
 	}
 	
 	
-	// MARK: - CustomStringConvertible
+	// MARK: - Printable
 	
 	override open var description: String {
 		return "<\(type(of: self).resourceType)> \(__server?.baseURL.absoluteString ?? "nil")"

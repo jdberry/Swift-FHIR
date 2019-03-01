@@ -2,8 +2,8 @@
 //  NamingSystem.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/NamingSystem) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/NamingSystem) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A curated namespace that issues unique symbols within that namespace for the identification of concepts, people,
  *  devices, etc.  Represents a "System" used within the Identifier and Coding data types.
  */
-public class NamingSystem: DomainResource {
-	override public class var resourceType: String {
+open class NamingSystem: DomainResource {
+	override open class var resourceType: String {
 		get { return "NamingSystem" }
 	}
 	
@@ -75,7 +75,7 @@ public class NamingSystem: DomainResource {
 		self.uniqueId = uniqueId
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contact"] {
@@ -214,7 +214,7 @@ public class NamingSystem: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contact = self.contact {
@@ -267,8 +267,8 @@ public class NamingSystem: DomainResource {
  *
  *  Contacts to assist a user in finding and communicating with the publisher.
  */
-public class NamingSystemContact: BackboneElement {
-	override public class var resourceType: String {
+open class NamingSystemContact: BackboneElement {
+	override open class var resourceType: String {
 		get { return "NamingSystemContact" }
 	}
 	
@@ -284,7 +284,7 @@ public class NamingSystemContact: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["name"] {
@@ -293,7 +293,7 @@ public class NamingSystemContact: BackboneElement {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["telecom"] {
@@ -302,14 +302,14 @@ public class NamingSystemContact: BackboneElement {
 					self.telecom = ContactPoint.instantiate(fromArray: val, owner: self) as? [ContactPoint]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let name = self.name {
@@ -329,8 +329,8 @@ public class NamingSystemContact: BackboneElement {
  *
  *  Indicates how the system may be identified when referenced in electronic exchange.
  */
-public class NamingSystemUniqueId: BackboneElement {
-	override public class var resourceType: String {
+open class NamingSystemUniqueId: BackboneElement {
+	override open class var resourceType: String {
 		get { return "NamingSystemUniqueId" }
 	}
 	
@@ -359,7 +359,7 @@ public class NamingSystemUniqueId: BackboneElement {
 		self.value = value
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["period"] {
@@ -408,7 +408,7 @@ public class NamingSystemUniqueId: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let period = self.period {

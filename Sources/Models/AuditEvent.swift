@@ -2,8 +2,8 @@
 //  AuditEvent.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/AuditEvent) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/AuditEvent) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion
  *  attempts and monitoring for inappropriate usage.
  */
-public class AuditEvent: DomainResource {
-	override public class var resourceType: String {
+open class AuditEvent: DomainResource {
+	override open class var resourceType: String {
 		get { return "AuditEvent" }
 	}
 	
@@ -46,7 +46,7 @@ public class AuditEvent: DomainResource {
 		self.source = source
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["event"] {
@@ -55,7 +55,7 @@ public class AuditEvent: DomainResource {
 					self.event = AuditEventEvent(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "event", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "event", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -67,7 +67,7 @@ public class AuditEvent: DomainResource {
 					self.object = AuditEventObject.instantiate(fromArray: val, owner: self) as? [AuditEventObject]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "object", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "object", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["participant"] {
@@ -76,7 +76,7 @@ public class AuditEvent: DomainResource {
 					self.participant = AuditEventParticipant.instantiate(fromArray: val, owner: self) as? [AuditEventParticipant]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "participant", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "participant", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -88,7 +88,7 @@ public class AuditEvent: DomainResource {
 					self.source = AuditEventSource(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "source", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "source", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -98,7 +98,7 @@ public class AuditEvent: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let event = self.event {
@@ -124,8 +124,8 @@ public class AuditEvent: DomainResource {
  *
  *  Identifies the name, action type, time, and disposition of the audited event.
  */
-public class AuditEventEvent: BackboneElement {
-	override public class var resourceType: String {
+open class AuditEventEvent: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AuditEventEvent" }
 	}
 	
@@ -163,7 +163,7 @@ public class AuditEventEvent: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["action"] {
@@ -239,7 +239,7 @@ public class AuditEventEvent: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let action = self.action {
@@ -272,8 +272,8 @@ public class AuditEventEvent: BackboneElement {
 /**
  *  Specific instances of data or objects that have been accessed.
  */
-public class AuditEventObject: BackboneElement {
-	override public class var resourceType: String {
+open class AuditEventObject: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AuditEventObject" }
 	}
 	
@@ -313,7 +313,7 @@ public class AuditEventObject: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["description"] {
@@ -410,7 +410,7 @@ public class AuditEventObject: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let description_fhir = self.description_fhir {
@@ -452,8 +452,8 @@ public class AuditEventObject: BackboneElement {
 /**
  *  Additional Information about the Object.
  */
-public class AuditEventObjectDetail: BackboneElement {
-	override public class var resourceType: String {
+open class AuditEventObjectDetail: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AuditEventObjectDetail" }
 	}
 	
@@ -476,7 +476,7 @@ public class AuditEventObjectDetail: BackboneElement {
 		self.value = value
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["type"] {
@@ -507,7 +507,7 @@ public class AuditEventObjectDetail: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let type = self.type {
@@ -525,8 +525,8 @@ public class AuditEventObjectDetail: BackboneElement {
 /**
  *  A person, a hardware device or software process.
  */
-public class AuditEventParticipant: BackboneElement {
-	override public class var resourceType: String {
+open class AuditEventParticipant: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AuditEventParticipant" }
 	}
 	
@@ -575,7 +575,7 @@ public class AuditEventParticipant: BackboneElement {
 		self.requestor = requestor
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["altId"] {
@@ -584,7 +584,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.altId = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "altId", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "altId", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["location"] {
@@ -593,7 +593,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.location = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "location", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "location", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["media"] {
@@ -602,7 +602,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.media = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "media", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "media", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["name"] {
@@ -611,7 +611,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["network"] {
@@ -620,7 +620,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.network = AuditEventParticipantNetwork(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "network", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "network", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["policy"] {
@@ -629,7 +629,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.policy = URL.instantiate(fromArray: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "policy", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "policy", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["purposeOfUse"] {
@@ -638,7 +638,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.purposeOfUse = Coding.instantiate(fromArray: val, owner: self) as? [Coding]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "purposeOfUse", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "purposeOfUse", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reference"] {
@@ -647,7 +647,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.reference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["requestor"] {
@@ -656,7 +656,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.requestor = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "requestor", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "requestor", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -668,7 +668,7 @@ public class AuditEventParticipant: BackboneElement {
 					self.role = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["userId"] {
@@ -677,14 +677,14 @@ public class AuditEventParticipant: BackboneElement {
 					self.userId = Identifier(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "userId", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "userId", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let altId = self.altId {
@@ -735,8 +735,8 @@ public class AuditEventParticipant: BackboneElement {
  *
  *  Logical network location for application activity, if the activity has a network location.
  */
-public class AuditEventParticipantNetwork: BackboneElement {
-	override public class var resourceType: String {
+open class AuditEventParticipantNetwork: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AuditEventParticipantNetwork" }
 	}
 	
@@ -752,7 +752,7 @@ public class AuditEventParticipantNetwork: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["address"] {
@@ -777,7 +777,7 @@ public class AuditEventParticipantNetwork: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let address = self.address {
@@ -795,8 +795,8 @@ public class AuditEventParticipantNetwork: BackboneElement {
 /**
  *  Application systems and processes.
  */
-public class AuditEventSource: BackboneElement {
-	override public class var resourceType: String {
+open class AuditEventSource: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AuditEventSource" }
 	}
 	
@@ -821,7 +821,7 @@ public class AuditEventSource: BackboneElement {
 		self.identifier = identifier
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["identifier"] {
@@ -858,7 +858,7 @@ public class AuditEventSource: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let identifier = self.identifier {

@@ -2,8 +2,8 @@
 //  Meta.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Meta) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Meta) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to
  *  the content may not always be associated with version changes to the resource.
  */
-public class Meta: Element {
-	override public class var resourceType: String {
+open class Meta: Element {
+	override open class var resourceType: String {
 		get { return "Meta" }
 	}
 	
@@ -41,7 +41,7 @@ public class Meta: Element {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["lastUpdated"] {
@@ -50,7 +50,7 @@ public class Meta: Element {
 					self.lastUpdated = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "lastUpdated", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "lastUpdated", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["profile"] {
@@ -59,7 +59,7 @@ public class Meta: Element {
 					self.profile = URL.instantiate(fromArray: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "profile", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "profile", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["security"] {
@@ -68,7 +68,7 @@ public class Meta: Element {
 					self.security = Coding.instantiate(fromArray: val, owner: self) as? [Coding]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "security", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "security", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["tag"] {
@@ -77,7 +77,7 @@ public class Meta: Element {
 					self.tag = Coding.instantiate(fromArray: val, owner: self) as? [Coding]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "tag", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "tag", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["versionId"] {
@@ -86,14 +86,14 @@ public class Meta: Element {
 					self.versionId = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "versionId", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "versionId", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let lastUpdated = self.lastUpdated {

@@ -2,8 +2,8 @@
 //  CommunicationRequest.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/CommunicationRequest) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/CommunicationRequest) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the
  *  CDS system proposes that the public health agency be notified about a reportable condition.
  */
-public class CommunicationRequest: DomainResource {
-	override public class var resourceType: String {
+open class CommunicationRequest: DomainResource {
+	override open class var resourceType: String {
 		get { return "CommunicationRequest" }
 	}
 	
@@ -71,7 +71,7 @@ public class CommunicationRequest: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["category"] {
@@ -80,7 +80,7 @@ public class CommunicationRequest: DomainResource {
 					self.category = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "category", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "category", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["encounter"] {
@@ -89,7 +89,7 @@ public class CommunicationRequest: DomainResource {
 					self.encounter = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -98,7 +98,7 @@ public class CommunicationRequest: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["medium"] {
@@ -107,7 +107,7 @@ public class CommunicationRequest: DomainResource {
 					self.medium = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "medium", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "medium", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["payload"] {
@@ -116,7 +116,7 @@ public class CommunicationRequest: DomainResource {
 					self.payload = CommunicationRequestPayload.instantiate(fromArray: val, owner: self) as? [CommunicationRequestPayload]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "payload", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "payload", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["priority"] {
@@ -125,7 +125,7 @@ public class CommunicationRequest: DomainResource {
 					self.priority = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "priority", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "priority", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reason"] {
@@ -134,7 +134,7 @@ public class CommunicationRequest: DomainResource {
 					self.reason = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reason", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reason", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["recipient"] {
@@ -143,7 +143,7 @@ public class CommunicationRequest: DomainResource {
 					self.recipient = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "recipient", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "recipient", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["requestedOn"] {
@@ -152,7 +152,7 @@ public class CommunicationRequest: DomainResource {
 					self.requestedOn = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "requestedOn", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "requestedOn", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["requester"] {
@@ -161,7 +161,7 @@ public class CommunicationRequest: DomainResource {
 					self.requester = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "requester", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "requester", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["scheduledDateTime"] {
@@ -170,7 +170,7 @@ public class CommunicationRequest: DomainResource {
 					self.scheduledDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "scheduledDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "scheduledDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["scheduledPeriod"] {
@@ -179,7 +179,7 @@ public class CommunicationRequest: DomainResource {
 					self.scheduledPeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "scheduledPeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "scheduledPeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["sender"] {
@@ -188,7 +188,7 @@ public class CommunicationRequest: DomainResource {
 					self.sender = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sender", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sender", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -197,7 +197,7 @@ public class CommunicationRequest: DomainResource {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["subject"] {
@@ -206,14 +206,14 @@ public class CommunicationRequest: DomainResource {
 					self.subject = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "subject", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "subject", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let category = self.category {
@@ -272,8 +272,8 @@ public class CommunicationRequest: DomainResource {
  *
  *  Text, attachment(s), or resource(s) to be communicated to the recipient.
  */
-public class CommunicationRequestPayload: BackboneElement {
-	override public class var resourceType: String {
+open class CommunicationRequestPayload: BackboneElement {
+	override open class var resourceType: String {
 		get { return "CommunicationRequestPayload" }
 	}
 	
@@ -300,7 +300,7 @@ public class CommunicationRequestPayload: BackboneElement {
 		self.contentString = contentString
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contentAttachment"] {
@@ -309,7 +309,7 @@ public class CommunicationRequestPayload: BackboneElement {
 					self.contentAttachment = Attachment(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contentReference"] {
@@ -318,7 +318,7 @@ public class CommunicationRequestPayload: BackboneElement {
 					self.contentReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contentString"] {
@@ -327,7 +327,7 @@ public class CommunicationRequestPayload: BackboneElement {
 					self.contentString = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentString", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentString", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			
@@ -339,7 +339,7 @@ public class CommunicationRequestPayload: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contentAttachment = self.contentAttachment {

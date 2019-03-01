@@ -2,8 +2,8 @@
 //  Encounter.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Encounter) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Encounter) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or
  *  assessing the health status of a patient.
  */
-public class Encounter: DomainResource {
-	override public class var resourceType: String {
+open class Encounter: DomainResource {
+	override open class var resourceType: String {
 		get { return "Encounter" }
 	}
 	
@@ -89,7 +89,7 @@ public class Encounter: DomainResource {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["appointment"] {
@@ -270,7 +270,7 @@ public class Encounter: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let appointment = self.appointment {
@@ -339,8 +339,8 @@ public class Encounter: DomainResource {
 /**
  *  Details about the admission to a healthcare service.
  */
-public class EncounterHospitalization: BackboneElement {
-	override public class var resourceType: String {
+open class EncounterHospitalization: BackboneElement {
+	override open class var resourceType: String {
 		get { return "EncounterHospitalization" }
 	}
 	
@@ -383,7 +383,7 @@ public class EncounterHospitalization: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["admitSource"] {
@@ -392,7 +392,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.admitSource = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "admitSource", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "admitSource", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["admittingDiagnosis"] {
@@ -401,7 +401,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.admittingDiagnosis = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "admittingDiagnosis", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "admittingDiagnosis", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["destination"] {
@@ -410,7 +410,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.destination = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "destination", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "destination", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["dietPreference"] {
@@ -419,7 +419,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.dietPreference = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dietPreference", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dietPreference", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["dischargeDiagnosis"] {
@@ -428,7 +428,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.dischargeDiagnosis = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dischargeDiagnosis", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dischargeDiagnosis", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["dischargeDisposition"] {
@@ -437,7 +437,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.dischargeDisposition = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dischargeDisposition", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dischargeDisposition", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["origin"] {
@@ -446,7 +446,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.origin = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "origin", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "origin", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["preAdmissionIdentifier"] {
@@ -455,7 +455,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.preAdmissionIdentifier = Identifier(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "preAdmissionIdentifier", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "preAdmissionIdentifier", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reAdmission"] {
@@ -464,7 +464,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.reAdmission = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reAdmission", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reAdmission", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["specialArrangement"] {
@@ -473,7 +473,7 @@ public class EncounterHospitalization: BackboneElement {
 					self.specialArrangement = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "specialArrangement", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "specialArrangement", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["specialCourtesy"] {
@@ -482,14 +482,14 @@ public class EncounterHospitalization: BackboneElement {
 					self.specialCourtesy = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "specialCourtesy", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "specialCourtesy", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let admitSource = self.admitSource {
@@ -536,8 +536,8 @@ public class EncounterHospitalization: BackboneElement {
  *
  *  List of locations where  the patient has been during this encounter.
  */
-public class EncounterLocation: BackboneElement {
-	override public class var resourceType: String {
+open class EncounterLocation: BackboneElement {
+	override open class var resourceType: String {
 		get { return "EncounterLocation" }
 	}
 	
@@ -562,7 +562,7 @@ public class EncounterLocation: BackboneElement {
 		self.location = location
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["location"] {
@@ -571,7 +571,7 @@ public class EncounterLocation: BackboneElement {
 					self.location = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "location", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "location", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -583,7 +583,7 @@ public class EncounterLocation: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -592,14 +592,14 @@ public class EncounterLocation: BackboneElement {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let location = self.location {
@@ -622,8 +622,8 @@ public class EncounterLocation: BackboneElement {
  *
  *  The list of people responsible for providing the service.
  */
-public class EncounterParticipant: BackboneElement {
-	override public class var resourceType: String {
+open class EncounterParticipant: BackboneElement {
+	override open class var resourceType: String {
 		get { return "EncounterParticipant" }
 	}
 	
@@ -642,7 +642,7 @@ public class EncounterParticipant: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["individual"] {
@@ -676,7 +676,7 @@ public class EncounterParticipant: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let individual = self.individual {
@@ -700,8 +700,8 @@ public class EncounterParticipant: BackboneElement {
  *  The status history permits the encounter resource to contain the status history without needing to read through the
  *  historical versions of the resource, or even have the server store them.
  */
-public class EncounterStatusHistory: BackboneElement {
-	override public class var resourceType: String {
+open class EncounterStatusHistory: BackboneElement {
+	override open class var resourceType: String {
 		get { return "EncounterStatusHistory" }
 	}
 	
@@ -724,7 +724,7 @@ public class EncounterStatusHistory: BackboneElement {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["period"] {
@@ -733,7 +733,7 @@ public class EncounterStatusHistory: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -745,7 +745,7 @@ public class EncounterStatusHistory: BackboneElement {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -755,7 +755,7 @@ public class EncounterStatusHistory: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let period = self.period {

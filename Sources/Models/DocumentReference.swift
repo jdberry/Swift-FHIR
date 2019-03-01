@@ -2,8 +2,8 @@
 //  DocumentReference.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DocumentReference) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DocumentReference) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A reference to a document .
  */
-public class DocumentReference: DomainResource {
-	override public class var resourceType: String {
+open class DocumentReference: DomainResource {
+	override open class var resourceType: String {
 		get { return "DocumentReference" }
 	}
 	
@@ -85,7 +85,7 @@ public class DocumentReference: DomainResource {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["authenticator"] {
@@ -257,7 +257,7 @@ public class DocumentReference: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let authenticator = self.authenticator {
@@ -322,8 +322,8 @@ public class DocumentReference: DomainResource {
  *
  *  The document and format referenced. There may be multiple content element repetitions, each with a different format.
  */
-public class DocumentReferenceContent: BackboneElement {
-	override public class var resourceType: String {
+open class DocumentReferenceContent: BackboneElement {
+	override open class var resourceType: String {
 		get { return "DocumentReferenceContent" }
 	}
 	
@@ -345,7 +345,7 @@ public class DocumentReferenceContent: BackboneElement {
 		self.attachment = attachment
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["attachment"] {
@@ -354,7 +354,7 @@ public class DocumentReferenceContent: BackboneElement {
 					self.attachment = Attachment(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "attachment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "attachment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -366,14 +366,14 @@ public class DocumentReferenceContent: BackboneElement {
 					self.format = Coding.instantiate(fromArray: val, owner: self) as? [Coding]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "format", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "format", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let attachment = self.attachment {
@@ -393,8 +393,8 @@ public class DocumentReferenceContent: BackboneElement {
  *
  *  The clinical context in which the document was prepared.
  */
-public class DocumentReferenceContext: BackboneElement {
-	override public class var resourceType: String {
+open class DocumentReferenceContext: BackboneElement {
+	override open class var resourceType: String {
 		get { return "DocumentReferenceContext" }
 	}
 	
@@ -425,7 +425,7 @@ public class DocumentReferenceContext: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["encounter"] {
@@ -434,7 +434,7 @@ public class DocumentReferenceContext: BackboneElement {
 					self.encounter = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["event"] {
@@ -443,7 +443,7 @@ public class DocumentReferenceContext: BackboneElement {
 					self.event = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "event", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "event", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["facilityType"] {
@@ -452,7 +452,7 @@ public class DocumentReferenceContext: BackboneElement {
 					self.facilityType = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "facilityType", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "facilityType", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["period"] {
@@ -461,7 +461,7 @@ public class DocumentReferenceContext: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["practiceSetting"] {
@@ -470,7 +470,7 @@ public class DocumentReferenceContext: BackboneElement {
 					self.practiceSetting = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "practiceSetting", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "practiceSetting", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["related"] {
@@ -479,7 +479,7 @@ public class DocumentReferenceContext: BackboneElement {
 					self.related = DocumentReferenceContextRelated.instantiate(fromArray: val, owner: self) as? [DocumentReferenceContextRelated]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "related", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "related", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["sourcePatientInfo"] {
@@ -488,14 +488,14 @@ public class DocumentReferenceContext: BackboneElement {
 					self.sourcePatientInfo = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sourcePatientInfo", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sourcePatientInfo", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let encounter = self.encounter {
@@ -530,8 +530,8 @@ public class DocumentReferenceContext: BackboneElement {
  *
  *  Related identifiers or resources associated with the DocumentReference.
  */
-public class DocumentReferenceContextRelated: BackboneElement {
-	override public class var resourceType: String {
+open class DocumentReferenceContextRelated: BackboneElement {
+	override open class var resourceType: String {
 		get { return "DocumentReferenceContextRelated" }
 	}
 	
@@ -547,7 +547,7 @@ public class DocumentReferenceContextRelated: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["identifier"] {
@@ -556,7 +556,7 @@ public class DocumentReferenceContextRelated: BackboneElement {
 					self.identifier = Identifier(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ref"] {
@@ -565,14 +565,14 @@ public class DocumentReferenceContextRelated: BackboneElement {
 					self.ref = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ref", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ref", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let identifier = self.identifier {
@@ -592,8 +592,8 @@ public class DocumentReferenceContextRelated: BackboneElement {
  *
  *  Relationships that this document has with other document references that already exist.
  */
-public class DocumentReferenceRelatesTo: BackboneElement {
-	override public class var resourceType: String {
+open class DocumentReferenceRelatesTo: BackboneElement {
+	override open class var resourceType: String {
 		get { return "DocumentReferenceRelatesTo" }
 	}
 	
@@ -616,7 +616,7 @@ public class DocumentReferenceRelatesTo: BackboneElement {
 		self.target = target
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -625,7 +625,7 @@ public class DocumentReferenceRelatesTo: BackboneElement {
 					self.code = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -637,7 +637,7 @@ public class DocumentReferenceRelatesTo: BackboneElement {
 					self.target = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "target", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "target", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -647,7 +647,7 @@ public class DocumentReferenceRelatesTo: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {

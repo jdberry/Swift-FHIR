@@ -2,8 +2,8 @@
 //  OrderResponse.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/OrderResponse) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/OrderResponse) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -12,8 +12,8 @@ import Foundation
 /**
  *  A response to an order.
  */
-public class OrderResponse: DomainResource {
-	override public class var resourceType: String {
+open class OrderResponse: DomainResource {
+	override open class var resourceType: String {
 		get { return "OrderResponse" }
 	}
 	
@@ -51,7 +51,7 @@ public class OrderResponse: DomainResource {
 		self.request = request
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["date"] {
@@ -60,7 +60,7 @@ public class OrderResponse: DomainResource {
 					self.date = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "date", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "date", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["description"] {
@@ -69,7 +69,7 @@ public class OrderResponse: DomainResource {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["fulfillment"] {
@@ -78,7 +78,7 @@ public class OrderResponse: DomainResource {
 					self.fulfillment = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "fulfillment", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "fulfillment", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -87,7 +87,7 @@ public class OrderResponse: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["orderStatus"] {
@@ -96,7 +96,7 @@ public class OrderResponse: DomainResource {
 					self.orderStatus = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "orderStatus", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "orderStatus", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -108,7 +108,7 @@ public class OrderResponse: DomainResource {
 					self.request = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -120,14 +120,14 @@ public class OrderResponse: DomainResource {
 					self.who = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "who", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "who", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let date = self.date {

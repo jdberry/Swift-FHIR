@@ -2,8 +2,8 @@
 //  EligibilityResponse.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/EligibilityResponse) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/EligibilityResponse) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  This resource provides eligibility and plan details from the processing of an Eligibility resource.
  */
-public class EligibilityResponse: DomainResource {
-	override public class var resourceType: String {
+open class EligibilityResponse: DomainResource {
+	override open class var resourceType: String {
 		get { return "EligibilityResponse" }
 	}
 	
@@ -55,7 +55,7 @@ public class EligibilityResponse: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["created"] {
@@ -64,7 +64,7 @@ public class EligibilityResponse: DomainResource {
 					self.created = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "created", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "created", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["disposition"] {
@@ -73,7 +73,7 @@ public class EligibilityResponse: DomainResource {
 					self.disposition = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "disposition", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "disposition", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -82,7 +82,7 @@ public class EligibilityResponse: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["organization"] {
@@ -91,7 +91,7 @@ public class EligibilityResponse: DomainResource {
 					self.organization = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "organization", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "organization", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["originalRuleset"] {
@@ -100,7 +100,7 @@ public class EligibilityResponse: DomainResource {
 					self.originalRuleset = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "originalRuleset", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "originalRuleset", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["outcome"] {
@@ -109,7 +109,7 @@ public class EligibilityResponse: DomainResource {
 					self.outcome = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "outcome", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "outcome", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["request"] {
@@ -118,7 +118,7 @@ public class EligibilityResponse: DomainResource {
 					self.request = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["requestOrganization"] {
@@ -127,7 +127,7 @@ public class EligibilityResponse: DomainResource {
 					self.requestOrganization = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "requestOrganization", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "requestOrganization", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["requestProvider"] {
@@ -136,7 +136,7 @@ public class EligibilityResponse: DomainResource {
 					self.requestProvider = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "requestProvider", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "requestProvider", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ruleset"] {
@@ -145,14 +145,14 @@ public class EligibilityResponse: DomainResource {
 					self.ruleset = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ruleset", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ruleset", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let created = self.created {

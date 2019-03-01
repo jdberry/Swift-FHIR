@@ -2,8 +2,8 @@
 //  ImplementationGuide.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ImplementationGuide) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ImplementationGuide) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of
  *  an implementation guide into a logical whole, and to publish a computable definition of all the parts.
  */
-public class ImplementationGuide: DomainResource {
-	override public class var resourceType: String {
+open class ImplementationGuide: DomainResource {
+	override open class var resourceType: String {
 		get { return "ImplementationGuide" }
 	}
 	
@@ -87,7 +87,7 @@ public class ImplementationGuide: DomainResource {
 		self.url = url
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["binary"] {
@@ -96,7 +96,7 @@ public class ImplementationGuide: DomainResource {
 					self.binary = URL.instantiate(fromArray: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "binary", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "binary", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contact"] {
@@ -105,7 +105,7 @@ public class ImplementationGuide: DomainResource {
 					self.contact = ImplementationGuideContact.instantiate(fromArray: val, owner: self) as? [ImplementationGuideContact]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contact", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contact", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["copyright"] {
@@ -114,7 +114,7 @@ public class ImplementationGuide: DomainResource {
 					self.copyright = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "copyright", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "copyright", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["date"] {
@@ -123,7 +123,7 @@ public class ImplementationGuide: DomainResource {
 					self.date = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "date", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "date", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["dependency"] {
@@ -132,7 +132,7 @@ public class ImplementationGuide: DomainResource {
 					self.dependency = ImplementationGuideDependency.instantiate(fromArray: val, owner: self) as? [ImplementationGuideDependency]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dependency", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dependency", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["description"] {
@@ -141,7 +141,7 @@ public class ImplementationGuide: DomainResource {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["experimental"] {
@@ -150,7 +150,7 @@ public class ImplementationGuide: DomainResource {
 					self.experimental = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "experimental", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "experimental", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["fhirVersion"] {
@@ -159,7 +159,7 @@ public class ImplementationGuide: DomainResource {
 					self.fhirVersion = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "fhirVersion", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "fhirVersion", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["global"] {
@@ -168,7 +168,7 @@ public class ImplementationGuide: DomainResource {
 					self.global = ImplementationGuideGlobal.instantiate(fromArray: val, owner: self) as? [ImplementationGuideGlobal]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "global", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "global", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["name"] {
@@ -177,7 +177,7 @@ public class ImplementationGuide: DomainResource {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -189,7 +189,7 @@ public class ImplementationGuide: DomainResource {
 					self.package = ImplementationGuidePackage.instantiate(fromArray: val, owner: self) as? [ImplementationGuidePackage]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "package", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "package", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -201,7 +201,7 @@ public class ImplementationGuide: DomainResource {
 					self.page = ImplementationGuidePage(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "page", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "page", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -213,7 +213,7 @@ public class ImplementationGuide: DomainResource {
 					self.publisher = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "publisher", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "publisher", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -222,7 +222,7 @@ public class ImplementationGuide: DomainResource {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -234,7 +234,7 @@ public class ImplementationGuide: DomainResource {
 					self.url = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "url", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "url", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -246,7 +246,7 @@ public class ImplementationGuide: DomainResource {
 					self.useContext = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "useContext", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "useContext", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["version"] {
@@ -255,14 +255,14 @@ public class ImplementationGuide: DomainResource {
 					self.version = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "version", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "version", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let binary = self.binary {
@@ -331,8 +331,8 @@ public class ImplementationGuide: DomainResource {
  *
  *  Contacts to assist a user in finding and communicating with the publisher.
  */
-public class ImplementationGuideContact: BackboneElement {
-	override public class var resourceType: String {
+open class ImplementationGuideContact: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ImplementationGuideContact" }
 	}
 	
@@ -348,7 +348,7 @@ public class ImplementationGuideContact: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["name"] {
@@ -357,7 +357,7 @@ public class ImplementationGuideContact: BackboneElement {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["telecom"] {
@@ -366,14 +366,14 @@ public class ImplementationGuideContact: BackboneElement {
 					self.telecom = ContactPoint.instantiate(fromArray: val, owner: self) as? [ContactPoint]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let name = self.name {
@@ -394,8 +394,8 @@ public class ImplementationGuideContact: BackboneElement {
  *  Another implementation guide that this implementation depends on. Typically, an implementation guide uses value
  *  sets, profiles etc.defined in other implementation guides.
  */
-public class ImplementationGuideDependency: BackboneElement {
-	override public class var resourceType: String {
+open class ImplementationGuideDependency: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ImplementationGuideDependency" }
 	}
 	
@@ -418,7 +418,7 @@ public class ImplementationGuideDependency: BackboneElement {
 		self.uri = uri
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["type"] {
@@ -449,7 +449,7 @@ public class ImplementationGuideDependency: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let type = self.type {
@@ -469,8 +469,8 @@ public class ImplementationGuideDependency: BackboneElement {
  *
  *  A set of profiles that all resources covered by this implementation guide must conform to.
  */
-public class ImplementationGuideGlobal: BackboneElement {
-	override public class var resourceType: String {
+open class ImplementationGuideGlobal: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ImplementationGuideGlobal" }
 	}
 	
@@ -493,7 +493,7 @@ public class ImplementationGuideGlobal: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["profile"] {
@@ -524,7 +524,7 @@ public class ImplementationGuideGlobal: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let profile = self.profile {
@@ -544,8 +544,8 @@ public class ImplementationGuideGlobal: BackboneElement {
  *
  *  A logical group of resources. Logical groups can be used when building pages.
  */
-public class ImplementationGuidePackage: BackboneElement {
-	override public class var resourceType: String {
+open class ImplementationGuidePackage: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ImplementationGuidePackage" }
 	}
 	
@@ -571,7 +571,7 @@ public class ImplementationGuidePackage: BackboneElement {
 		self.resource = resource
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["description"] {
@@ -580,7 +580,7 @@ public class ImplementationGuidePackage: BackboneElement {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["name"] {
@@ -589,7 +589,7 @@ public class ImplementationGuidePackage: BackboneElement {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -601,7 +601,7 @@ public class ImplementationGuidePackage: BackboneElement {
 					self.resource = ImplementationGuidePackageResource.instantiate(fromArray: val, owner: self) as? [ImplementationGuidePackageResource]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "resource", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "resource", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -611,7 +611,7 @@ public class ImplementationGuidePackage: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let description_fhir = self.description_fhir {
@@ -636,8 +636,8 @@ public class ImplementationGuidePackage: BackboneElement {
  *  conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an
  *  example resource.
  */
-public class ImplementationGuidePackageResource: BackboneElement {
-	override public class var resourceType: String {
+open class ImplementationGuidePackageResource: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ImplementationGuidePackageResource" }
 	}
 	
@@ -676,7 +676,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 		self.sourceUri = sourceUri
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["acronym"] {
@@ -685,7 +685,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 					self.acronym = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "acronym", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "acronym", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["description"] {
@@ -694,7 +694,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["exampleFor"] {
@@ -703,7 +703,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 					self.exampleFor = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "exampleFor", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "exampleFor", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["name"] {
@@ -712,7 +712,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["purpose"] {
@@ -721,7 +721,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 					self.purpose = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "purpose", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "purpose", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -733,7 +733,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 					self.sourceReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sourceReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sourceReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["sourceUri"] {
@@ -742,7 +742,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 					self.sourceUri = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sourceUri", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sourceUri", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			
@@ -754,7 +754,7 @@ public class ImplementationGuidePackageResource: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let acronym = self.acronym {
@@ -789,8 +789,8 @@ public class ImplementationGuidePackageResource: BackboneElement {
  *
  *  A page / section in the implementation guide. The root page is the implementation guide home page.
  */
-public class ImplementationGuidePage: BackboneElement {
-	override public class var resourceType: String {
+open class ImplementationGuidePage: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ImplementationGuidePage" }
 	}
 	
@@ -829,7 +829,7 @@ public class ImplementationGuidePage: BackboneElement {
 		self.source = source
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["format"] {
@@ -908,7 +908,7 @@ public class ImplementationGuidePage: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let format = self.format {

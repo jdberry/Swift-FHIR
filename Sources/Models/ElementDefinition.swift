@@ -2,8 +2,8 @@
 //  ElementDefinition.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ElementDefinition) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ElementDefinition) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  Captures constraints on each element within the resource, profile, or extension.
  */
-public class ElementDefinition: Element {
-	override public class var resourceType: String {
+open class ElementDefinition: Element {
+	override open class var resourceType: String {
 		get { return "ElementDefinition" }
 	}
 	
@@ -700,7 +700,7 @@ public class ElementDefinition: Element {
 		self.path = path
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["alias"] {
@@ -2717,7 +2717,7 @@ public class ElementDefinition: Element {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let alias = self.alias {
@@ -3415,8 +3415,8 @@ public class ElementDefinition: Element {
  *  element definition represents a constraint on another element definition, and must be present if there is a base
  *  element definition.
  */
-public class ElementDefinitionBase: Element {
-	override public class var resourceType: String {
+open class ElementDefinitionBase: Element {
+	override open class var resourceType: String {
 		get { return "ElementDefinitionBase" }
 	}
 	
@@ -3443,7 +3443,7 @@ public class ElementDefinitionBase: Element {
 		self.path = path
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["max"] {
@@ -3452,7 +3452,7 @@ public class ElementDefinitionBase: Element {
 					self.max = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "max", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "max", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3464,7 +3464,7 @@ public class ElementDefinitionBase: Element {
 					self.min = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "min", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "min", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3476,7 +3476,7 @@ public class ElementDefinitionBase: Element {
 					self.path = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "path", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "path", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3486,7 +3486,7 @@ public class ElementDefinitionBase: Element {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let max = self.max {
@@ -3509,8 +3509,8 @@ public class ElementDefinitionBase: Element {
  *
  *  Binds to a value set if this element is coded (code, Coding, CodeableConcept).
  */
-public class ElementDefinitionBinding: Element {
-	override public class var resourceType: String {
+open class ElementDefinitionBinding: Element {
+	override open class var resourceType: String {
 		get { return "ElementDefinitionBinding" }
 	}
 	
@@ -3538,7 +3538,7 @@ public class ElementDefinitionBinding: Element {
 		self.strength = strength
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["description"] {
@@ -3547,7 +3547,7 @@ public class ElementDefinitionBinding: Element {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["strength"] {
@@ -3556,7 +3556,7 @@ public class ElementDefinitionBinding: Element {
 					self.strength = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "strength", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "strength", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3568,7 +3568,7 @@ public class ElementDefinitionBinding: Element {
 					self.valueSetReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueSetReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueSetReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueSetUri"] {
@@ -3577,14 +3577,14 @@ public class ElementDefinitionBinding: Element {
 					self.valueSetUri = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueSetUri", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueSetUri", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let description_fhir = self.description_fhir {
@@ -3611,8 +3611,8 @@ public class ElementDefinitionBinding: Element {
  *  Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the
  *  context of the instance.
  */
-public class ElementDefinitionConstraint: Element {
-	override public class var resourceType: String {
+open class ElementDefinitionConstraint: Element {
+	override open class var resourceType: String {
 		get { return "ElementDefinitionConstraint" }
 	}
 	
@@ -3646,7 +3646,7 @@ public class ElementDefinitionConstraint: Element {
 		self.xpath = xpath
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["human"] {
@@ -3655,7 +3655,7 @@ public class ElementDefinitionConstraint: Element {
 					self.human = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "human", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "human", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3667,7 +3667,7 @@ public class ElementDefinitionConstraint: Element {
 					self.key = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "key", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "key", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3679,7 +3679,7 @@ public class ElementDefinitionConstraint: Element {
 					self.requirements = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "requirements", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "requirements", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["severity"] {
@@ -3688,7 +3688,7 @@ public class ElementDefinitionConstraint: Element {
 					self.severity = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "severity", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "severity", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3700,7 +3700,7 @@ public class ElementDefinitionConstraint: Element {
 					self.xpath = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "xpath", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "xpath", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3710,7 +3710,7 @@ public class ElementDefinitionConstraint: Element {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let human = self.human {
@@ -3739,8 +3739,8 @@ public class ElementDefinitionConstraint: Element {
  *
  *  Identifies a concept from an external specification that roughly corresponds to this element.
  */
-public class ElementDefinitionMapping: Element {
-	override public class var resourceType: String {
+open class ElementDefinitionMapping: Element {
+	override open class var resourceType: String {
 		get { return "ElementDefinitionMapping" }
 	}
 	
@@ -3766,7 +3766,7 @@ public class ElementDefinitionMapping: Element {
 		self.map = map
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["identity"] {
@@ -3775,7 +3775,7 @@ public class ElementDefinitionMapping: Element {
 					self.identity = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identity", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identity", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3787,7 +3787,7 @@ public class ElementDefinitionMapping: Element {
 					self.language = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "language", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "language", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["map"] {
@@ -3796,7 +3796,7 @@ public class ElementDefinitionMapping: Element {
 					self.map = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "map", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "map", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3806,7 +3806,7 @@ public class ElementDefinitionMapping: Element {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let identity = self.identity {
@@ -3833,8 +3833,8 @@ public class ElementDefinitionMapping: Element {
  *  elements that come after this in the element sequence that have the same path, until a shorter path occurs (the
  *  shorter path terminates the set).
  */
-public class ElementDefinitionSlicing: Element {
-	override public class var resourceType: String {
+open class ElementDefinitionSlicing: Element {
+	override open class var resourceType: String {
 		get { return "ElementDefinitionSlicing" }
 	}
 	
@@ -3862,7 +3862,7 @@ public class ElementDefinitionSlicing: Element {
 		self.rules = rules
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["description"] {
@@ -3871,7 +3871,7 @@ public class ElementDefinitionSlicing: Element {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["discriminator"] {
@@ -3880,7 +3880,7 @@ public class ElementDefinitionSlicing: Element {
 					self.discriminator = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "discriminator", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "discriminator", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ordered"] {
@@ -3889,7 +3889,7 @@ public class ElementDefinitionSlicing: Element {
 					self.ordered = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ordered", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ordered", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["rules"] {
@@ -3898,7 +3898,7 @@ public class ElementDefinitionSlicing: Element {
 					self.rules = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "rules", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "rules", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3908,7 +3908,7 @@ public class ElementDefinitionSlicing: Element {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let description_fhir = self.description_fhir {
@@ -3938,8 +3938,8 @@ public class ElementDefinitionSlicing: Element {
  *
  *  The data type or resource that the value of this element is permitted to be.
  */
-public class ElementDefinitionType: Element {
-	override public class var resourceType: String {
+open class ElementDefinitionType: Element {
+	override open class var resourceType: String {
 		get { return "ElementDefinitionType" }
 	}
 	
@@ -3964,7 +3964,7 @@ public class ElementDefinitionType: Element {
 		self.code = code
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["aggregation"] {
@@ -3973,7 +3973,7 @@ public class ElementDefinitionType: Element {
 					self.aggregation = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "aggregation", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "aggregation", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["code"] {
@@ -3982,7 +3982,7 @@ public class ElementDefinitionType: Element {
 					self.code = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -3994,14 +3994,14 @@ public class ElementDefinitionType: Element {
 					self.profile = URL.instantiate(fromArray: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "profile", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "profile", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let aggregation = self.aggregation {

@@ -2,8 +2,8 @@
 //  AllergyIntolerance.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/AllergyIntolerance) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/AllergyIntolerance) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure
  *  to a substance.
  */
-public class AllergyIntolerance: DomainResource {
-	override public class var resourceType: String {
+open class AllergyIntolerance: DomainResource {
+	override open class var resourceType: String {
 		get { return "AllergyIntolerance" }
 	}
 	
@@ -75,7 +75,7 @@ public class AllergyIntolerance: DomainResource {
 		self.substance = substance
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["category"] {
@@ -214,7 +214,7 @@ public class AllergyIntolerance: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let category = self.category {
@@ -270,8 +270,8 @@ public class AllergyIntolerance: DomainResource {
  *
  *  Details about each adverse reaction event linked to exposure to the identified Substance.
  */
-public class AllergyIntoleranceReaction: BackboneElement {
-	override public class var resourceType: String {
+open class AllergyIntoleranceReaction: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AllergyIntoleranceReaction" }
 	}
 	
@@ -311,7 +311,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 		self.manifestation = manifestation
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["certainty"] {
@@ -320,7 +320,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.certainty = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "certainty", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "certainty", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["description"] {
@@ -329,7 +329,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["exposureRoute"] {
@@ -338,7 +338,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.exposureRoute = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "exposureRoute", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "exposureRoute", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["manifestation"] {
@@ -347,7 +347,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.manifestation = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "manifestation", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "manifestation", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -359,7 +359,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.note = Annotation(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "note", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "note", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["onset"] {
@@ -368,7 +368,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.onset = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "onset", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "onset", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["severity"] {
@@ -377,7 +377,7 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.severity = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "severity", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "severity", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["substance"] {
@@ -386,14 +386,14 @@ public class AllergyIntoleranceReaction: BackboneElement {
 					self.substance = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "substance", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "substance", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let certainty = self.certainty {

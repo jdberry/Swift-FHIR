@@ -2,8 +2,8 @@
 //  ConformanceTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,6 +34,66 @@ class ConformanceTests: XCTestCase {
 	
 	@discardableResult
 	func runConformance1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Conformance {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "conformance-phr-example.json")
+		
+		XCTAssertEqual(inst.acceptUnknown, "no")
+		XCTAssertEqual(inst.contact?[0].telecom?[0].system, "other")
+		XCTAssertEqual(inst.contact?[0].telecom?[0].value, "http://hl7.org/fhir")
+		XCTAssertEqual(inst.date?.description, "2013-06-18")
+		XCTAssertEqual(inst.description_fhir, "Prototype Conformance Statement for September 2013 Connectathon")
+		XCTAssertEqual(inst.fhirVersion, "1.0.0")
+		XCTAssertEqual(inst.format?[0], "json")
+		XCTAssertEqual(inst.format?[1], "xml")
+		XCTAssertEqual(inst.id, "phr")
+		XCTAssertEqual(inst.kind, "capability")
+		XCTAssertEqual(inst.name, "PHR Template")
+		XCTAssertEqual(inst.publisher, "FHIR Project")
+		XCTAssertEqual(inst.rest?[0].documentation, "Protoype server conformance statement for September 2013 Connectathon")
+		XCTAssertEqual(inst.rest?[0].mode, "server")
+		XCTAssertEqual(inst.rest?[0].resource?[0].interaction?[0].code, "read")
+		XCTAssertEqual(inst.rest?[0].resource?[0].interaction?[1].code, "search-type")
+		XCTAssertEqual(inst.rest?[0].resource?[0].interaction?[1].documentation, "When a client searches patients with no search criteria, they get a list of all patients they have access too. Servers may elect to offer additional search parameters, but this is not required")
+		XCTAssertEqual(inst.rest?[0].resource?[0].type, "Patient")
+		XCTAssertEqual(inst.rest?[0].resource?[1].interaction?[0].code, "read")
+		XCTAssertEqual(inst.rest?[0].resource?[1].interaction?[1].code, "search-type")
+		XCTAssertEqual(inst.rest?[0].resource?[1].searchParam?[0].documentation, "_id parameter always supported. For the connectathon, servers may elect which search parameters are supported")
+		XCTAssertEqual(inst.rest?[0].resource?[1].searchParam?[0].name, "_id")
+		XCTAssertEqual(inst.rest?[0].resource?[1].searchParam?[0].type, "token")
+		XCTAssertEqual(inst.rest?[0].resource?[1].type, "DocumentReference")
+		XCTAssertEqual(inst.rest?[0].resource?[2].interaction?[0].code, "read")
+		XCTAssertEqual(inst.rest?[0].resource?[2].interaction?[1].code, "search-type")
+		XCTAssertEqual(inst.rest?[0].resource?[2].searchParam?[0].documentation, "Standard _id parameter")
+		XCTAssertEqual(inst.rest?[0].resource?[2].searchParam?[0].name, "_id")
+		XCTAssertEqual(inst.rest?[0].resource?[2].searchParam?[0].type, "token")
+		XCTAssertEqual(inst.rest?[0].resource?[2].type, "Condition")
+		XCTAssertEqual(inst.rest?[0].resource?[3].interaction?[0].code, "read")
+		XCTAssertEqual(inst.rest?[0].resource?[3].interaction?[1].code, "search-type")
+		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[0].documentation, "Standard _id parameter")
+		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[0].name, "_id")
+		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[0].type, "token")
+		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[1].documentation, "which diagnostic discipline/department created the report")
+		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[1].name, "service")
+		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[1].type, "token")
+		XCTAssertEqual(inst.rest?[0].resource?[3].type, "DiagnosticReport")
+		XCTAssertEqual(inst.rest?[0].security?.service?[0].text, "OAuth")
+		XCTAssertEqual(inst.software?.name, "ACME PHR Server")
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
+	func testConformance2() {
+		do {
+			let instance = try runConformance2()
+			try runConformance2(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test Conformance successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runConformance2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Conformance {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "conformance-example.json")
 		
 		XCTAssertEqual(inst.acceptUnknown, "both")
@@ -117,66 +177,6 @@ class ConformanceTests: XCTestCase {
 		XCTAssertEqual(inst.text?.status, "generated")
 		XCTAssertEqual(inst.url?.absoluteString, "68D043B5-9ECF-4559-A57A-396E0D452311")
 		XCTAssertEqual(inst.version, "20130510")
-		
-		return inst
-	}
-	
-	func testConformance2() {
-		do {
-			let instance = try runConformance2()
-			try runConformance2(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test Conformance successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runConformance2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Conformance {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "conformance-phr-example.json")
-		
-		XCTAssertEqual(inst.acceptUnknown, "no")
-		XCTAssertEqual(inst.contact?[0].telecom?[0].system, "other")
-		XCTAssertEqual(inst.contact?[0].telecom?[0].value, "http://hl7.org/fhir")
-		XCTAssertEqual(inst.date?.description, "2013-06-18")
-		XCTAssertEqual(inst.description_fhir, "Prototype Conformance Statement for September 2013 Connectathon")
-		XCTAssertEqual(inst.fhirVersion, "1.0.0")
-		XCTAssertEqual(inst.format?[0], "json")
-		XCTAssertEqual(inst.format?[1], "xml")
-		XCTAssertEqual(inst.id, "phr")
-		XCTAssertEqual(inst.kind, "capability")
-		XCTAssertEqual(inst.name, "PHR Template")
-		XCTAssertEqual(inst.publisher, "FHIR Project")
-		XCTAssertEqual(inst.rest?[0].documentation, "Protoype server conformance statement for September 2013 Connectathon")
-		XCTAssertEqual(inst.rest?[0].mode, "server")
-		XCTAssertEqual(inst.rest?[0].resource?[0].interaction?[0].code, "read")
-		XCTAssertEqual(inst.rest?[0].resource?[0].interaction?[1].code, "search-type")
-		XCTAssertEqual(inst.rest?[0].resource?[0].interaction?[1].documentation, "When a client searches patients with no search criteria, they get a list of all patients they have access too. Servers may elect to offer additional search parameters, but this is not required")
-		XCTAssertEqual(inst.rest?[0].resource?[0].type, "Patient")
-		XCTAssertEqual(inst.rest?[0].resource?[1].interaction?[0].code, "read")
-		XCTAssertEqual(inst.rest?[0].resource?[1].interaction?[1].code, "search-type")
-		XCTAssertEqual(inst.rest?[0].resource?[1].searchParam?[0].documentation, "_id parameter always supported. For the connectathon, servers may elect which search parameters are supported")
-		XCTAssertEqual(inst.rest?[0].resource?[1].searchParam?[0].name, "_id")
-		XCTAssertEqual(inst.rest?[0].resource?[1].searchParam?[0].type, "token")
-		XCTAssertEqual(inst.rest?[0].resource?[1].type, "DocumentReference")
-		XCTAssertEqual(inst.rest?[0].resource?[2].interaction?[0].code, "read")
-		XCTAssertEqual(inst.rest?[0].resource?[2].interaction?[1].code, "search-type")
-		XCTAssertEqual(inst.rest?[0].resource?[2].searchParam?[0].documentation, "Standard _id parameter")
-		XCTAssertEqual(inst.rest?[0].resource?[2].searchParam?[0].name, "_id")
-		XCTAssertEqual(inst.rest?[0].resource?[2].searchParam?[0].type, "token")
-		XCTAssertEqual(inst.rest?[0].resource?[2].type, "Condition")
-		XCTAssertEqual(inst.rest?[0].resource?[3].interaction?[0].code, "read")
-		XCTAssertEqual(inst.rest?[0].resource?[3].interaction?[1].code, "search-type")
-		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[0].documentation, "Standard _id parameter")
-		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[0].name, "_id")
-		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[0].type, "token")
-		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[1].documentation, "which diagnostic discipline/department created the report")
-		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[1].name, "service")
-		XCTAssertEqual(inst.rest?[0].resource?[3].searchParam?[1].type, "token")
-		XCTAssertEqual(inst.rest?[0].resource?[3].type, "DiagnosticReport")
-		XCTAssertEqual(inst.rest?[0].security?.service?[0].text, "OAuth")
-		XCTAssertEqual(inst.software?.name, "ACME PHR Server")
-		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst
 	}

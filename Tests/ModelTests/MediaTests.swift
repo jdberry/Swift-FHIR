@@ -2,8 +2,8 @@
 //  MediaTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,6 +34,39 @@ class MediaTests: XCTestCase {
 	
 	@discardableResult
 	func runMedia1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Media {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "media-example.json")
+		
+		XCTAssertEqual(inst.content?.contentType, "image/gif")
+		XCTAssertEqual(inst.content?.creation?.description, "2009-09-03")
+		XCTAssertEqual(inst.content?.id, "a1")
+		XCTAssertEqual(inst.deviceName, "Acme Camera")
+		XCTAssertEqual(inst.frames, UInt(1))
+		XCTAssertEqual(inst.height, UInt(145))
+		XCTAssertEqual(inst.id, "example")
+		XCTAssertEqual(inst.operator_fhir?.reference, "Practitioner/xcda-author")
+		XCTAssertEqual(inst.subject?.reference, "Patient/xcda")
+		XCTAssertEqual(inst.subtype?.coding?[0].code, "diagram")
+		XCTAssertEqual(inst.subtype?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/media-method")
+		XCTAssertEqual(inst.text?.div, "<div>Diagram for Patient Henry Levin (MRN 12345):<br/><img alt=\"diagram\" src=\"#11\"/></div>")
+		XCTAssertEqual(inst.text?.status, "generated")
+		XCTAssertEqual(inst.type, "photo")
+		XCTAssertEqual(inst.width, UInt(126))
+		
+		return inst
+	}
+	
+	func testMedia2() {
+		do {
+			let instance = try runMedia2()
+			try runMedia2(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test Media successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runMedia2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Media {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "media-example-dicom.json")
 		
 		XCTAssertEqual(inst.content?.contentType, "application/dicom")
@@ -68,34 +101,6 @@ class MediaTests: XCTestCase {
 		return inst
 	}
 	
-	func testMedia2() {
-		do {
-			let instance = try runMedia2()
-			try runMedia2(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test Media successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runMedia2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Media {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "media-example-sound.json")
-		
-		XCTAssertEqual(inst.content?.contentType, "audio/mpeg")
-		XCTAssertEqual(inst.content?.data, Base64Binary(value: "dG9vIGJpZyB0b28gaW5jbHVkZSB0aGUgd2hvbGU="))
-		XCTAssertEqual(inst.content?.id, "a1")
-		XCTAssertEqual(inst.duration, UInt(65))
-		XCTAssertEqual(inst.id, "sound")
-		XCTAssertEqual(inst.operator_fhir?.reference, "Practitioner/xcda-author")
-		XCTAssertEqual(inst.subject?.reference, "Patient/xcda")
-		XCTAssertEqual(inst.text?.div, "<div>Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img alt=\"diagram\" src=\"#11\"/></div>")
-		XCTAssertEqual(inst.text?.status, "generated")
-		XCTAssertEqual(inst.type, "video")
-		
-		return inst
-	}
-	
 	func testMedia3() {
 		do {
 			let instance = try runMedia3()
@@ -108,23 +113,18 @@ class MediaTests: XCTestCase {
 	
 	@discardableResult
 	func runMedia3(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Media {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "media-example.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "media-example-sound.json")
 		
-		XCTAssertEqual(inst.content?.contentType, "image/gif")
-		XCTAssertEqual(inst.content?.creation?.description, "2009-09-03")
+		XCTAssertEqual(inst.content?.contentType, "audio/mpeg")
+		XCTAssertEqual(inst.content?.data, Base64Binary(value: "dG9vIGJpZyB0b28gaW5jbHVkZSB0aGUgd2hvbGU="))
 		XCTAssertEqual(inst.content?.id, "a1")
-		XCTAssertEqual(inst.deviceName, "Acme Camera")
-		XCTAssertEqual(inst.frames, UInt(1))
-		XCTAssertEqual(inst.height, UInt(145))
-		XCTAssertEqual(inst.id, "example")
+		XCTAssertEqual(inst.duration, UInt(65))
+		XCTAssertEqual(inst.id, "sound")
 		XCTAssertEqual(inst.operator_fhir?.reference, "Practitioner/xcda-author")
 		XCTAssertEqual(inst.subject?.reference, "Patient/xcda")
-		XCTAssertEqual(inst.subtype?.coding?[0].code, "diagram")
-		XCTAssertEqual(inst.subtype?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/media-method")
-		XCTAssertEqual(inst.text?.div, "<div>Diagram for Patient Henry Levin (MRN 12345):<br/><img alt=\"diagram\" src=\"#11\"/></div>")
+		XCTAssertEqual(inst.text?.div, "<div>Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img alt=\"diagram\" src=\"#11\"/></div>")
 		XCTAssertEqual(inst.text?.status, "generated")
-		XCTAssertEqual(inst.type, "photo")
-		XCTAssertEqual(inst.width, UInt(126))
+		XCTAssertEqual(inst.type, "video")
 		
 		return inst
 	}

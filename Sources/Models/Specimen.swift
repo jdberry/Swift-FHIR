@@ -2,8 +2,8 @@
 //  Specimen.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Specimen) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Specimen) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A sample to be used for analysis.
  */
-public class Specimen: DomainResource {
-	override public class var resourceType: String {
+open class Specimen: DomainResource {
+	override open class var resourceType: String {
 		get { return "Specimen" }
 	}
 	
@@ -61,7 +61,7 @@ public class Specimen: DomainResource {
 		self.subject = subject
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["accessionIdentifier"] {
@@ -161,7 +161,7 @@ public class Specimen: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let accessionIdentifier = self.accessionIdentifier {
@@ -205,8 +205,8 @@ public class Specimen: DomainResource {
  *
  *  Details concerning the specimen collection.
  */
-public class SpecimenCollection: BackboneElement {
-	override public class var resourceType: String {
+open class SpecimenCollection: BackboneElement {
+	override open class var resourceType: String {
 		get { return "SpecimenCollection" }
 	}
 	
@@ -237,7 +237,7 @@ public class SpecimenCollection: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["bodySite"] {
@@ -246,7 +246,7 @@ public class SpecimenCollection: BackboneElement {
 					self.bodySite = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "bodySite", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "bodySite", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["collectedDateTime"] {
@@ -255,7 +255,7 @@ public class SpecimenCollection: BackboneElement {
 					self.collectedDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "collectedDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "collectedDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["collectedPeriod"] {
@@ -264,7 +264,7 @@ public class SpecimenCollection: BackboneElement {
 					self.collectedPeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "collectedPeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "collectedPeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["collector"] {
@@ -273,7 +273,7 @@ public class SpecimenCollection: BackboneElement {
 					self.collector = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "collector", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "collector", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["comment"] {
@@ -282,7 +282,7 @@ public class SpecimenCollection: BackboneElement {
 					self.comment = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "comment", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "comment", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["method"] {
@@ -291,7 +291,7 @@ public class SpecimenCollection: BackboneElement {
 					self.method = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "method", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "method", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["quantity"] {
@@ -300,14 +300,14 @@ public class SpecimenCollection: BackboneElement {
 					self.quantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "quantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "quantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let bodySite = self.bodySite {
@@ -347,8 +347,8 @@ public class SpecimenCollection: BackboneElement {
  *  The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not
  *  addressed here.
  */
-public class SpecimenContainer: BackboneElement {
-	override public class var resourceType: String {
+open class SpecimenContainer: BackboneElement {
+	override open class var resourceType: String {
 		get { return "SpecimenContainer" }
 	}
 	
@@ -379,7 +379,7 @@ public class SpecimenContainer: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["additiveCodeableConcept"] {
@@ -449,7 +449,7 @@ public class SpecimenContainer: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let additiveCodeableConcept = self.additiveCodeableConcept {
@@ -484,8 +484,8 @@ public class SpecimenContainer: BackboneElement {
  *
  *  Details concerning treatment and processing steps for the specimen.
  */
-public class SpecimenTreatment: BackboneElement {
-	override public class var resourceType: String {
+open class SpecimenTreatment: BackboneElement {
+	override open class var resourceType: String {
 		get { return "SpecimenTreatment" }
 	}
 	
@@ -504,7 +504,7 @@ public class SpecimenTreatment: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["additive"] {
@@ -513,7 +513,7 @@ public class SpecimenTreatment: BackboneElement {
 					self.additive = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "additive", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "additive", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["description"] {
@@ -522,7 +522,7 @@ public class SpecimenTreatment: BackboneElement {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["procedure"] {
@@ -531,14 +531,14 @@ public class SpecimenTreatment: BackboneElement {
 					self.procedure = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "procedure", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "procedure", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let additive = self.additive {

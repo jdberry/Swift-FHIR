@@ -2,8 +2,8 @@
 //  DomainResource.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DomainResource) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DomainResource) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A resource that includes narrative, extensions, and contained resources.
  */
-public class DomainResource: Resource {
-	override public class var resourceType: String {
+open class DomainResource: Resource {
+	override open class var resourceType: String {
 		get { return "DomainResource" }
 	}
 	
@@ -37,7 +37,7 @@ public class DomainResource: Resource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contained"] {
@@ -46,7 +46,7 @@ public class DomainResource: Resource {
 					self.contained = Resource.instantiate(fromArray: val, owner: self) as? [Resource]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contained", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contained", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["extension"] {
@@ -55,7 +55,7 @@ public class DomainResource: Resource {
 					self.extension_fhir = Extension.instantiate(fromArray: val, owner: self) as? [Extension]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "extension", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "extension", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["modifierExtension"] {
@@ -64,7 +64,7 @@ public class DomainResource: Resource {
 					self.modifierExtension = Extension.instantiate(fromArray: val, owner: self) as? [Extension]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "modifierExtension", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "modifierExtension", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["text"] {
@@ -73,14 +73,14 @@ public class DomainResource: Resource {
 					self.text = Narrative(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "text", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "text", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contained = self.contained {

@@ -2,8 +2,8 @@
 //  AppointmentResponse.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/AppointmentResponse) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/AppointmentResponse) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -12,8 +12,8 @@ import Foundation
 /**
  *  A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
  */
-public class AppointmentResponse: DomainResource {
-	override public class var resourceType: String {
+open class AppointmentResponse: DomainResource {
+	override open class var resourceType: String {
 		get { return "AppointmentResponse" }
 	}
 	
@@ -54,7 +54,7 @@ public class AppointmentResponse: DomainResource {
 		self.participantStatus = participantStatus
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["actor"] {
@@ -63,7 +63,7 @@ public class AppointmentResponse: DomainResource {
 					self.actor = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "actor", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "actor", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["appointment"] {
@@ -72,7 +72,7 @@ public class AppointmentResponse: DomainResource {
 					self.appointment = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "appointment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "appointment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -84,7 +84,7 @@ public class AppointmentResponse: DomainResource {
 					self.comment = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "comment", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "comment", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["end"] {
@@ -93,7 +93,7 @@ public class AppointmentResponse: DomainResource {
 					self.end = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "end", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "end", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -102,7 +102,7 @@ public class AppointmentResponse: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["participantStatus"] {
@@ -111,7 +111,7 @@ public class AppointmentResponse: DomainResource {
 					self.participantStatus = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "participantStatus", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "participantStatus", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -123,7 +123,7 @@ public class AppointmentResponse: DomainResource {
 					self.participantType = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "participantType", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "participantType", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["start"] {
@@ -132,14 +132,14 @@ public class AppointmentResponse: DomainResource {
 					self.start = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "start", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "start", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let actor = self.actor {

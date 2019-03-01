@@ -2,8 +2,8 @@
 //  OperationOutcome.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/OperationOutcome) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/OperationOutcome) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A collection of error, warning or information messages that result from a system action.
  */
-public class OperationOutcome: DomainResource {
-	override public class var resourceType: String {
+open class OperationOutcome: DomainResource {
+	override open class var resourceType: String {
 		get { return "OperationOutcome" }
 	}
 	
@@ -34,7 +34,7 @@ public class OperationOutcome: DomainResource {
 		self.issue = issue
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["issue"] {
@@ -43,7 +43,7 @@ public class OperationOutcome: DomainResource {
 					self.issue = OperationOutcomeIssue.instantiate(fromArray: val, owner: self) as? [OperationOutcomeIssue]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "issue", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "issue", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -53,7 +53,7 @@ public class OperationOutcome: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let issue = self.issue {
@@ -70,8 +70,8 @@ public class OperationOutcome: DomainResource {
  *
  *  An error, warning or information message that results from a system action.
  */
-public class OperationOutcomeIssue: BackboneElement {
-	override public class var resourceType: String {
+open class OperationOutcomeIssue: BackboneElement {
+	override open class var resourceType: String {
 		get { return "OperationOutcomeIssue" }
 	}
 	
@@ -103,7 +103,7 @@ public class OperationOutcomeIssue: BackboneElement {
 		self.severity = severity
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -112,7 +112,7 @@ public class OperationOutcomeIssue: BackboneElement {
 					self.code = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -124,7 +124,7 @@ public class OperationOutcomeIssue: BackboneElement {
 					self.details = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "details", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "details", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["diagnostics"] {
@@ -133,7 +133,7 @@ public class OperationOutcomeIssue: BackboneElement {
 					self.diagnostics = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "diagnostics", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "diagnostics", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["location"] {
@@ -142,7 +142,7 @@ public class OperationOutcomeIssue: BackboneElement {
 					self.location = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "location", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "location", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["severity"] {
@@ -151,7 +151,7 @@ public class OperationOutcomeIssue: BackboneElement {
 					self.severity = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "severity", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "severity", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -161,7 +161,7 @@ public class OperationOutcomeIssue: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {

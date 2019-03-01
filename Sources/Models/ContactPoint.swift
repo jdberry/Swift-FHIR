@@ -2,8 +2,8 @@
 //  ContactPoint.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ContactPoint) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ContactPoint) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  Details for all kinds of technology mediated contact points for a person or organization, including telephone,
  *  email, etc.
  */
-public class ContactPoint: Element {
-	override public class var resourceType: String {
+open class ContactPoint: Element {
+	override open class var resourceType: String {
 		get { return "ContactPoint" }
 	}
 	
@@ -41,7 +41,7 @@ public class ContactPoint: Element {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["period"] {
@@ -50,7 +50,7 @@ public class ContactPoint: Element {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["rank"] {
@@ -59,7 +59,7 @@ public class ContactPoint: Element {
 					self.rank = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "rank", wants: UInt.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "rank", wants: UInt.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["system"] {
@@ -68,7 +68,7 @@ public class ContactPoint: Element {
 					self.system = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "system", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "system", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["use"] {
@@ -77,7 +77,7 @@ public class ContactPoint: Element {
 					self.use = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "use", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "use", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["value"] {
@@ -86,14 +86,14 @@ public class ContactPoint: Element {
 					self.value = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "value", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "value", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let period = self.period {

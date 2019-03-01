@@ -2,8 +2,8 @@
 //  Medication.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Medication) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Medication) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  This resource is primarily used for the identification and definition of a medication. It covers the ingredients and
  *  the packaging for a medication.
  */
-public class Medication: DomainResource {
-	override public class var resourceType: String {
+open class Medication: DomainResource {
+	override open class var resourceType: String {
 		get { return "Medication" }
 	}
 	
@@ -41,7 +41,7 @@ public class Medication: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -50,7 +50,7 @@ public class Medication: DomainResource {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["isBrand"] {
@@ -59,7 +59,7 @@ public class Medication: DomainResource {
 					self.isBrand = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "isBrand", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "isBrand", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["manufacturer"] {
@@ -68,7 +68,7 @@ public class Medication: DomainResource {
 					self.manufacturer = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "manufacturer", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "manufacturer", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["package"] {
@@ -77,7 +77,7 @@ public class Medication: DomainResource {
 					self.package = MedicationPackage(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "package", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "package", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["product"] {
@@ -86,14 +86,14 @@ public class Medication: DomainResource {
 					self.product = MedicationProduct(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "product", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "product", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {
@@ -122,8 +122,8 @@ public class Medication: DomainResource {
  *
  *  Information that only applies to packages (not products).
  */
-public class MedicationPackage: BackboneElement {
-	override public class var resourceType: String {
+open class MedicationPackage: BackboneElement {
+	override open class var resourceType: String {
 		get { return "MedicationPackage" }
 	}
 	
@@ -139,7 +139,7 @@ public class MedicationPackage: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["container"] {
@@ -148,7 +148,7 @@ public class MedicationPackage: BackboneElement {
 					self.container = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "container", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "container", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["content"] {
@@ -157,14 +157,14 @@ public class MedicationPackage: BackboneElement {
 					self.content = MedicationPackageContent.instantiate(fromArray: val, owner: self) as? [MedicationPackageContent]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "content", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "content", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let container = self.container {
@@ -184,8 +184,8 @@ public class MedicationPackage: BackboneElement {
  *
  *  A set of components that go to make up the described item.
  */
-public class MedicationPackageContent: BackboneElement {
-	override public class var resourceType: String {
+open class MedicationPackageContent: BackboneElement {
+	override open class var resourceType: String {
 		get { return "MedicationPackageContent" }
 	}
 	
@@ -207,7 +207,7 @@ public class MedicationPackageContent: BackboneElement {
 		self.item = item
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["amount"] {
@@ -216,7 +216,7 @@ public class MedicationPackageContent: BackboneElement {
 					self.amount = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "amount", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "amount", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["item"] {
@@ -225,7 +225,7 @@ public class MedicationPackageContent: BackboneElement {
 					self.item = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "item", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "item", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -235,7 +235,7 @@ public class MedicationPackageContent: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let amount = self.amount {
@@ -255,8 +255,8 @@ public class MedicationPackageContent: BackboneElement {
  *
  *  Information that only applies to products (not packages).
  */
-public class MedicationProduct: BackboneElement {
-	override public class var resourceType: String {
+open class MedicationProduct: BackboneElement {
+	override open class var resourceType: String {
 		get { return "MedicationProduct" }
 	}
 	
@@ -275,7 +275,7 @@ public class MedicationProduct: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["batch"] {
@@ -284,7 +284,7 @@ public class MedicationProduct: BackboneElement {
 					self.batch = MedicationProductBatch.instantiate(fromArray: val, owner: self) as? [MedicationProductBatch]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "batch", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "batch", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["form"] {
@@ -293,7 +293,7 @@ public class MedicationProduct: BackboneElement {
 					self.form = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "form", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "form", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ingredient"] {
@@ -302,14 +302,14 @@ public class MedicationProduct: BackboneElement {
 					self.ingredient = MedicationProductIngredient.instantiate(fromArray: val, owner: self) as? [MedicationProductIngredient]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ingredient", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ingredient", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let batch = self.batch {
@@ -332,8 +332,8 @@ public class MedicationProduct: BackboneElement {
  *
  *  Information about a group of medication produced or packaged from one production run.
  */
-public class MedicationProductBatch: BackboneElement {
-	override public class var resourceType: String {
+open class MedicationProductBatch: BackboneElement {
+	override open class var resourceType: String {
 		get { return "MedicationProductBatch" }
 	}
 	
@@ -349,7 +349,7 @@ public class MedicationProductBatch: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["expirationDate"] {
@@ -358,7 +358,7 @@ public class MedicationProductBatch: BackboneElement {
 					self.expirationDate = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "expirationDate", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "expirationDate", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["lotNumber"] {
@@ -367,14 +367,14 @@ public class MedicationProductBatch: BackboneElement {
 					self.lotNumber = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "lotNumber", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "lotNumber", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let expirationDate = self.expirationDate {
@@ -394,8 +394,8 @@ public class MedicationProductBatch: BackboneElement {
  *
  *  Identifies a particular constituent of interest in the product.
  */
-public class MedicationProductIngredient: BackboneElement {
-	override public class var resourceType: String {
+open class MedicationProductIngredient: BackboneElement {
+	override open class var resourceType: String {
 		get { return "MedicationProductIngredient" }
 	}
 	
@@ -417,7 +417,7 @@ public class MedicationProductIngredient: BackboneElement {
 		self.item = item
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["amount"] {
@@ -426,7 +426,7 @@ public class MedicationProductIngredient: BackboneElement {
 					self.amount = Ratio(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "amount", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "amount", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["item"] {
@@ -435,7 +435,7 @@ public class MedicationProductIngredient: BackboneElement {
 					self.item = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "item", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "item", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -445,7 +445,7 @@ public class MedicationProductIngredient: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let amount = self.amount {

@@ -2,8 +2,8 @@
 //  Condition.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Condition) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Condition) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -16,8 +16,8 @@ import Foundation
  *  uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as
  *  a discharge summary.
  */
-public class Condition: DomainResource {
-	override public class var resourceType: String {
+open class Condition: DomainResource {
+	override open class var resourceType: String {
 		get { return "Condition" }
 	}
 	
@@ -110,7 +110,7 @@ public class Condition: DomainResource {
 		self.verificationStatus = verificationStatus
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["abatementBoolean"] {
@@ -119,7 +119,7 @@ public class Condition: DomainResource {
 					self.abatementBoolean = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abatementBoolean", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abatementBoolean", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["abatementDateTime"] {
@@ -128,7 +128,7 @@ public class Condition: DomainResource {
 					self.abatementDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abatementDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abatementDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["abatementPeriod"] {
@@ -137,7 +137,7 @@ public class Condition: DomainResource {
 					self.abatementPeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abatementPeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abatementPeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["abatementQuantity"] {
@@ -146,7 +146,7 @@ public class Condition: DomainResource {
 					self.abatementQuantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abatementQuantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abatementQuantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["abatementRange"] {
@@ -155,7 +155,7 @@ public class Condition: DomainResource {
 					self.abatementRange = Range(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abatementRange", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abatementRange", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["abatementString"] {
@@ -164,7 +164,7 @@ public class Condition: DomainResource {
 					self.abatementString = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abatementString", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abatementString", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["asserter"] {
@@ -173,7 +173,7 @@ public class Condition: DomainResource {
 					self.asserter = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "asserter", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "asserter", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["bodySite"] {
@@ -182,7 +182,7 @@ public class Condition: DomainResource {
 					self.bodySite = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "bodySite", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "bodySite", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["category"] {
@@ -191,7 +191,7 @@ public class Condition: DomainResource {
 					self.category = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "category", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "category", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["clinicalStatus"] {
@@ -200,7 +200,7 @@ public class Condition: DomainResource {
 					self.clinicalStatus = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "clinicalStatus", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "clinicalStatus", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["code"] {
@@ -209,7 +209,7 @@ public class Condition: DomainResource {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -221,7 +221,7 @@ public class Condition: DomainResource {
 					self.dateRecorded = FHIRDate(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dateRecorded", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dateRecorded", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["encounter"] {
@@ -230,7 +230,7 @@ public class Condition: DomainResource {
 					self.encounter = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["evidence"] {
@@ -239,7 +239,7 @@ public class Condition: DomainResource {
 					self.evidence = ConditionEvidence.instantiate(fromArray: val, owner: self) as? [ConditionEvidence]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "evidence", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "evidence", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -248,7 +248,7 @@ public class Condition: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["notes"] {
@@ -257,7 +257,7 @@ public class Condition: DomainResource {
 					self.notes = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "notes", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "notes", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["onsetDateTime"] {
@@ -266,7 +266,7 @@ public class Condition: DomainResource {
 					self.onsetDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "onsetDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "onsetDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["onsetPeriod"] {
@@ -275,7 +275,7 @@ public class Condition: DomainResource {
 					self.onsetPeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "onsetPeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "onsetPeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["onsetQuantity"] {
@@ -284,7 +284,7 @@ public class Condition: DomainResource {
 					self.onsetQuantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "onsetQuantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "onsetQuantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["onsetRange"] {
@@ -293,7 +293,7 @@ public class Condition: DomainResource {
 					self.onsetRange = Range(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "onsetRange", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "onsetRange", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["onsetString"] {
@@ -302,7 +302,7 @@ public class Condition: DomainResource {
 					self.onsetString = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "onsetString", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "onsetString", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["patient"] {
@@ -311,7 +311,7 @@ public class Condition: DomainResource {
 					self.patient = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "patient", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "patient", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -323,7 +323,7 @@ public class Condition: DomainResource {
 					self.severity = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "severity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "severity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["stage"] {
@@ -332,7 +332,7 @@ public class Condition: DomainResource {
 					self.stage = ConditionStage(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "stage", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "stage", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["verificationStatus"] {
@@ -341,7 +341,7 @@ public class Condition: DomainResource {
 					self.verificationStatus = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "verificationStatus", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "verificationStatus", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -351,7 +351,7 @@ public class Condition: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let abatementBoolean = self.abatementBoolean {
@@ -440,8 +440,8 @@ public class Condition: DomainResource {
  *
  *  Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
  */
-public class ConditionEvidence: BackboneElement {
-	override public class var resourceType: String {
+open class ConditionEvidence: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ConditionEvidence" }
 	}
 	
@@ -457,7 +457,7 @@ public class ConditionEvidence: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -466,7 +466,7 @@ public class ConditionEvidence: BackboneElement {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["detail"] {
@@ -475,14 +475,14 @@ public class ConditionEvidence: BackboneElement {
 					self.detail = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "detail", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "detail", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {
@@ -502,8 +502,8 @@ public class ConditionEvidence: BackboneElement {
  *
  *  Clinical stage or grade of a condition. May include formal severity assessments.
  */
-public class ConditionStage: BackboneElement {
-	override public class var resourceType: String {
+open class ConditionStage: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ConditionStage" }
 	}
 	
@@ -519,7 +519,7 @@ public class ConditionStage: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["assessment"] {
@@ -528,7 +528,7 @@ public class ConditionStage: BackboneElement {
 					self.assessment = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "assessment", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "assessment", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["summary"] {
@@ -537,14 +537,14 @@ public class ConditionStage: BackboneElement {
 					self.summary = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "summary", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "summary", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let assessment = self.assessment {

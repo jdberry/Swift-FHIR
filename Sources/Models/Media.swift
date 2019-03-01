@@ -2,8 +2,8 @@
 //  Media.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Media) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Media) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -13,8 +13,8 @@ import Foundation
  *  A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by
  *  direct reference.
  */
-public class Media: DomainResource {
-	override public class var resourceType: String {
+open class Media: DomainResource {
+	override open class var resourceType: String {
 		get { return "Media" }
 	}
 	
@@ -67,7 +67,7 @@ public class Media: DomainResource {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["content"] {
@@ -188,7 +188,7 @@ public class Media: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let content = self.content {

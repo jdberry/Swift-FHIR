@@ -2,8 +2,8 @@
 //  DeviceTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,21 +34,18 @@ class DeviceTests: XCTestCase {
 	
 	@discardableResult
 	func runDevice1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Device {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "device-example-f001-feedingtube.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "device-example-software.json")
 		
-		XCTAssertEqual(inst.expiry?.description, "2020-08-08")
-		XCTAssertEqual(inst.id, "f001")
-		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http:/goodhealthhospital/identifier/devices")
-		XCTAssertEqual(inst.identifier?[0].value, "12345")
-		XCTAssertEqual(inst.location?.display, "Central Supply")
-		XCTAssertEqual(inst.manufactureDate?.description, "2015-08-08")
-		XCTAssertEqual(inst.owner?.reference, "Organization/2.16.840.1.113883.19.5")
-		XCTAssertEqual(inst.status, "available")
+		XCTAssertEqual(inst.contact?[0].system, "other")
+		XCTAssertEqual(inst.contact?[0].value, "http://acme.com")
+		XCTAssertEqual(inst.id, "software")
+		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://acme.com/ehr/client-ids")
+		XCTAssertEqual(inst.identifier?[0].value, "goodhealth")
+		XCTAssertEqual(inst.manufacturer, "Acme Devices, Inc")
 		XCTAssertEqual(inst.text?.status, "generated")
-		XCTAssertEqual(inst.type?.coding?[0].code, "25062003")
-		XCTAssertEqual(inst.type?.coding?[0].display, "Feeding tube, device")
-		XCTAssertEqual(inst.type?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.udi, "(01)00000123000017(10)ABC123(17)120415")
+		XCTAssertEqual(inst.type?.text, "EHR")
+		XCTAssertEqual(inst.url?.absoluteString, "http://acme.com/goodhealth/ehr/")
+		XCTAssertEqual(inst.version, "10.23-23423")
 		
 		return inst
 	}
@@ -65,18 +62,21 @@ class DeviceTests: XCTestCase {
 	
 	@discardableResult
 	func runDevice2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Device {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "device-example-ihe-pcd.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "device-example-f001-feedingtube.json")
 		
-		XCTAssertEqual(inst.id, "ihe-pcd")
-		XCTAssertEqual(inst.identifier?[0].type?.coding?[0].code, "SNO")
-		XCTAssertEqual(inst.identifier?[0].type?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/identifier-type")
-		XCTAssertEqual(inst.identifier?[0].type?.text, "Serial Number")
-		XCTAssertEqual(inst.identifier?[0].value, "AMID-123-456")
-		XCTAssertEqual(inst.lotNumber, "12345")
-		XCTAssertEqual(inst.manufacturer, "Acme Devices, Inc")
-		XCTAssertEqual(inst.model, "A.1.1")
+		XCTAssertEqual(inst.expiry?.description, "2020-08-08")
+		XCTAssertEqual(inst.id, "f001")
+		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http:/goodhealthhospital/identifier/devices")
+		XCTAssertEqual(inst.identifier?[0].value, "12345")
+		XCTAssertEqual(inst.location?.display, "Central Supply")
+		XCTAssertEqual(inst.manufactureDate?.description, "2015-08-08")
+		XCTAssertEqual(inst.owner?.reference, "Organization/2.16.840.1.113883.19.5")
+		XCTAssertEqual(inst.status, "available")
 		XCTAssertEqual(inst.text?.status, "generated")
-		XCTAssertEqual(inst.type?.text, "Vital Signs Monitor")
+		XCTAssertEqual(inst.type?.coding?[0].code, "25062003")
+		XCTAssertEqual(inst.type?.coding?[0].display, "Feeding tube, device")
+		XCTAssertEqual(inst.type?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.udi, "(01)00000123000017(10)ABC123(17)120415")
 		
 		return inst
 	}
@@ -124,18 +124,18 @@ class DeviceTests: XCTestCase {
 	
 	@discardableResult
 	func runDevice4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Device {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "device-example-software.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "device-example-ihe-pcd.json")
 		
-		XCTAssertEqual(inst.contact?[0].system, "other")
-		XCTAssertEqual(inst.contact?[0].value, "http://acme.com")
-		XCTAssertEqual(inst.id, "software")
-		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://acme.com/ehr/client-ids")
-		XCTAssertEqual(inst.identifier?[0].value, "goodhealth")
+		XCTAssertEqual(inst.id, "ihe-pcd")
+		XCTAssertEqual(inst.identifier?[0].type?.coding?[0].code, "SNO")
+		XCTAssertEqual(inst.identifier?[0].type?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/identifier-type")
+		XCTAssertEqual(inst.identifier?[0].type?.text, "Serial Number")
+		XCTAssertEqual(inst.identifier?[0].value, "AMID-123-456")
+		XCTAssertEqual(inst.lotNumber, "12345")
 		XCTAssertEqual(inst.manufacturer, "Acme Devices, Inc")
+		XCTAssertEqual(inst.model, "A.1.1")
 		XCTAssertEqual(inst.text?.status, "generated")
-		XCTAssertEqual(inst.type?.text, "EHR")
-		XCTAssertEqual(inst.url?.absoluteString, "http://acme.com/goodhealth/ehr/")
-		XCTAssertEqual(inst.version, "10.23-23423")
+		XCTAssertEqual(inst.type?.text, "Vital Signs Monitor")
 		
 		return inst
 	}

@@ -2,8 +2,8 @@
 //  RiskAssessmentTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,6 +34,26 @@ class RiskAssessmentTests: XCTestCase {
 	
 	@discardableResult
 	func runRiskAssessment1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.RiskAssessment {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "riskassessment-example-population.json")
+		
+		XCTAssertEqual(inst.id, "population")
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
+	func testRiskAssessment2() {
+		do {
+			let instance = try runRiskAssessment2()
+			try runRiskAssessment2(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test RiskAssessment successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runRiskAssessment2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.RiskAssessment {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "riskassessment-example-cardiac.json")
 		
 		XCTAssertEqual(inst.basis?[0].reference, "Patient/example")
@@ -57,26 +77,6 @@ class RiskAssessmentTests: XCTestCase {
 		return inst
 	}
 	
-	func testRiskAssessment2() {
-		do {
-			let instance = try runRiskAssessment2()
-			try runRiskAssessment2(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test RiskAssessment successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runRiskAssessment2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.RiskAssessment {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "riskassessment-example-population.json")
-		
-		XCTAssertEqual(inst.id, "population")
-		XCTAssertEqual(inst.text?.status, "generated")
-		
-		return inst
-	}
-	
 	func testRiskAssessment3() {
 		do {
 			let instance = try runRiskAssessment3()
@@ -89,35 +89,6 @@ class RiskAssessmentTests: XCTestCase {
 	
 	@discardableResult
 	func runRiskAssessment3(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.RiskAssessment {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "riskassessment-example-prognosis.json")
-		
-		XCTAssertEqual(inst.condition?.display, "Ischemic Stroke")
-		XCTAssertEqual(inst.condition?.reference, "Condition/stroke")
-		XCTAssertEqual(inst.date?.description, "2010-11-22")
-		XCTAssertEqual(inst.id, "prognosis")
-		XCTAssertEqual(inst.prediction?[0].outcome?.coding?[0].code, "249943000:363698007=72098002,260868000=6934004")
-		XCTAssertEqual(inst.prediction?[0].outcome?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.prediction?[0].outcome?.text, "permanent weakness of the left arm")
-		XCTAssertEqual(inst.prediction?[0].probabilityCodeableConcept?.coding?[0].code, "moderate")
-		XCTAssertEqual(inst.prediction?[0].probabilityCodeableConcept?.coding?[0].display, "moderate likelihood")
-		XCTAssertEqual(inst.prediction?[0].probabilityCodeableConcept?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/risk-probability")
-		XCTAssertEqual(inst.text?.status, "additional")
-		
-		return inst
-	}
-	
-	func testRiskAssessment4() {
-		do {
-			let instance = try runRiskAssessment4()
-			try runRiskAssessment4(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test RiskAssessment successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runRiskAssessment4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.RiskAssessment {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "riskassessment-example.json")
 		
 		XCTAssertEqual(inst.basis?[0].reference, "List/prognosis")
@@ -201,6 +172,35 @@ class RiskAssessmentTests: XCTestCase {
 		XCTAssertEqual(inst.prediction?[7].whenRange?.low?.unit, "years")
 		XCTAssertEqual(inst.prediction?[7].whenRange?.low?.value, NSDecimalNumber(string: "83"))
 		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
+	func testRiskAssessment4() {
+		do {
+			let instance = try runRiskAssessment4()
+			try runRiskAssessment4(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test RiskAssessment successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runRiskAssessment4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.RiskAssessment {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "riskassessment-example-prognosis.json")
+		
+		XCTAssertEqual(inst.condition?.display, "Ischemic Stroke")
+		XCTAssertEqual(inst.condition?.reference, "Condition/stroke")
+		XCTAssertEqual(inst.date?.description, "2010-11-22")
+		XCTAssertEqual(inst.id, "prognosis")
+		XCTAssertEqual(inst.prediction?[0].outcome?.coding?[0].code, "249943000:363698007=72098002,260868000=6934004")
+		XCTAssertEqual(inst.prediction?[0].outcome?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.prediction?[0].outcome?.text, "permanent weakness of the left arm")
+		XCTAssertEqual(inst.prediction?[0].probabilityCodeableConcept?.coding?[0].code, "moderate")
+		XCTAssertEqual(inst.prediction?[0].probabilityCodeableConcept?.coding?[0].display, "moderate likelihood")
+		XCTAssertEqual(inst.prediction?[0].probabilityCodeableConcept?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/risk-probability")
+		XCTAssertEqual(inst.text?.status, "additional")
 		
 		return inst
 	}

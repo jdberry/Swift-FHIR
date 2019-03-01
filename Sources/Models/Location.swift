@@ -2,8 +2,8 @@
 //  Location.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Location) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Location) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  Details and position information for a physical place where services are provided  and resources and participants
  *  may be stored, found, contained or accommodated.
  */
-public class Location: DomainResource {
-	override public class var resourceType: String {
+open class Location: DomainResource {
+	override open class var resourceType: String {
 		get { return "Location" }
 	}
 	
@@ -62,7 +62,7 @@ public class Location: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["address"] {
@@ -177,7 +177,7 @@ public class Location: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let address = self.address {
@@ -228,8 +228,8 @@ public class Location: DomainResource {
  *  The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate
  *  system used in KML).
  */
-public class LocationPosition: BackboneElement {
-	override public class var resourceType: String {
+open class LocationPosition: BackboneElement {
+	override open class var resourceType: String {
 		get { return "LocationPosition" }
 	}
 	
@@ -255,7 +255,7 @@ public class LocationPosition: BackboneElement {
 		self.longitude = longitude
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["altitude"] {
@@ -264,7 +264,7 @@ public class LocationPosition: BackboneElement {
 					self.altitude = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "altitude", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "altitude", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["latitude"] {
@@ -273,7 +273,7 @@ public class LocationPosition: BackboneElement {
 					self.latitude = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "latitude", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "latitude", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -285,7 +285,7 @@ public class LocationPosition: BackboneElement {
 					self.longitude = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "longitude", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "longitude", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -295,7 +295,7 @@ public class LocationPosition: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let altitude = self.altitude {

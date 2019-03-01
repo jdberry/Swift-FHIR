@@ -2,8 +2,8 @@
 //  VisionPrescription.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/VisionPrescription) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/VisionPrescription) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  An authorization for the supply of glasses and/or contact lenses to a patient.
  */
-public class VisionPrescription: DomainResource {
-	override public class var resourceType: String {
+open class VisionPrescription: DomainResource {
+	override open class var resourceType: String {
 		get { return "VisionPrescription" }
 	}
 	
@@ -49,7 +49,7 @@ public class VisionPrescription: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["dateWritten"] {
@@ -58,7 +58,7 @@ public class VisionPrescription: DomainResource {
 					self.dateWritten = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dateWritten", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dateWritten", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["dispense"] {
@@ -67,7 +67,7 @@ public class VisionPrescription: DomainResource {
 					self.dispense = VisionPrescriptionDispense.instantiate(fromArray: val, owner: self) as? [VisionPrescriptionDispense]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dispense", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dispense", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["encounter"] {
@@ -76,7 +76,7 @@ public class VisionPrescription: DomainResource {
 					self.encounter = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -85,7 +85,7 @@ public class VisionPrescription: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["patient"] {
@@ -94,7 +94,7 @@ public class VisionPrescription: DomainResource {
 					self.patient = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "patient", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "patient", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["prescriber"] {
@@ -103,7 +103,7 @@ public class VisionPrescription: DomainResource {
 					self.prescriber = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "prescriber", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "prescriber", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reasonCodeableConcept"] {
@@ -112,7 +112,7 @@ public class VisionPrescription: DomainResource {
 					self.reasonCodeableConcept = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reasonCodeableConcept", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reasonCodeableConcept", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reasonReference"] {
@@ -121,14 +121,14 @@ public class VisionPrescription: DomainResource {
 					self.reasonReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reasonReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reasonReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let dateWritten = self.dateWritten {
@@ -166,8 +166,8 @@ public class VisionPrescription: DomainResource {
  *
  *  Deals with details of the dispense part of the supply specification.
  */
-public class VisionPrescriptionDispense: BackboneElement {
-	override public class var resourceType: String {
+open class VisionPrescriptionDispense: BackboneElement {
+	override open class var resourceType: String {
 		get { return "VisionPrescriptionDispense" }
 	}
 	
@@ -228,7 +228,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 		self.product = product
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["add"] {
@@ -237,7 +237,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.add = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "add", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "add", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["axis"] {
@@ -246,7 +246,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.axis = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "axis", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "axis", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["backCurve"] {
@@ -255,7 +255,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.backCurve = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "backCurve", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "backCurve", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["base"] {
@@ -264,7 +264,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.base = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "base", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "base", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["brand"] {
@@ -273,7 +273,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.brand = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "brand", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "brand", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["color"] {
@@ -282,7 +282,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.color = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "color", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "color", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["cylinder"] {
@@ -291,7 +291,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.cylinder = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "cylinder", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "cylinder", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["diameter"] {
@@ -300,7 +300,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.diameter = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "diameter", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "diameter", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["duration"] {
@@ -309,7 +309,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.duration = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "duration", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "duration", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["eye"] {
@@ -318,7 +318,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.eye = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "eye", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "eye", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["notes"] {
@@ -327,7 +327,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.notes = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "notes", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "notes", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["power"] {
@@ -336,7 +336,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.power = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "power", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "power", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["prism"] {
@@ -345,7 +345,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.prism = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "prism", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "prism", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["product"] {
@@ -354,7 +354,7 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.product = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "product", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "product", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -366,14 +366,14 @@ public class VisionPrescriptionDispense: BackboneElement {
 					self.sphere = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sphere", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sphere", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let add = self.add {

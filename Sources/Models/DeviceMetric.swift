@@ -2,8 +2,8 @@
 //  DeviceMetric.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DeviceMetric) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DeviceMetric) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  Describes a measurement, calculation or setting capability of a medical device.
  */
-public class DeviceMetric: DomainResource {
-	override public class var resourceType: String {
+open class DeviceMetric: DomainResource {
+	override open class var resourceType: String {
 		get { return "DeviceMetric" }
 	}
 	
@@ -63,7 +63,7 @@ public class DeviceMetric: DomainResource {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["calibration"] {
@@ -169,7 +169,7 @@ public class DeviceMetric: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let calibration = self.calibration {
@@ -211,8 +211,8 @@ public class DeviceMetric: DomainResource {
 /**
  *  Describes the calibrations that have been performed or that are required to be performed.
  */
-public class DeviceMetricCalibration: BackboneElement {
-	override public class var resourceType: String {
+open class DeviceMetricCalibration: BackboneElement {
+	override open class var resourceType: String {
 		get { return "DeviceMetricCalibration" }
 	}
 	
@@ -231,7 +231,7 @@ public class DeviceMetricCalibration: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["state"] {
@@ -265,7 +265,7 @@ public class DeviceMetricCalibration: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let state = self.state {

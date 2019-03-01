@@ -2,8 +2,8 @@
 //  ImmunizationTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,37 +34,6 @@ class ImmunizationTests: XCTestCase {
 	
 	@discardableResult
 	func runImmunization1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Immunization {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "immunization-example-refused.json")
-		
-		XCTAssertEqual(inst.date?.description, "2013-01-10")
-		XCTAssertEqual(inst.explanation?.reasonNotGiven?[0].coding?[0].code, "MEDPREC")
-		XCTAssertEqual(inst.explanation?.reasonNotGiven?[0].coding?[0].display, "medical precaution")
-		XCTAssertEqual(inst.explanation?.reasonNotGiven?[0].coding?[0].system?.absoluteString, "http://hl7.org/fhir/v3/ActReason")
-		XCTAssertEqual(inst.id, "notGiven")
-		XCTAssertEqual(inst.patient?.reference, "Patient/example")
-		XCTAssertFalse(inst.reported ?? true)
-		XCTAssertEqual(inst.status, "completed")
-		XCTAssertEqual(inst.text?.status, "generated")
-		XCTAssertEqual(inst.vaccineCode?.coding?[0].code, "01")
-		XCTAssertEqual(inst.vaccineCode?.coding?[0].display, "DTP")
-		XCTAssertEqual(inst.vaccineCode?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/sid/cvx")
-		XCTAssertTrue(inst.wasNotGiven ?? false)
-		
-		return inst
-	}
-	
-	func testImmunization2() {
-		do {
-			let instance = try runImmunization2()
-			try runImmunization2(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test Immunization successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runImmunization2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Immunization {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "immunization-example.json")
 		
 		XCTAssertEqual(inst.date?.description, "2013-01-10")
@@ -114,6 +83,37 @@ class ImmunizationTests: XCTestCase {
 		XCTAssertEqual(inst.vaccineCode?.coding?[0].system?.absoluteString, "urn:oid:1.2.36.1.2001.1005.17")
 		XCTAssertEqual(inst.vaccineCode?.text, "Fluvax (Influenza)")
 		XCTAssertFalse(inst.wasNotGiven ?? true)
+		
+		return inst
+	}
+	
+	func testImmunization2() {
+		do {
+			let instance = try runImmunization2()
+			try runImmunization2(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test Immunization successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runImmunization2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Immunization {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "immunization-example-refused.json")
+		
+		XCTAssertEqual(inst.date?.description, "2013-01-10")
+		XCTAssertEqual(inst.explanation?.reasonNotGiven?[0].coding?[0].code, "MEDPREC")
+		XCTAssertEqual(inst.explanation?.reasonNotGiven?[0].coding?[0].display, "medical precaution")
+		XCTAssertEqual(inst.explanation?.reasonNotGiven?[0].coding?[0].system?.absoluteString, "http://hl7.org/fhir/v3/ActReason")
+		XCTAssertEqual(inst.id, "notGiven")
+		XCTAssertEqual(inst.patient?.reference, "Patient/example")
+		XCTAssertFalse(inst.reported ?? true)
+		XCTAssertEqual(inst.status, "completed")
+		XCTAssertEqual(inst.text?.status, "generated")
+		XCTAssertEqual(inst.vaccineCode?.coding?[0].code, "01")
+		XCTAssertEqual(inst.vaccineCode?.coding?[0].display, "DTP")
+		XCTAssertEqual(inst.vaccineCode?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/sid/cvx")
+		XCTAssertTrue(inst.wasNotGiven ?? false)
 		
 		return inst
 	}

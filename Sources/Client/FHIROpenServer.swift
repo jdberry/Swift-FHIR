@@ -69,7 +69,7 @@ open class FHIROpenServer: FHIRServer {
 	- parameter additonalHeaders:  The headers to set on the request
 	- parameter callback:          A callback, likely called asynchronously, returning a response instance
 	*/
-	open func performRequest(_ method: FHIRRequestMethod, path: String, resource: Resource?, additionalHeaders: FHIRRequestHeaders? = nil, callback: @escaping ((FHIRServerResponse) -> Void)) {
+	open func performRequest(ofType method: FHIRRequestMethod, path: String, resource: Resource?, additionalHeaders: FHIRRequestHeaders? = nil, callback: @escaping ((FHIRServerResponse) -> Void)) {
 		if let handler = handlerForRequest(withMethod: method, resource: resource, headers: additionalHeaders) {
 			performRequest(against: path, handler: handler, callback: callback)
 		}

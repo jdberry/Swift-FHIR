@@ -2,8 +2,8 @@
 //  Group.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Group) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Group) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -16,8 +16,8 @@ import Foundation
  *  expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an
  *  Organization.
  */
-public class Group: DomainResource {
-	override public class var resourceType: String {
+open class Group: DomainResource {
+	override open class var resourceType: String {
 		get { return "Group" }
 	}
 	
@@ -58,7 +58,7 @@ public class Group: DomainResource {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["actual"] {
@@ -143,7 +143,7 @@ public class Group: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let actual = self.actual {
@@ -181,8 +181,8 @@ public class Group: DomainResource {
  *
  *  Identifies the traits shared by members of the group.
  */
-public class GroupCharacteristic: BackboneElement {
-	override public class var resourceType: String {
+open class GroupCharacteristic: BackboneElement {
+	override open class var resourceType: String {
 		get { return "GroupCharacteristic" }
 	}
 	
@@ -224,7 +224,7 @@ public class GroupCharacteristic: BackboneElement {
 		self.valueRange = valueRange
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -233,7 +233,7 @@ public class GroupCharacteristic: BackboneElement {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -245,7 +245,7 @@ public class GroupCharacteristic: BackboneElement {
 					self.exclude = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "exclude", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "exclude", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -257,7 +257,7 @@ public class GroupCharacteristic: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueBoolean"] {
@@ -266,7 +266,7 @@ public class GroupCharacteristic: BackboneElement {
 					self.valueBoolean = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueBoolean", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueBoolean", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueCodeableConcept"] {
@@ -275,7 +275,7 @@ public class GroupCharacteristic: BackboneElement {
 					self.valueCodeableConcept = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueCodeableConcept", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueCodeableConcept", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueQuantity"] {
@@ -284,7 +284,7 @@ public class GroupCharacteristic: BackboneElement {
 					self.valueQuantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueQuantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueQuantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueRange"] {
@@ -293,7 +293,7 @@ public class GroupCharacteristic: BackboneElement {
 					self.valueRange = Range(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueRange", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueRange", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			
@@ -305,7 +305,7 @@ public class GroupCharacteristic: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {
@@ -340,8 +340,8 @@ public class GroupCharacteristic: BackboneElement {
  *
  *  Identifies the resource instances that are members of the group.
  */
-public class GroupMember: BackboneElement {
-	override public class var resourceType: String {
+open class GroupMember: BackboneElement {
+	override open class var resourceType: String {
 		get { return "GroupMember" }
 	}
 	
@@ -366,7 +366,7 @@ public class GroupMember: BackboneElement {
 		self.entity = entity
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["entity"] {
@@ -375,7 +375,7 @@ public class GroupMember: BackboneElement {
 					self.entity = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -387,7 +387,7 @@ public class GroupMember: BackboneElement {
 					self.inactive = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "inactive", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "inactive", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["period"] {
@@ -396,14 +396,14 @@ public class GroupMember: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let entity = self.entity {

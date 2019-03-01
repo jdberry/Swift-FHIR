@@ -2,8 +2,8 @@
 //  Attachment.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Attachment) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Attachment) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  For referring to data content defined in other formats.
  */
-public class Attachment: Element {
-	override public class var resourceType: String {
+open class Attachment: Element {
+	override open class var resourceType: String {
 		get { return "Attachment" }
 	}
 	
@@ -49,7 +49,7 @@ public class Attachment: Element {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contentType"] {
@@ -58,7 +58,7 @@ public class Attachment: Element {
 					self.contentType = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentType", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentType", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["creation"] {
@@ -67,7 +67,7 @@ public class Attachment: Element {
 					self.creation = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "creation", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "creation", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["data"] {
@@ -76,7 +76,7 @@ public class Attachment: Element {
 					self.data = Base64Binary(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "data", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "data", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["hash"] {
@@ -85,7 +85,7 @@ public class Attachment: Element {
 					self.hash = Base64Binary(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "hash", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "hash", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["language"] {
@@ -94,7 +94,7 @@ public class Attachment: Element {
 					self.language = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "language", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "language", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["size"] {
@@ -103,7 +103,7 @@ public class Attachment: Element {
 					self.size = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "size", wants: UInt.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "size", wants: UInt.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["title"] {
@@ -112,7 +112,7 @@ public class Attachment: Element {
 					self.title = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "title", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "title", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["url"] {
@@ -121,14 +121,14 @@ public class Attachment: Element {
 					self.url = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "url", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "url", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contentType = self.contentType {

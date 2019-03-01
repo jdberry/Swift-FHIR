@@ -2,8 +2,8 @@
 //  Questionnaire.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Questionnaire) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A structured set of questions intended to guide the collection of answers. The questions are ordered and grouped
  *  into coherent subsets, corresponding to the structure of the grouping of the underlying questions.
  */
-public class Questionnaire: DomainResource {
-	override public class var resourceType: String {
+open class Questionnaire: DomainResource {
+	override open class var resourceType: String {
 		get { return "Questionnaire" }
 	}
 	
@@ -57,7 +57,7 @@ public class Questionnaire: DomainResource {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["date"] {
@@ -66,7 +66,7 @@ public class Questionnaire: DomainResource {
 					self.date = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "date", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "date", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["group"] {
@@ -75,7 +75,7 @@ public class Questionnaire: DomainResource {
 					self.group = QuestionnaireGroup(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "group", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "group", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -87,7 +87,7 @@ public class Questionnaire: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["publisher"] {
@@ -96,7 +96,7 @@ public class Questionnaire: DomainResource {
 					self.publisher = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "publisher", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "publisher", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -105,7 +105,7 @@ public class Questionnaire: DomainResource {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -117,7 +117,7 @@ public class Questionnaire: DomainResource {
 					self.subjectType = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "subjectType", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "subjectType", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["telecom"] {
@@ -126,7 +126,7 @@ public class Questionnaire: DomainResource {
 					self.telecom = ContactPoint.instantiate(fromArray: val, owner: self) as? [ContactPoint]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["version"] {
@@ -135,14 +135,14 @@ public class Questionnaire: DomainResource {
 					self.version = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "version", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "version", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let date = self.date {
@@ -184,8 +184,8 @@ public class Questionnaire: DomainResource {
  *
  *  A collection of related questions (or further groupings of questions).
  */
-public class QuestionnaireGroup: BackboneElement {
-	override public class var resourceType: String {
+open class QuestionnaireGroup: BackboneElement {
+	override open class var resourceType: String {
 		get { return "QuestionnaireGroup" }
 	}
 	
@@ -219,7 +219,7 @@ public class QuestionnaireGroup: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["concept"] {
@@ -228,7 +228,7 @@ public class QuestionnaireGroup: BackboneElement {
 					self.concept = Coding.instantiate(fromArray: val, owner: self) as? [Coding]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["group"] {
@@ -237,7 +237,7 @@ public class QuestionnaireGroup: BackboneElement {
 					self.group = QuestionnaireGroup.instantiate(fromArray: val, owner: self) as? [QuestionnaireGroup]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "group", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "group", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["linkId"] {
@@ -246,7 +246,7 @@ public class QuestionnaireGroup: BackboneElement {
 					self.linkId = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "linkId", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "linkId", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["question"] {
@@ -255,7 +255,7 @@ public class QuestionnaireGroup: BackboneElement {
 					self.question = QuestionnaireGroupQuestion.instantiate(fromArray: val, owner: self) as? [QuestionnaireGroupQuestion]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "question", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "question", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["repeats"] {
@@ -264,7 +264,7 @@ public class QuestionnaireGroup: BackboneElement {
 					self.repeats = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "repeats", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "repeats", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["required"] {
@@ -273,7 +273,7 @@ public class QuestionnaireGroup: BackboneElement {
 					self.required = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "required", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "required", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["text"] {
@@ -282,7 +282,7 @@ public class QuestionnaireGroup: BackboneElement {
 					self.text = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "text", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "text", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["title"] {
@@ -291,14 +291,14 @@ public class QuestionnaireGroup: BackboneElement {
 					self.title = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "title", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "title", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let concept = self.concept {
@@ -336,8 +336,8 @@ public class QuestionnaireGroup: BackboneElement {
  *
  *  Set of questions within this group. The order of questions within the group is relevant.
  */
-public class QuestionnaireGroupQuestion: BackboneElement {
-	override public class var resourceType: String {
+open class QuestionnaireGroupQuestion: BackboneElement {
+	override open class var resourceType: String {
 		get { return "QuestionnaireGroupQuestion" }
 	}
 	
@@ -374,7 +374,7 @@ public class QuestionnaireGroupQuestion: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["concept"] {
@@ -462,7 +462,7 @@ public class QuestionnaireGroupQuestion: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let concept = self.concept {

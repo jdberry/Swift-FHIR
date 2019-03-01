@@ -2,8 +2,8 @@
 //  Provenance.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Provenance) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Provenance) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -20,8 +20,8 @@ import Foundation
  *  Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust
  *  policies.
  */
-public class Provenance: DomainResource {
-	override public class var resourceType: String {
+open class Provenance: DomainResource {
+	override open class var resourceType: String {
 		get { return "Provenance" }
 	}
 	
@@ -68,7 +68,7 @@ public class Provenance: DomainResource {
 		self.target = target
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["activity"] {
@@ -77,7 +77,7 @@ public class Provenance: DomainResource {
 					self.activity = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "activity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "activity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["agent"] {
@@ -86,7 +86,7 @@ public class Provenance: DomainResource {
 					self.agent = ProvenanceAgent.instantiate(fromArray: val, owner: self) as? [ProvenanceAgent]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "agent", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "agent", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["entity"] {
@@ -95,7 +95,7 @@ public class Provenance: DomainResource {
 					self.entity = ProvenanceEntity.instantiate(fromArray: val, owner: self) as? [ProvenanceEntity]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entity", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entity", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["location"] {
@@ -104,7 +104,7 @@ public class Provenance: DomainResource {
 					self.location = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "location", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "location", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["period"] {
@@ -113,7 +113,7 @@ public class Provenance: DomainResource {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["policy"] {
@@ -122,7 +122,7 @@ public class Provenance: DomainResource {
 					self.policy = URL.instantiate(fromArray: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "policy", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "policy", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reason"] {
@@ -131,7 +131,7 @@ public class Provenance: DomainResource {
 					self.reason = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reason", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reason", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["recorded"] {
@@ -140,7 +140,7 @@ public class Provenance: DomainResource {
 					self.recorded = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "recorded", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "recorded", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -152,7 +152,7 @@ public class Provenance: DomainResource {
 					self.signature = Signature.instantiate(fromArray: val, owner: self) as? [Signature]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "signature", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "signature", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["target"] {
@@ -161,7 +161,7 @@ public class Provenance: DomainResource {
 					self.target = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "target", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "target", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -171,7 +171,7 @@ public class Provenance: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let activity = self.activity {
@@ -221,8 +221,8 @@ public class Provenance: DomainResource {
  *  activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed
  *  responsibility.
  */
-public class ProvenanceAgent: BackboneElement {
-	override public class var resourceType: String {
+open class ProvenanceAgent: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ProvenanceAgent" }
 	}
 	
@@ -250,7 +250,7 @@ public class ProvenanceAgent: BackboneElement {
 		self.role = role
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["actor"] {
@@ -259,7 +259,7 @@ public class ProvenanceAgent: BackboneElement {
 					self.actor = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "actor", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "actor", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["relatedAgent"] {
@@ -268,7 +268,7 @@ public class ProvenanceAgent: BackboneElement {
 					self.relatedAgent = ProvenanceAgentRelatedAgent.instantiate(fromArray: val, owner: self) as? [ProvenanceAgentRelatedAgent]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "relatedAgent", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "relatedAgent", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["role"] {
@@ -277,7 +277,7 @@ public class ProvenanceAgent: BackboneElement {
 					self.role = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "role", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "role", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -289,14 +289,14 @@ public class ProvenanceAgent: BackboneElement {
 					self.userId = Identifier(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "userId", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "userId", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let actor = self.actor {
@@ -324,8 +324,8 @@ public class ProvenanceAgent: BackboneElement {
  *  of the delegation between agents.  For example, this human author used this device, or one person acted on another's
  *  behest.
  */
-public class ProvenanceAgentRelatedAgent: BackboneElement {
-	override public class var resourceType: String {
+open class ProvenanceAgentRelatedAgent: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ProvenanceAgentRelatedAgent" }
 	}
 	
@@ -348,7 +348,7 @@ public class ProvenanceAgentRelatedAgent: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["target"] {
@@ -379,7 +379,7 @@ public class ProvenanceAgentRelatedAgent: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let target = self.target {
@@ -397,8 +397,8 @@ public class ProvenanceAgentRelatedAgent: BackboneElement {
 /**
  *  An entity used in this activity.
  */
-public class ProvenanceEntity: BackboneElement {
-	override public class var resourceType: String {
+open class ProvenanceEntity: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ProvenanceEntity" }
 	}
 	
@@ -431,7 +431,7 @@ public class ProvenanceEntity: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["agent"] {
@@ -492,7 +492,7 @@ public class ProvenanceEntity: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let agent = self.agent {

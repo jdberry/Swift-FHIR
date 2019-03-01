@@ -2,8 +2,8 @@
 //  SlotTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -64,14 +64,14 @@ class SlotTests: XCTestCase {
 	
 	@discardableResult
 	func runSlot2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Slot {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "slot-example-tentative.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "slot-example.json")
 		
-		XCTAssertEqual(inst.comment, "Dr Careful is out of the office")
-		XCTAssertEqual(inst.end?.description, "2013-12-25T10:00:00Z")
-		XCTAssertEqual(inst.freeBusyType, "busy-tentative")
-		XCTAssertEqual(inst.id, "2")
+		XCTAssertEqual(inst.comment, "Assessments should be performed before requesting appointments in this slot.")
+		XCTAssertEqual(inst.end?.description, "2013-12-25T09:30:00Z")
+		XCTAssertEqual(inst.freeBusyType, "free")
+		XCTAssertEqual(inst.id, "example")
 		XCTAssertEqual(inst.schedule?.reference, "Schedule/example")
-		XCTAssertEqual(inst.start?.description, "2013-12-25T09:45:00Z")
+		XCTAssertEqual(inst.start?.description, "2013-12-25T09:15:00Z")
 		XCTAssertEqual(inst.text?.status, "generated")
 		XCTAssertEqual(inst.type?.coding?[0].code, "45")
 		XCTAssertEqual(inst.type?.coding?[0].display, "Physiotherapy")
@@ -118,14 +118,14 @@ class SlotTests: XCTestCase {
 	
 	@discardableResult
 	func runSlot4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Slot {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "slot-example.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "slot-example-tentative.json")
 		
-		XCTAssertEqual(inst.comment, "Assessments should be performed before requesting appointments in this slot.")
-		XCTAssertEqual(inst.end?.description, "2013-12-25T09:30:00Z")
-		XCTAssertEqual(inst.freeBusyType, "free")
-		XCTAssertEqual(inst.id, "example")
+		XCTAssertEqual(inst.comment, "Dr Careful is out of the office")
+		XCTAssertEqual(inst.end?.description, "2013-12-25T10:00:00Z")
+		XCTAssertEqual(inst.freeBusyType, "busy-tentative")
+		XCTAssertEqual(inst.id, "2")
 		XCTAssertEqual(inst.schedule?.reference, "Schedule/example")
-		XCTAssertEqual(inst.start?.description, "2013-12-25T09:15:00Z")
+		XCTAssertEqual(inst.start?.description, "2013-12-25T09:45:00Z")
 		XCTAssertEqual(inst.text?.status, "generated")
 		XCTAssertEqual(inst.type?.coding?[0].code, "45")
 		XCTAssertEqual(inst.type?.coding?[0].display, "Physiotherapy")

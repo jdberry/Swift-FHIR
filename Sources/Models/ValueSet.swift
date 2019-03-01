@@ -2,8 +2,8 @@
 //  ValueSet.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ValueSet) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ValueSet) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A value set specifies a set of codes drawn from one or more code systems.
  */
-public class ValueSet: DomainResource {
-	override public class var resourceType: String {
+open class ValueSet: DomainResource {
+	override open class var resourceType: String {
 		get { return "ValueSet" }
 	}
 	
@@ -88,7 +88,7 @@ public class ValueSet: DomainResource {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["codeSystem"] {
@@ -97,7 +97,7 @@ public class ValueSet: DomainResource {
 					self.codeSystem = ValueSetCodeSystem(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "codeSystem", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "codeSystem", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["compose"] {
@@ -106,7 +106,7 @@ public class ValueSet: DomainResource {
 					self.compose = ValueSetCompose(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "compose", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "compose", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contact"] {
@@ -115,7 +115,7 @@ public class ValueSet: DomainResource {
 					self.contact = ValueSetContact.instantiate(fromArray: val, owner: self) as? [ValueSetContact]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contact", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contact", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["copyright"] {
@@ -124,7 +124,7 @@ public class ValueSet: DomainResource {
 					self.copyright = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "copyright", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "copyright", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["date"] {
@@ -133,7 +133,7 @@ public class ValueSet: DomainResource {
 					self.date = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "date", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "date", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["description"] {
@@ -142,7 +142,7 @@ public class ValueSet: DomainResource {
 					self.description_fhir = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "description", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "description", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["expansion"] {
@@ -151,7 +151,7 @@ public class ValueSet: DomainResource {
 					self.expansion = ValueSetExpansion(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "expansion", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "expansion", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["experimental"] {
@@ -160,7 +160,7 @@ public class ValueSet: DomainResource {
 					self.experimental = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "experimental", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "experimental", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["extensible"] {
@@ -169,7 +169,7 @@ public class ValueSet: DomainResource {
 					self.extensible = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "extensible", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "extensible", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -178,7 +178,7 @@ public class ValueSet: DomainResource {
 					self.identifier = Identifier(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["immutable"] {
@@ -187,7 +187,7 @@ public class ValueSet: DomainResource {
 					self.immutable = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "immutable", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "immutable", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["lockedDate"] {
@@ -196,7 +196,7 @@ public class ValueSet: DomainResource {
 					self.lockedDate = FHIRDate(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "lockedDate", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "lockedDate", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["name"] {
@@ -205,7 +205,7 @@ public class ValueSet: DomainResource {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["publisher"] {
@@ -214,7 +214,7 @@ public class ValueSet: DomainResource {
 					self.publisher = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "publisher", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "publisher", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["requirements"] {
@@ -223,7 +223,7 @@ public class ValueSet: DomainResource {
 					self.requirements = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "requirements", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "requirements", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -232,7 +232,7 @@ public class ValueSet: DomainResource {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -244,7 +244,7 @@ public class ValueSet: DomainResource {
 					self.url = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "url", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "url", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["useContext"] {
@@ -253,7 +253,7 @@ public class ValueSet: DomainResource {
 					self.useContext = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "useContext", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "useContext", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["version"] {
@@ -262,14 +262,14 @@ public class ValueSet: DomainResource {
 					self.version = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "version", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "version", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let codeSystem = self.codeSystem {
@@ -341,8 +341,8 @@ public class ValueSet: DomainResource {
  *  A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code
  *  system may be used from other value sets by referring to its (codeSystem.system) directly.
  */
-public class ValueSetCodeSystem: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetCodeSystem: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetCodeSystem" }
 	}
 	
@@ -371,7 +371,7 @@ public class ValueSetCodeSystem: BackboneElement {
 		self.system = system
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["caseSensitive"] {
@@ -380,7 +380,7 @@ public class ValueSetCodeSystem: BackboneElement {
 					self.caseSensitive = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "caseSensitive", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "caseSensitive", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["concept"] {
@@ -389,7 +389,7 @@ public class ValueSetCodeSystem: BackboneElement {
 					self.concept = ValueSetCodeSystemConcept.instantiate(fromArray: val, owner: self) as? [ValueSetCodeSystemConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -401,7 +401,7 @@ public class ValueSetCodeSystem: BackboneElement {
 					self.system = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "system", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "system", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -413,14 +413,14 @@ public class ValueSetCodeSystem: BackboneElement {
 					self.version = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "version", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "version", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let caseSensitive = self.caseSensitive {
@@ -447,8 +447,8 @@ public class ValueSetCodeSystem: BackboneElement {
  *  Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must
  *  be consulted to determine what the meaning of the hierarchical relationships are.
  */
-public class ValueSetCodeSystemConcept: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetCodeSystemConcept: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetCodeSystemConcept" }
 	}
 	
@@ -482,7 +482,7 @@ public class ValueSetCodeSystemConcept: BackboneElement {
 		self.code = code
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["abstract"] {
@@ -491,7 +491,7 @@ public class ValueSetCodeSystemConcept: BackboneElement {
 					self.abstract = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abstract", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abstract", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["code"] {
@@ -500,7 +500,7 @@ public class ValueSetCodeSystemConcept: BackboneElement {
 					self.code = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -512,7 +512,7 @@ public class ValueSetCodeSystemConcept: BackboneElement {
 					self.concept = ValueSetCodeSystemConcept.instantiate(fromArray: val, owner: self) as? [ValueSetCodeSystemConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["definition"] {
@@ -521,7 +521,7 @@ public class ValueSetCodeSystemConcept: BackboneElement {
 					self.definition = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "definition", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "definition", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["designation"] {
@@ -530,7 +530,7 @@ public class ValueSetCodeSystemConcept: BackboneElement {
 					self.designation = ValueSetCodeSystemConceptDesignation.instantiate(fromArray: val, owner: self) as? [ValueSetCodeSystemConceptDesignation]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "designation", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "designation", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["display"] {
@@ -539,14 +539,14 @@ public class ValueSetCodeSystemConcept: BackboneElement {
 					self.display = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "display", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "display", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let abstract = self.abstract {
@@ -579,8 +579,8 @@ public class ValueSetCodeSystemConcept: BackboneElement {
  *  Additional representations for the concept - other languages, aliases, specialized purposes, used for particular
  *  purposes, etc.
  */
-public class ValueSetCodeSystemConceptDesignation: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetCodeSystemConceptDesignation: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetCodeSystemConceptDesignation" }
 	}
 	
@@ -605,7 +605,7 @@ public class ValueSetCodeSystemConceptDesignation: BackboneElement {
 		self.value = value
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["language"] {
@@ -614,7 +614,7 @@ public class ValueSetCodeSystemConceptDesignation: BackboneElement {
 					self.language = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "language", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "language", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["use"] {
@@ -623,7 +623,7 @@ public class ValueSetCodeSystemConceptDesignation: BackboneElement {
 					self.use = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "use", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "use", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["value"] {
@@ -632,7 +632,7 @@ public class ValueSetCodeSystemConceptDesignation: BackboneElement {
 					self.value = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "value", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "value", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -642,7 +642,7 @@ public class ValueSetCodeSystemConceptDesignation: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let language = self.language {
@@ -666,8 +666,8 @@ public class ValueSetCodeSystemConceptDesignation: BackboneElement {
  *  A set of criteria that provide the content logical definition of the value set by including or excluding codes from
  *  outside this value set.
  */
-public class ValueSetCompose: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetCompose: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetCompose" }
 	}
 	
@@ -686,7 +686,7 @@ public class ValueSetCompose: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["exclude"] {
@@ -695,7 +695,7 @@ public class ValueSetCompose: BackboneElement {
 					self.exclude = ValueSetComposeInclude.instantiate(fromArray: val, owner: self) as? [ValueSetComposeInclude]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "exclude", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "exclude", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["import"] {
@@ -704,7 +704,7 @@ public class ValueSetCompose: BackboneElement {
 					self.import_fhir = URL.instantiate(fromArray: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "import", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "import", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["include"] {
@@ -713,14 +713,14 @@ public class ValueSetCompose: BackboneElement {
 					self.include = ValueSetComposeInclude.instantiate(fromArray: val, owner: self) as? [ValueSetComposeInclude]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "include", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "include", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let exclude = self.exclude {
@@ -745,8 +745,8 @@ public class ValueSetCompose: BackboneElement {
 /**
  *  Include one or more codes from a code system.
  */
-public class ValueSetComposeInclude: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetComposeInclude: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetComposeInclude" }
 	}
 	
@@ -774,7 +774,7 @@ public class ValueSetComposeInclude: BackboneElement {
 		self.system = system
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["concept"] {
@@ -783,7 +783,7 @@ public class ValueSetComposeInclude: BackboneElement {
 					self.concept = ValueSetComposeIncludeConcept.instantiate(fromArray: val, owner: self) as? [ValueSetComposeIncludeConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "concept", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["filter"] {
@@ -792,7 +792,7 @@ public class ValueSetComposeInclude: BackboneElement {
 					self.filter = ValueSetComposeIncludeFilter.instantiate(fromArray: val, owner: self) as? [ValueSetComposeIncludeFilter]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "filter", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "filter", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["system"] {
@@ -801,7 +801,7 @@ public class ValueSetComposeInclude: BackboneElement {
 					self.system = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "system", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "system", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -813,14 +813,14 @@ public class ValueSetComposeInclude: BackboneElement {
 					self.version = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "version", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "version", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let concept = self.concept {
@@ -846,8 +846,8 @@ public class ValueSetComposeInclude: BackboneElement {
  *
  *  Specifies a concept to be included or excluded.
  */
-public class ValueSetComposeIncludeConcept: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetComposeIncludeConcept: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetComposeIncludeConcept" }
 	}
 	
@@ -872,7 +872,7 @@ public class ValueSetComposeIncludeConcept: BackboneElement {
 		self.code = code
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -881,7 +881,7 @@ public class ValueSetComposeIncludeConcept: BackboneElement {
 					self.code = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -893,7 +893,7 @@ public class ValueSetComposeIncludeConcept: BackboneElement {
 					self.designation = ValueSetCodeSystemConceptDesignation.instantiate(fromArray: val, owner: self) as? [ValueSetCodeSystemConceptDesignation]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "designation", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "designation", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["display"] {
@@ -902,14 +902,14 @@ public class ValueSetComposeIncludeConcept: BackboneElement {
 					self.display = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "display", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "display", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {
@@ -933,8 +933,8 @@ public class ValueSetComposeIncludeConcept: BackboneElement {
  *  Select concepts by specify a matching criteria based on the properties (including relationships) defined by the
  *  system. If multiple filters are specified, they SHALL all be true.
  */
-public class ValueSetComposeIncludeFilter: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetComposeIncludeFilter: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetComposeIncludeFilter" }
 	}
 	
@@ -961,7 +961,7 @@ public class ValueSetComposeIncludeFilter: BackboneElement {
 		self.value = value
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["op"] {
@@ -970,7 +970,7 @@ public class ValueSetComposeIncludeFilter: BackboneElement {
 					self.op = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "op", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "op", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -982,7 +982,7 @@ public class ValueSetComposeIncludeFilter: BackboneElement {
 					self.property = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "property", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "property", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -994,7 +994,7 @@ public class ValueSetComposeIncludeFilter: BackboneElement {
 					self.value = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "value", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "value", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -1004,7 +1004,7 @@ public class ValueSetComposeIncludeFilter: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let op = self.op {
@@ -1027,8 +1027,8 @@ public class ValueSetComposeIncludeFilter: BackboneElement {
  *
  *  Contacts to assist a user in finding and communicating with the publisher.
  */
-public class ValueSetContact: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetContact: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetContact" }
 	}
 	
@@ -1044,7 +1044,7 @@ public class ValueSetContact: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["name"] {
@@ -1053,7 +1053,7 @@ public class ValueSetContact: BackboneElement {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["telecom"] {
@@ -1062,14 +1062,14 @@ public class ValueSetContact: BackboneElement {
 					self.telecom = ContactPoint.instantiate(fromArray: val, owner: self) as? [ContactPoint]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let name = self.name {
@@ -1090,8 +1090,8 @@ public class ValueSetContact: BackboneElement {
  *  A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This
  *  element holds the expansion, if it has been performed.
  */
-public class ValueSetExpansion: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetExpansion: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetExpansion" }
 	}
 	
@@ -1126,7 +1126,7 @@ public class ValueSetExpansion: BackboneElement {
 		self.timestamp = timestamp
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contains"] {
@@ -1135,7 +1135,7 @@ public class ValueSetExpansion: BackboneElement {
 					self.contains = ValueSetExpansionContains.instantiate(fromArray: val, owner: self) as? [ValueSetExpansionContains]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contains", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contains", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -1144,7 +1144,7 @@ public class ValueSetExpansion: BackboneElement {
 					self.identifier = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -1156,7 +1156,7 @@ public class ValueSetExpansion: BackboneElement {
 					self.offset = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "offset", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "offset", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["parameter"] {
@@ -1165,7 +1165,7 @@ public class ValueSetExpansion: BackboneElement {
 					self.parameter = ValueSetExpansionParameter.instantiate(fromArray: val, owner: self) as? [ValueSetExpansionParameter]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "parameter", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "parameter", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["timestamp"] {
@@ -1174,7 +1174,7 @@ public class ValueSetExpansion: BackboneElement {
 					self.timestamp = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "timestamp", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "timestamp", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -1186,14 +1186,14 @@ public class ValueSetExpansion: BackboneElement {
 					self.total = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "total", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "total", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contains = self.contains {
@@ -1225,8 +1225,8 @@ public class ValueSetExpansion: BackboneElement {
  *
  *  The codes that are contained in the value set expansion.
  */
-public class ValueSetExpansionContains: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetExpansionContains: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetExpansionContains" }
 	}
 	
@@ -1254,7 +1254,7 @@ public class ValueSetExpansionContains: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["abstract"] {
@@ -1263,7 +1263,7 @@ public class ValueSetExpansionContains: BackboneElement {
 					self.abstract = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "abstract", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "abstract", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["code"] {
@@ -1272,7 +1272,7 @@ public class ValueSetExpansionContains: BackboneElement {
 					self.code = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contains"] {
@@ -1281,7 +1281,7 @@ public class ValueSetExpansionContains: BackboneElement {
 					self.contains = ValueSetExpansionContains.instantiate(fromArray: val, owner: self) as? [ValueSetExpansionContains]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contains", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contains", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["display"] {
@@ -1290,7 +1290,7 @@ public class ValueSetExpansionContains: BackboneElement {
 					self.display = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "display", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "display", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["system"] {
@@ -1299,7 +1299,7 @@ public class ValueSetExpansionContains: BackboneElement {
 					self.system = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "system", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "system", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["version"] {
@@ -1308,14 +1308,14 @@ public class ValueSetExpansionContains: BackboneElement {
 					self.version = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "version", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "version", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let abstract = self.abstract {
@@ -1348,8 +1348,8 @@ public class ValueSetExpansionContains: BackboneElement {
  *  A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to
  *  check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.
  */
-public class ValueSetExpansionParameter: BackboneElement {
-	override public class var resourceType: String {
+open class ValueSetExpansionParameter: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ValueSetExpansionParameter" }
 	}
 	
@@ -1386,7 +1386,7 @@ public class ValueSetExpansionParameter: BackboneElement {
 		self.name = name
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["name"] {
@@ -1395,7 +1395,7 @@ public class ValueSetExpansionParameter: BackboneElement {
 					self.name = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -1407,7 +1407,7 @@ public class ValueSetExpansionParameter: BackboneElement {
 					self.valueBoolean = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueBoolean", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueBoolean", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueCode"] {
@@ -1416,7 +1416,7 @@ public class ValueSetExpansionParameter: BackboneElement {
 					self.valueCode = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueCode", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueCode", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueDecimal"] {
@@ -1425,7 +1425,7 @@ public class ValueSetExpansionParameter: BackboneElement {
 					self.valueDecimal = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueDecimal", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueDecimal", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueInteger"] {
@@ -1434,7 +1434,7 @@ public class ValueSetExpansionParameter: BackboneElement {
 					self.valueInteger = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueInteger", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueInteger", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueString"] {
@@ -1443,7 +1443,7 @@ public class ValueSetExpansionParameter: BackboneElement {
 					self.valueString = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueString", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueString", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueUri"] {
@@ -1452,14 +1452,14 @@ public class ValueSetExpansionParameter: BackboneElement {
 					self.valueUri = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueUri", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueUri", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let name = self.name {

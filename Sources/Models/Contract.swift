@@ -2,8 +2,8 @@
 //  Contract.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Contract) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Contract) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
  */
-public class Contract: DomainResource {
-	override public class var resourceType: String {
+open class Contract: DomainResource {
+	override open class var resourceType: String {
 		get { return "Contract" }
 	}
 	
@@ -82,7 +82,7 @@ public class Contract: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["action"] {
@@ -260,7 +260,7 @@ public class Contract: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let action = self.action {
@@ -331,8 +331,8 @@ public class Contract: DomainResource {
  *
  *  List of Contract actors.
  */
-public class ContractActor: BackboneElement {
-	override public class var resourceType: String {
+open class ContractActor: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractActor" }
 	}
 	
@@ -354,7 +354,7 @@ public class ContractActor: BackboneElement {
 		self.entity = entity
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["entity"] {
@@ -363,7 +363,7 @@ public class ContractActor: BackboneElement {
 					self.entity = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -375,14 +375,14 @@ public class ContractActor: BackboneElement {
 					self.role = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let entity = self.entity {
@@ -405,8 +405,8 @@ public class ContractActor: BackboneElement {
  *  a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing
  *  the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
  */
-public class ContractFriendly: BackboneElement {
-	override public class var resourceType: String {
+open class ContractFriendly: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractFriendly" }
 	}
 	
@@ -429,7 +429,7 @@ public class ContractFriendly: BackboneElement {
 		self.contentReference = contentReference
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contentAttachment"] {
@@ -438,7 +438,7 @@ public class ContractFriendly: BackboneElement {
 					self.contentAttachment = Attachment(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contentReference"] {
@@ -447,7 +447,7 @@ public class ContractFriendly: BackboneElement {
 					self.contentReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			
@@ -459,7 +459,7 @@ public class ContractFriendly: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contentAttachment = self.contentAttachment {
@@ -479,8 +479,8 @@ public class ContractFriendly: BackboneElement {
  *
  *  List of Legal expressions or representations of this Contract.
  */
-public class ContractLegal: BackboneElement {
-	override public class var resourceType: String {
+open class ContractLegal: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractLegal" }
 	}
 	
@@ -503,7 +503,7 @@ public class ContractLegal: BackboneElement {
 		self.contentReference = contentReference
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contentAttachment"] {
@@ -512,7 +512,7 @@ public class ContractLegal: BackboneElement {
 					self.contentAttachment = Attachment(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contentReference"] {
@@ -521,7 +521,7 @@ public class ContractLegal: BackboneElement {
 					self.contentReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			
@@ -533,7 +533,7 @@ public class ContractLegal: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contentAttachment = self.contentAttachment {
@@ -553,8 +553,8 @@ public class ContractLegal: BackboneElement {
  *
  *  List of Computable Policy Rule Language Representations of this Contract.
  */
-public class ContractRule: BackboneElement {
-	override public class var resourceType: String {
+open class ContractRule: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractRule" }
 	}
 	
@@ -577,7 +577,7 @@ public class ContractRule: BackboneElement {
 		self.contentReference = contentReference
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["contentAttachment"] {
@@ -586,7 +586,7 @@ public class ContractRule: BackboneElement {
 					self.contentAttachment = Attachment(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentAttachment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["contentReference"] {
@@ -595,7 +595,7 @@ public class ContractRule: BackboneElement {
 					self.contentReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contentReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			
@@ -607,7 +607,7 @@ public class ContractRule: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let contentAttachment = self.contentAttachment {
@@ -627,8 +627,8 @@ public class ContractRule: BackboneElement {
  *
  *  Party signing this Contract.
  */
-public class ContractSigner: BackboneElement {
-	override public class var resourceType: String {
+open class ContractSigner: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractSigner" }
 	}
 	
@@ -655,7 +655,7 @@ public class ContractSigner: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["party"] {
@@ -698,7 +698,7 @@ public class ContractSigner: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let party = self.party {
@@ -721,8 +721,8 @@ public class ContractSigner: BackboneElement {
  *
  *  One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
  */
-public class ContractTerm: BackboneElement {
-	override public class var resourceType: String {
+open class ContractTerm: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractTerm" }
 	}
 	
@@ -768,7 +768,7 @@ public class ContractTerm: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["action"] {
@@ -883,7 +883,7 @@ public class ContractTerm: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let action = self.action {
@@ -933,8 +933,8 @@ public class ContractTerm: BackboneElement {
  *
  *  List of actors participating in this Contract Provision.
  */
-public class ContractTermActor: BackboneElement {
-	override public class var resourceType: String {
+open class ContractTermActor: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractTermActor" }
 	}
 	
@@ -956,7 +956,7 @@ public class ContractTermActor: BackboneElement {
 		self.entity = entity
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["entity"] {
@@ -965,7 +965,7 @@ public class ContractTermActor: BackboneElement {
 					self.entity = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -977,14 +977,14 @@ public class ContractTermActor: BackboneElement {
 					self.role = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let entity = self.entity {
@@ -1004,8 +1004,8 @@ public class ContractTermActor: BackboneElement {
  *
  *  Contract Provision Valued Item List.
  */
-public class ContractTermValuedItem: BackboneElement {
-	override public class var resourceType: String {
+open class ContractTermValuedItem: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractTermValuedItem" }
 	}
 	
@@ -1042,7 +1042,7 @@ public class ContractTermValuedItem: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["effectiveTime"] {
@@ -1051,7 +1051,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.effectiveTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "effectiveTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "effectiveTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["entityCodeableConcept"] {
@@ -1060,7 +1060,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.entityCodeableConcept = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entityCodeableConcept", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entityCodeableConcept", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["entityReference"] {
@@ -1069,7 +1069,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.entityReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entityReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entityReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["factor"] {
@@ -1078,7 +1078,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.factor = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "factor", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "factor", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -1087,7 +1087,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.identifier = Identifier(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["net"] {
@@ -1096,7 +1096,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.net = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "net", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "net", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["points"] {
@@ -1105,7 +1105,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.points = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "points", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "points", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["quantity"] {
@@ -1114,7 +1114,7 @@ public class ContractTermValuedItem: BackboneElement {
 					self.quantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "quantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "quantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["unitPrice"] {
@@ -1123,14 +1123,14 @@ public class ContractTermValuedItem: BackboneElement {
 					self.unitPrice = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "unitPrice", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "unitPrice", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let effectiveTime = self.effectiveTime {
@@ -1171,8 +1171,8 @@ public class ContractTermValuedItem: BackboneElement {
  *
  *  Contract Valued Item List.
  */
-public class ContractValuedItem: BackboneElement {
-	override public class var resourceType: String {
+open class ContractValuedItem: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ContractValuedItem" }
 	}
 	
@@ -1209,7 +1209,7 @@ public class ContractValuedItem: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["effectiveTime"] {
@@ -1218,7 +1218,7 @@ public class ContractValuedItem: BackboneElement {
 					self.effectiveTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "effectiveTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "effectiveTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["entityCodeableConcept"] {
@@ -1227,7 +1227,7 @@ public class ContractValuedItem: BackboneElement {
 					self.entityCodeableConcept = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entityCodeableConcept", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entityCodeableConcept", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["entityReference"] {
@@ -1236,7 +1236,7 @@ public class ContractValuedItem: BackboneElement {
 					self.entityReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "entityReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "entityReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["factor"] {
@@ -1245,7 +1245,7 @@ public class ContractValuedItem: BackboneElement {
 					self.factor = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "factor", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "factor", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -1254,7 +1254,7 @@ public class ContractValuedItem: BackboneElement {
 					self.identifier = Identifier(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["net"] {
@@ -1263,7 +1263,7 @@ public class ContractValuedItem: BackboneElement {
 					self.net = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "net", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "net", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["points"] {
@@ -1272,7 +1272,7 @@ public class ContractValuedItem: BackboneElement {
 					self.points = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "points", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "points", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["quantity"] {
@@ -1281,7 +1281,7 @@ public class ContractValuedItem: BackboneElement {
 					self.quantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "quantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "quantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["unitPrice"] {
@@ -1290,14 +1290,14 @@ public class ContractValuedItem: BackboneElement {
 					self.unitPrice = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "unitPrice", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "unitPrice", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let effectiveTime = self.effectiveTime {

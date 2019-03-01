@@ -2,8 +2,8 @@
 //  Organization.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Organization) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Organization) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -16,8 +16,8 @@ import Foundation
  *  form of collective action.  Includes companies, institutions, corporations, departments, community groups,
  *  healthcare practice groups, etc.
  */
-public class Organization: DomainResource {
-	override public class var resourceType: String {
+open class Organization: DomainResource {
+	override open class var resourceType: String {
 		get { return "Organization" }
 	}
 	
@@ -51,7 +51,7 @@ public class Organization: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["active"] {
@@ -130,7 +130,7 @@ public class Organization: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let active = self.active {
@@ -166,8 +166,8 @@ public class Organization: DomainResource {
 /**
  *  Contact for the organization for a certain purpose.
  */
-public class OrganizationContact: BackboneElement {
-	override public class var resourceType: String {
+open class OrganizationContact: BackboneElement {
+	override open class var resourceType: String {
 		get { return "OrganizationContact" }
 	}
 	
@@ -189,7 +189,7 @@ public class OrganizationContact: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["address"] {
@@ -198,7 +198,7 @@ public class OrganizationContact: BackboneElement {
 					self.address = Address(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "address", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "address", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["name"] {
@@ -207,7 +207,7 @@ public class OrganizationContact: BackboneElement {
 					self.name = HumanName(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "name", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "name", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["purpose"] {
@@ -216,7 +216,7 @@ public class OrganizationContact: BackboneElement {
 					self.purpose = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "purpose", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "purpose", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["telecom"] {
@@ -225,14 +225,14 @@ public class OrganizationContact: BackboneElement {
 					self.telecom = ContactPoint.instantiate(fromArray: val, owner: self) as? [ContactPoint]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "telecom", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let address = self.address {

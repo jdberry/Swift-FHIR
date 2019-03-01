@@ -2,8 +2,8 @@
 //  Appointment.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Appointment) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Appointment) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -13,8 +13,8 @@ import Foundation
  *  A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific
  *  date/time. This may result in one or more Encounter(s).
  */
-public class Appointment: DomainResource {
-	override public class var resourceType: String {
+open class Appointment: DomainResource {
+	override open class var resourceType: String {
 		get { return "Appointment" }
 	}
 	
@@ -67,7 +67,7 @@ public class Appointment: DomainResource {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["comment"] {
@@ -188,7 +188,7 @@ public class Appointment: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let comment = self.comment {
@@ -238,8 +238,8 @@ public class Appointment: DomainResource {
  *
  *  List of participants involved in the appointment.
  */
-public class AppointmentParticipant: BackboneElement {
-	override public class var resourceType: String {
+open class AppointmentParticipant: BackboneElement {
+	override open class var resourceType: String {
 		get { return "AppointmentParticipant" }
 	}
 	
@@ -267,7 +267,7 @@ public class AppointmentParticipant: BackboneElement {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["actor"] {
@@ -313,7 +313,7 @@ public class AppointmentParticipant: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let actor = self.actor {

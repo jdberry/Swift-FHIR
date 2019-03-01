@@ -2,8 +2,8 @@
 //  Subscription.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Subscription) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Subscription) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -17,8 +17,8 @@ import Foundation
  *  resource matches the given criteria, it sends a message on the defined "channel" so that another system is able to
  *  take an appropriate action.
  */
-public class Subscription: DomainResource {
-	override public class var resourceType: String {
+open class Subscription: DomainResource {
+	override open class var resourceType: String {
 		get { return "Subscription" }
 	}
 	
@@ -61,7 +61,7 @@ public class Subscription: DomainResource {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["channel"] {
@@ -70,7 +70,7 @@ public class Subscription: DomainResource {
 					self.channel = SubscriptionChannel(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "channel", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "channel", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -82,7 +82,7 @@ public class Subscription: DomainResource {
 					self.contact = ContactPoint.instantiate(fromArray: val, owner: self) as? [ContactPoint]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "contact", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "contact", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["criteria"] {
@@ -91,7 +91,7 @@ public class Subscription: DomainResource {
 					self.criteria = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "criteria", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "criteria", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -103,7 +103,7 @@ public class Subscription: DomainResource {
 					self.end = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "end", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "end", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["error"] {
@@ -112,7 +112,7 @@ public class Subscription: DomainResource {
 					self.error = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "error", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "error", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reason"] {
@@ -121,7 +121,7 @@ public class Subscription: DomainResource {
 					self.reason = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reason", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reason", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -133,7 +133,7 @@ public class Subscription: DomainResource {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -145,14 +145,14 @@ public class Subscription: DomainResource {
 					self.tag = Coding.instantiate(fromArray: val, owner: self) as? [Coding]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "tag", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "tag", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let channel = self.channel {
@@ -190,8 +190,8 @@ public class Subscription: DomainResource {
  *
  *  Details where to send notifications when resources are received that meet the criteria.
  */
-public class SubscriptionChannel: BackboneElement {
-	override public class var resourceType: String {
+open class SubscriptionChannel: BackboneElement {
+	override open class var resourceType: String {
 		get { return "SubscriptionChannel" }
 	}
 	
@@ -220,7 +220,7 @@ public class SubscriptionChannel: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["endpoint"] {
@@ -269,7 +269,7 @@ public class SubscriptionChannel: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let endpoint = self.endpoint {

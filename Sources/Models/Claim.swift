@@ -2,8 +2,8 @@
 //  Claim.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Claim) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Claim) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A provider issued list of services and products provided, or to be provided, to a patient which is provided to an
  *  insurer for payment recovery.
  */
-public class Claim: DomainResource {
-	override public class var resourceType: String {
+open class Claim: DomainResource {
+	override open class var resourceType: String {
 		get { return "Claim" }
 	}
 	
@@ -120,7 +120,7 @@ public class Claim: DomainResource {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["accident"] {
@@ -394,7 +394,7 @@ public class Claim: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let accident = self.accident {
@@ -495,8 +495,8 @@ public class Claim: DomainResource {
  *
  *  Financial instrument by which payment information for health care.
  */
-public class ClaimCoverage: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimCoverage: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimCoverage" }
 	}
 	
@@ -539,7 +539,7 @@ public class ClaimCoverage: BackboneElement {
 		self.sequence = sequence
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["businessArrangement"] {
@@ -548,7 +548,7 @@ public class ClaimCoverage: BackboneElement {
 					self.businessArrangement = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "businessArrangement", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "businessArrangement", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["claimResponse"] {
@@ -557,7 +557,7 @@ public class ClaimCoverage: BackboneElement {
 					self.claimResponse = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "claimResponse", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "claimResponse", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["coverage"] {
@@ -566,7 +566,7 @@ public class ClaimCoverage: BackboneElement {
 					self.coverage = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "coverage", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "coverage", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -578,7 +578,7 @@ public class ClaimCoverage: BackboneElement {
 					self.focal = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "focal", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "focal", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -590,7 +590,7 @@ public class ClaimCoverage: BackboneElement {
 					self.originalRuleset = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "originalRuleset", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "originalRuleset", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["preAuthRef"] {
@@ -599,7 +599,7 @@ public class ClaimCoverage: BackboneElement {
 					self.preAuthRef = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "preAuthRef", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "preAuthRef", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["relationship"] {
@@ -608,7 +608,7 @@ public class ClaimCoverage: BackboneElement {
 					self.relationship = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "relationship", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "relationship", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -620,7 +620,7 @@ public class ClaimCoverage: BackboneElement {
 					self.sequence = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sequence", wants: UInt.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sequence", wants: UInt.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -630,7 +630,7 @@ public class ClaimCoverage: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let businessArrangement = self.businessArrangement {
@@ -672,8 +672,8 @@ public class ClaimCoverage: BackboneElement {
  *
  *  Ordered list of patient diagnosis for which care is sought.
  */
-public class ClaimDiagnosis: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimDiagnosis: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimDiagnosis" }
 	}
 	
@@ -696,7 +696,7 @@ public class ClaimDiagnosis: BackboneElement {
 		self.sequence = sequence
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["diagnosis"] {
@@ -705,7 +705,7 @@ public class ClaimDiagnosis: BackboneElement {
 					self.diagnosis = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "diagnosis", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "diagnosis", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -717,7 +717,7 @@ public class ClaimDiagnosis: BackboneElement {
 					self.sequence = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sequence", wants: UInt.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sequence", wants: UInt.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -727,7 +727,7 @@ public class ClaimDiagnosis: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let diagnosis = self.diagnosis {
@@ -747,8 +747,8 @@ public class ClaimDiagnosis: BackboneElement {
  *
  *  First tier of goods and services.
  */
-public class ClaimItem: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimItem: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimItem" }
 	}
 	
@@ -817,7 +817,7 @@ public class ClaimItem: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["bodySite"] {
@@ -986,7 +986,7 @@ public class ClaimItem: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let bodySite = self.bodySite {
@@ -1055,8 +1055,8 @@ public class ClaimItem: BackboneElement {
  *
  *  Second tier of goods and services.
  */
-public class ClaimItemDetail: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimItemDetail: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimItemDetail" }
 	}
 	
@@ -1104,7 +1104,7 @@ public class ClaimItemDetail: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["factor"] {
@@ -1210,7 +1210,7 @@ public class ClaimItemDetail: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let factor = self.factor {
@@ -1254,8 +1254,8 @@ public class ClaimItemDetail: BackboneElement {
  *
  *  Third tier of goods and services.
  */
-public class ClaimItemDetailSubDetail: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimItemDetailSubDetail: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimItemDetailSubDetail" }
 	}
 	
@@ -1300,7 +1300,7 @@ public class ClaimItemDetailSubDetail: BackboneElement {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["factor"] {
@@ -1397,7 +1397,7 @@ public class ClaimItemDetailSubDetail: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let factor = self.factor {
@@ -1438,8 +1438,8 @@ public class ClaimItemDetailSubDetail: BackboneElement {
  *
  *  The materials and placement date of prior fixed prosthesis.
  */
-public class ClaimItemProsthesis: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimItemProsthesis: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimItemProsthesis" }
 	}
 	
@@ -1458,7 +1458,7 @@ public class ClaimItemProsthesis: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["initial"] {
@@ -1467,7 +1467,7 @@ public class ClaimItemProsthesis: BackboneElement {
 					self.initial = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "initial", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "initial", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["priorDate"] {
@@ -1476,7 +1476,7 @@ public class ClaimItemProsthesis: BackboneElement {
 					self.priorDate = FHIRDate(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "priorDate", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "priorDate", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["priorMaterial"] {
@@ -1485,14 +1485,14 @@ public class ClaimItemProsthesis: BackboneElement {
 					self.priorMaterial = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "priorMaterial", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "priorMaterial", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let initial = self.initial {
@@ -1516,8 +1516,8 @@ public class ClaimItemProsthesis: BackboneElement {
  *  A list of teeth which would be expected but are not found due to having been previously  extracted or for other
  *  reasons.
  */
-public class ClaimMissingTeeth: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimMissingTeeth: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimMissingTeeth" }
 	}
 	
@@ -1542,7 +1542,7 @@ public class ClaimMissingTeeth: BackboneElement {
 		self.tooth = tooth
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["extractionDate"] {
@@ -1551,7 +1551,7 @@ public class ClaimMissingTeeth: BackboneElement {
 					self.extractionDate = FHIRDate(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "extractionDate", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "extractionDate", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reason"] {
@@ -1560,7 +1560,7 @@ public class ClaimMissingTeeth: BackboneElement {
 					self.reason = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reason", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reason", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["tooth"] {
@@ -1569,7 +1569,7 @@ public class ClaimMissingTeeth: BackboneElement {
 					self.tooth = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "tooth", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "tooth", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -1579,7 +1579,7 @@ public class ClaimMissingTeeth: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let extractionDate = self.extractionDate {
@@ -1602,8 +1602,8 @@ public class ClaimMissingTeeth: BackboneElement {
  *
  *  The party to be reimbursed for the services.
  */
-public class ClaimPayee: BackboneElement {
-	override public class var resourceType: String {
+open class ClaimPayee: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ClaimPayee" }
 	}
 	
@@ -1625,7 +1625,7 @@ public class ClaimPayee: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["organization"] {
@@ -1668,7 +1668,7 @@ public class ClaimPayee: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let organization = self.organization {

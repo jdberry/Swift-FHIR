@@ -2,8 +2,8 @@
 //  Observation.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Observation) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Observation) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  Measurements and simple assertions made about a patient, device or other subject.
  */
-public class Observation: DomainResource {
-	override public class var resourceType: String {
+open class Observation: DomainResource {
+	override open class var resourceType: String {
 		get { return "Observation" }
 	}
 	
@@ -122,7 +122,7 @@ public class Observation: DomainResource {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["bodySite"] {
@@ -131,7 +131,7 @@ public class Observation: DomainResource {
 					self.bodySite = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "bodySite", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "bodySite", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["category"] {
@@ -140,7 +140,7 @@ public class Observation: DomainResource {
 					self.category = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "category", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "category", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["code"] {
@@ -149,7 +149,7 @@ public class Observation: DomainResource {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -161,7 +161,7 @@ public class Observation: DomainResource {
 					self.comments = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "comments", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "comments", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["component"] {
@@ -170,7 +170,7 @@ public class Observation: DomainResource {
 					self.component = ObservationComponent.instantiate(fromArray: val, owner: self) as? [ObservationComponent]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "component", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "component", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["dataAbsentReason"] {
@@ -179,7 +179,7 @@ public class Observation: DomainResource {
 					self.dataAbsentReason = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dataAbsentReason", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dataAbsentReason", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["device"] {
@@ -188,7 +188,7 @@ public class Observation: DomainResource {
 					self.device = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "device", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "device", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["effectiveDateTime"] {
@@ -197,7 +197,7 @@ public class Observation: DomainResource {
 					self.effectiveDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "effectiveDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "effectiveDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["effectivePeriod"] {
@@ -206,7 +206,7 @@ public class Observation: DomainResource {
 					self.effectivePeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "effectivePeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "effectivePeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["encounter"] {
@@ -215,7 +215,7 @@ public class Observation: DomainResource {
 					self.encounter = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -224,7 +224,7 @@ public class Observation: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["interpretation"] {
@@ -233,7 +233,7 @@ public class Observation: DomainResource {
 					self.interpretation = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "interpretation", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "interpretation", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["issued"] {
@@ -242,7 +242,7 @@ public class Observation: DomainResource {
 					self.issued = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "issued", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "issued", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["method"] {
@@ -251,7 +251,7 @@ public class Observation: DomainResource {
 					self.method = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "method", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "method", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["performer"] {
@@ -260,7 +260,7 @@ public class Observation: DomainResource {
 					self.performer = Reference.instantiate(fromArray: val, owner: self) as? [Reference]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "performer", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "performer", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["referenceRange"] {
@@ -269,7 +269,7 @@ public class Observation: DomainResource {
 					self.referenceRange = ObservationReferenceRange.instantiate(fromArray: val, owner: self) as? [ObservationReferenceRange]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "referenceRange", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "referenceRange", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["related"] {
@@ -278,7 +278,7 @@ public class Observation: DomainResource {
 					self.related = ObservationRelated.instantiate(fromArray: val, owner: self) as? [ObservationRelated]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "related", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "related", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["specimen"] {
@@ -287,7 +287,7 @@ public class Observation: DomainResource {
 					self.specimen = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "specimen", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "specimen", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -296,7 +296,7 @@ public class Observation: DomainResource {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -308,7 +308,7 @@ public class Observation: DomainResource {
 					self.subject = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "subject", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "subject", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueAttachment"] {
@@ -317,7 +317,7 @@ public class Observation: DomainResource {
 					self.valueAttachment = Attachment(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueAttachment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueAttachment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueCodeableConcept"] {
@@ -326,7 +326,7 @@ public class Observation: DomainResource {
 					self.valueCodeableConcept = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueCodeableConcept", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueCodeableConcept", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueDateTime"] {
@@ -335,7 +335,7 @@ public class Observation: DomainResource {
 					self.valueDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valuePeriod"] {
@@ -344,7 +344,7 @@ public class Observation: DomainResource {
 					self.valuePeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valuePeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valuePeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueQuantity"] {
@@ -353,7 +353,7 @@ public class Observation: DomainResource {
 					self.valueQuantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueQuantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueQuantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueRange"] {
@@ -362,7 +362,7 @@ public class Observation: DomainResource {
 					self.valueRange = Range(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueRange", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueRange", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueRatio"] {
@@ -371,7 +371,7 @@ public class Observation: DomainResource {
 					self.valueRatio = Ratio(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueRatio", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueRatio", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueSampledData"] {
@@ -380,7 +380,7 @@ public class Observation: DomainResource {
 					self.valueSampledData = SampledData(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueSampledData", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueSampledData", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueString"] {
@@ -389,7 +389,7 @@ public class Observation: DomainResource {
 					self.valueString = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueString", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueString", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueTime"] {
@@ -398,14 +398,14 @@ public class Observation: DomainResource {
 					self.valueTime = FHIRTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let bodySite = self.bodySite {
@@ -511,8 +511,8 @@ public class Observation: DomainResource {
  *  value pairs that share the same attributes.  Examples include systolic and diastolic component observations for
  *  blood pressure measurement and multiple component observations for genetics observations.
  */
-public class ObservationComponent: BackboneElement {
-	override public class var resourceType: String {
+open class ObservationComponent: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ObservationComponent" }
 	}
 	
@@ -567,7 +567,7 @@ public class ObservationComponent: BackboneElement {
 		self.code = code
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -576,7 +576,7 @@ public class ObservationComponent: BackboneElement {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -588,7 +588,7 @@ public class ObservationComponent: BackboneElement {
 					self.dataAbsentReason = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dataAbsentReason", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dataAbsentReason", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["referenceRange"] {
@@ -597,7 +597,7 @@ public class ObservationComponent: BackboneElement {
 					self.referenceRange = ObservationReferenceRange.instantiate(fromArray: val, owner: self) as? [ObservationReferenceRange]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "referenceRange", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "referenceRange", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueAttachment"] {
@@ -606,7 +606,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueAttachment = Attachment(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueAttachment", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueAttachment", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueCodeableConcept"] {
@@ -615,7 +615,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueCodeableConcept = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueCodeableConcept", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueCodeableConcept", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueDateTime"] {
@@ -624,7 +624,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valuePeriod"] {
@@ -633,7 +633,7 @@ public class ObservationComponent: BackboneElement {
 					self.valuePeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valuePeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valuePeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueQuantity"] {
@@ -642,7 +642,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueQuantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueQuantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueQuantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueRange"] {
@@ -651,7 +651,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueRange = Range(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueRange", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueRange", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueRatio"] {
@@ -660,7 +660,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueRatio = Ratio(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueRatio", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueRatio", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueSampledData"] {
@@ -669,7 +669,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueSampledData = SampledData(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueSampledData", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueSampledData", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueString"] {
@@ -678,7 +678,7 @@ public class ObservationComponent: BackboneElement {
 					self.valueString = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueString", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueString", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["valueTime"] {
@@ -687,14 +687,14 @@ public class ObservationComponent: BackboneElement {
 					self.valueTime = FHIRTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "valueTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "valueTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {
@@ -747,8 +747,8 @@ public class ObservationComponent: BackboneElement {
  *
  *  Guidance on how to interpret the value by comparison to a normal or recommended range.
  */
-public class ObservationReferenceRange: BackboneElement {
-	override public class var resourceType: String {
+open class ObservationReferenceRange: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ObservationReferenceRange" }
 	}
 	
@@ -773,7 +773,7 @@ public class ObservationReferenceRange: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["age"] {
@@ -782,7 +782,7 @@ public class ObservationReferenceRange: BackboneElement {
 					self.age = Range(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "age", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "age", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["high"] {
@@ -791,7 +791,7 @@ public class ObservationReferenceRange: BackboneElement {
 					self.high = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "high", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "high", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["low"] {
@@ -800,7 +800,7 @@ public class ObservationReferenceRange: BackboneElement {
 					self.low = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "low", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "low", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["meaning"] {
@@ -809,7 +809,7 @@ public class ObservationReferenceRange: BackboneElement {
 					self.meaning = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "meaning", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "meaning", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["text"] {
@@ -818,14 +818,14 @@ public class ObservationReferenceRange: BackboneElement {
 					self.text = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "text", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "text", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let age = self.age {
@@ -855,8 +855,8 @@ public class ObservationReferenceRange: BackboneElement {
  *  A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose
  *  relationship is defined by the relationship type code.
  */
-public class ObservationRelated: BackboneElement {
-	override public class var resourceType: String {
+open class ObservationRelated: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ObservationRelated" }
 	}
 	
@@ -878,7 +878,7 @@ public class ObservationRelated: BackboneElement {
 		self.target = target
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["target"] {
@@ -906,7 +906,7 @@ public class ObservationRelated: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let target = self.target {

@@ -2,8 +2,8 @@
 //  Bundle.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Bundle) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Bundle) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ import Foundation
  *
  *  A container for a collection of resources.
  */
-public class Bundle: Resource {
-	override public class var resourceType: String {
+open class Bundle: Resource {
+	override open class var resourceType: String {
 		get { return "Bundle" }
 	}
 	
@@ -46,7 +46,7 @@ public class Bundle: Resource {
 		self.type = type
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["entry"] {
@@ -101,7 +101,7 @@ public class Bundle: Resource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let entry = self.entry {
@@ -131,8 +131,8 @@ public class Bundle: Resource {
  *  An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and
  *  history only).
  */
-public class BundleEntry: BackboneElement {
-	override public class var resourceType: String {
+open class BundleEntry: BackboneElement {
+	override open class var resourceType: String {
 		get { return "BundleEntry" }
 	}
 	
@@ -160,7 +160,7 @@ public class BundleEntry: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["fullUrl"] {
@@ -169,7 +169,7 @@ public class BundleEntry: BackboneElement {
 					self.fullUrl = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "fullUrl", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "fullUrl", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["link"] {
@@ -178,7 +178,7 @@ public class BundleEntry: BackboneElement {
 					self.link = BundleLink.instantiate(fromArray: val, owner: self) as? [BundleLink]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "link", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "link", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["request"] {
@@ -187,7 +187,7 @@ public class BundleEntry: BackboneElement {
 					self.request = BundleEntryRequest(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["resource"] {
@@ -196,7 +196,7 @@ public class BundleEntry: BackboneElement {
 					self.resource = Resource.instantiate(from: val, owner: self) as? Resource
 				}
 				else {
-					errors.append(FHIRJSONError(key: "resource", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "resource", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["response"] {
@@ -205,7 +205,7 @@ public class BundleEntry: BackboneElement {
 					self.response = BundleEntryResponse(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "response", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "response", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["search"] {
@@ -214,14 +214,14 @@ public class BundleEntry: BackboneElement {
 					self.search = BundleEntrySearch(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "search", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "search", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let fullUrl = self.fullUrl {
@@ -253,8 +253,8 @@ public class BundleEntry: BackboneElement {
  *
  *  Additional information about how this entry should be processed as part of a transaction.
  */
-public class BundleEntryRequest: BackboneElement {
-	override public class var resourceType: String {
+open class BundleEntryRequest: BackboneElement {
+	override open class var resourceType: String {
 		get { return "BundleEntryRequest" }
 	}
 	
@@ -289,7 +289,7 @@ public class BundleEntryRequest: BackboneElement {
 		self.url = url
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["ifMatch"] {
@@ -298,7 +298,7 @@ public class BundleEntryRequest: BackboneElement {
 					self.ifMatch = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ifMatch", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ifMatch", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ifModifiedSince"] {
@@ -307,7 +307,7 @@ public class BundleEntryRequest: BackboneElement {
 					self.ifModifiedSince = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ifModifiedSince", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ifModifiedSince", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ifNoneExist"] {
@@ -316,7 +316,7 @@ public class BundleEntryRequest: BackboneElement {
 					self.ifNoneExist = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ifNoneExist", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ifNoneExist", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ifNoneMatch"] {
@@ -325,7 +325,7 @@ public class BundleEntryRequest: BackboneElement {
 					self.ifNoneMatch = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ifNoneMatch", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ifNoneMatch", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["method"] {
@@ -334,7 +334,7 @@ public class BundleEntryRequest: BackboneElement {
 					self.method = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "method", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "method", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -346,7 +346,7 @@ public class BundleEntryRequest: BackboneElement {
 					self.url = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "url", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "url", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -356,7 +356,7 @@ public class BundleEntryRequest: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let ifMatch = self.ifMatch {
@@ -388,8 +388,8 @@ public class BundleEntryRequest: BackboneElement {
  *
  *  Additional information about how this entry should be processed as part of a transaction.
  */
-public class BundleEntryResponse: BackboneElement {
-	override public class var resourceType: String {
+open class BundleEntryResponse: BackboneElement {
+	override open class var resourceType: String {
 		get { return "BundleEntryResponse" }
 	}
 	
@@ -417,7 +417,7 @@ public class BundleEntryResponse: BackboneElement {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["etag"] {
@@ -426,7 +426,7 @@ public class BundleEntryResponse: BackboneElement {
 					self.etag = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "etag", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "etag", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["lastModified"] {
@@ -435,7 +435,7 @@ public class BundleEntryResponse: BackboneElement {
 					self.lastModified = Instant(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "lastModified", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "lastModified", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["location"] {
@@ -444,7 +444,7 @@ public class BundleEntryResponse: BackboneElement {
 					self.location = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "location", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "location", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -453,7 +453,7 @@ public class BundleEntryResponse: BackboneElement {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -463,7 +463,7 @@ public class BundleEntryResponse: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let etag = self.etag {
@@ -489,8 +489,8 @@ public class BundleEntryResponse: BackboneElement {
  *
  *  Information about the search process that lead to the creation of this entry.
  */
-public class BundleEntrySearch: BackboneElement {
-	override public class var resourceType: String {
+open class BundleEntrySearch: BackboneElement {
+	override open class var resourceType: String {
 		get { return "BundleEntrySearch" }
 	}
 	
@@ -506,7 +506,7 @@ public class BundleEntrySearch: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["mode"] {
@@ -515,7 +515,7 @@ public class BundleEntrySearch: BackboneElement {
 					self.mode = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "mode", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "mode", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["score"] {
@@ -524,14 +524,14 @@ public class BundleEntrySearch: BackboneElement {
 					self.score = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "score", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "score", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let mode = self.mode {
@@ -551,8 +551,8 @@ public class BundleEntrySearch: BackboneElement {
  *
  *  A series of links that provide context to this bundle.
  */
-public class BundleLink: BackboneElement {
-	override public class var resourceType: String {
+open class BundleLink: BackboneElement {
+	override open class var resourceType: String {
 		get { return "BundleLink" }
 	}
 	
@@ -575,7 +575,7 @@ public class BundleLink: BackboneElement {
 		self.url = url
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["relation"] {
@@ -584,7 +584,7 @@ public class BundleLink: BackboneElement {
 					self.relation = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "relation", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "relation", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -596,7 +596,7 @@ public class BundleLink: BackboneElement {
 					self.url = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "url", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "url", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -606,7 +606,7 @@ public class BundleLink: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let relation = self.relation {

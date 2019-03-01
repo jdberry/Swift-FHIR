@@ -2,8 +2,8 @@
 //  SubstanceTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,6 +34,42 @@ class SubstanceTests: XCTestCase {
 	
 	@discardableResult
 	func runSubstance1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Substance {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-silver-nitrate-product.json")
+		
+		XCTAssertEqual(inst.category?[0].coding?[0].code, "chemical")
+		XCTAssertEqual(inst.category?[0].coding?[0].display, "Chemical")
+		XCTAssertEqual(inst.category?[0].coding?[0].system?.absoluteString, "http://hl7.org.fhir/substance-category")
+		XCTAssertEqual(inst.code?.coding?[0].code, "333346007")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Silver nitrate 20% solution (product)")
+		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.description_fhir, "Solution for silver nitrate stain")
+		XCTAssertEqual(inst.id, "f204")
+		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://acme.org/indentifiers/substances")
+		XCTAssertEqual(inst.identifier?[0].value, "15970")
+		XCTAssertEqual(inst.instance?[0].expiry?.description, "2018-01-01")
+		XCTAssertEqual(inst.instance?[0].identifier?.system?.absoluteString, "http://acme.org/indentifiers/substances/lot")
+		XCTAssertEqual(inst.instance?[0].identifier?.value, "AB94687")
+		XCTAssertEqual(inst.instance?[0].quantity?.code, "mL")
+		XCTAssertEqual(inst.instance?[0].quantity?.system?.absoluteString, "http://unitsofmeasure.org")
+		XCTAssertEqual(inst.instance?[0].quantity?.unit, "mL")
+		XCTAssertEqual(inst.instance?[0].quantity?.value, NSDecimalNumber(string: "100"))
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
+	func testSubstance2() {
+		do {
+			let instance = try runSubstance2()
+			try runSubstance2(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test Substance successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runSubstance2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Substance {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-amoxicillin-clavulanate.json")
 		
 		XCTAssertEqual(inst.category?[0].coding?[0].code, "drug")
@@ -69,29 +105,6 @@ class SubstanceTests: XCTestCase {
 		return inst
 	}
 	
-	func testSubstance2() {
-		do {
-			let instance = try runSubstance2()
-			try runSubstance2(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test Substance successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runSubstance2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Substance {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-f201-dust.json")
-		
-		XCTAssertEqual(inst.code?.coding?[0].code, "406466009")
-		XCTAssertEqual(inst.code?.coding?[0].display, "House dust allergen")
-		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f201")
-		XCTAssertEqual(inst.text?.status, "generated")
-		
-		return inst
-	}
-	
 	func testSubstance3() {
 		do {
 			let instance = try runSubstance3()
@@ -104,12 +117,17 @@ class SubstanceTests: XCTestCase {
 	
 	@discardableResult
 	func runSubstance3(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Substance {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-f202-staphylococcus.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-f203-potassium.json")
 		
-		XCTAssertEqual(inst.code?.coding?[0].code, "3092008")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Staphylococcus Aureus")
+		XCTAssertEqual(inst.category?[0].coding?[0].code, "chemical")
+		XCTAssertEqual(inst.category?[0].coding?[0].display, "Chemical")
+		XCTAssertEqual(inst.category?[0].coding?[0].system?.absoluteString, "http://hl7.org.fhir/substance-category")
+		XCTAssertEqual(inst.code?.coding?[0].code, "88480006")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Potassium")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f202")
+		XCTAssertEqual(inst.id, "f203")
+		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://acme.org/indentifiers/substances")
+		XCTAssertEqual(inst.identifier?[0].value, "1234")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst
@@ -127,17 +145,12 @@ class SubstanceTests: XCTestCase {
 	
 	@discardableResult
 	func runSubstance4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Substance {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-f203-potassium.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-f201-dust.json")
 		
-		XCTAssertEqual(inst.category?[0].coding?[0].code, "chemical")
-		XCTAssertEqual(inst.category?[0].coding?[0].display, "Chemical")
-		XCTAssertEqual(inst.category?[0].coding?[0].system?.absoluteString, "http://hl7.org.fhir/substance-category")
-		XCTAssertEqual(inst.code?.coding?[0].code, "88480006")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Potassium")
+		XCTAssertEqual(inst.code?.coding?[0].code, "406466009")
+		XCTAssertEqual(inst.code?.coding?[0].display, "House dust allergen")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f203")
-		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://acme.org/indentifiers/substances")
-		XCTAssertEqual(inst.identifier?[0].value, "1234")
+		XCTAssertEqual(inst.id, "f201")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst
@@ -155,25 +168,15 @@ class SubstanceTests: XCTestCase {
 	
 	@discardableResult
 	func runSubstance5(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Substance {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-silver-nitrate-product.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example.json")
 		
-		XCTAssertEqual(inst.category?[0].coding?[0].code, "chemical")
-		XCTAssertEqual(inst.category?[0].coding?[0].display, "Chemical")
+		XCTAssertEqual(inst.category?[0].coding?[0].code, "allergen")
+		XCTAssertEqual(inst.category?[0].coding?[0].display, "Allergen")
 		XCTAssertEqual(inst.category?[0].coding?[0].system?.absoluteString, "http://hl7.org.fhir/substance-category")
-		XCTAssertEqual(inst.code?.coding?[0].code, "333346007")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Silver nitrate 20% solution (product)")
-		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.description_fhir, "Solution for silver nitrate stain")
-		XCTAssertEqual(inst.id, "f204")
+		XCTAssertEqual(inst.code?.text, "apitoxin (Honey Bee Venom)")
+		XCTAssertEqual(inst.id, "example")
 		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://acme.org/indentifiers/substances")
-		XCTAssertEqual(inst.identifier?[0].value, "15970")
-		XCTAssertEqual(inst.instance?[0].expiry?.description, "2018-01-01")
-		XCTAssertEqual(inst.instance?[0].identifier?.system?.absoluteString, "http://acme.org/indentifiers/substances/lot")
-		XCTAssertEqual(inst.instance?[0].identifier?.value, "AB94687")
-		XCTAssertEqual(inst.instance?[0].quantity?.code, "mL")
-		XCTAssertEqual(inst.instance?[0].quantity?.system?.absoluteString, "http://unitsofmeasure.org")
-		XCTAssertEqual(inst.instance?[0].quantity?.unit, "mL")
-		XCTAssertEqual(inst.instance?[0].quantity?.value, NSDecimalNumber(string: "100"))
+		XCTAssertEqual(inst.identifier?[0].value, "1463")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst
@@ -191,15 +194,12 @@ class SubstanceTests: XCTestCase {
 	
 	@discardableResult
 	func runSubstance6(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Substance {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "substance-example-f202-staphylococcus.json")
 		
-		XCTAssertEqual(inst.category?[0].coding?[0].code, "allergen")
-		XCTAssertEqual(inst.category?[0].coding?[0].display, "Allergen")
-		XCTAssertEqual(inst.category?[0].coding?[0].system?.absoluteString, "http://hl7.org.fhir/substance-category")
-		XCTAssertEqual(inst.code?.text, "apitoxin (Honey Bee Venom)")
-		XCTAssertEqual(inst.id, "example")
-		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://acme.org/indentifiers/substances")
-		XCTAssertEqual(inst.identifier?[0].value, "1463")
+		XCTAssertEqual(inst.code?.coding?[0].code, "3092008")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Staphylococcus Aureus")
+		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.id, "f202")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst

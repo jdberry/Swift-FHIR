@@ -2,8 +2,8 @@
 //  Timing.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Timing) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Timing) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -16,8 +16,8 @@ import Foundation
  *  requested to occur. The most common usage is in dosage instructions for medications. They are also used when
  *  planning care of various kinds.
  */
-public class Timing: Element {
-	override public class var resourceType: String {
+open class Timing: Element {
+	override open class var resourceType: String {
 		get { return "Timing" }
 	}
 	
@@ -36,7 +36,7 @@ public class Timing: Element {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -45,7 +45,7 @@ public class Timing: Element {
 					self.code = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["event"] {
@@ -54,7 +54,7 @@ public class Timing: Element {
 					self.event = DateTime.instantiate(fromArray: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "event", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "event", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["repeat"] {
@@ -63,14 +63,14 @@ public class Timing: Element {
 					self.repeat_fhir = TimingRepeat(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "repeat", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "repeat", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {
@@ -97,8 +97,8 @@ public class Timing: Element {
  *
  *  A set of rules that describe when the event should occur.
  */
-public class TimingRepeat: Element {
-	override public class var resourceType: String {
+open class TimingRepeat: Element {
+	override open class var resourceType: String {
 		get { return "TimingRepeat" }
 	}
 	
@@ -147,7 +147,7 @@ public class TimingRepeat: Element {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["boundsPeriod"] {
@@ -156,7 +156,7 @@ public class TimingRepeat: Element {
 					self.boundsPeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "boundsPeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "boundsPeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["boundsQuantity"] {
@@ -165,7 +165,7 @@ public class TimingRepeat: Element {
 					self.boundsQuantity = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "boundsQuantity", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "boundsQuantity", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["boundsRange"] {
@@ -174,7 +174,7 @@ public class TimingRepeat: Element {
 					self.boundsRange = Range(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "boundsRange", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "boundsRange", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["count"] {
@@ -183,7 +183,7 @@ public class TimingRepeat: Element {
 					self.count = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "count", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "count", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["duration"] {
@@ -192,7 +192,7 @@ public class TimingRepeat: Element {
 					self.duration = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "duration", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "duration", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["durationMax"] {
@@ -201,7 +201,7 @@ public class TimingRepeat: Element {
 					self.durationMax = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "durationMax", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "durationMax", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["durationUnits"] {
@@ -210,7 +210,7 @@ public class TimingRepeat: Element {
 					self.durationUnits = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "durationUnits", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "durationUnits", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["frequency"] {
@@ -219,7 +219,7 @@ public class TimingRepeat: Element {
 					self.frequency = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "frequency", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "frequency", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["frequencyMax"] {
@@ -228,7 +228,7 @@ public class TimingRepeat: Element {
 					self.frequencyMax = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "frequencyMax", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "frequencyMax", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["period"] {
@@ -237,7 +237,7 @@ public class TimingRepeat: Element {
 					self.period = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["periodMax"] {
@@ -246,7 +246,7 @@ public class TimingRepeat: Element {
 					self.periodMax = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "periodMax", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "periodMax", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["periodUnits"] {
@@ -255,7 +255,7 @@ public class TimingRepeat: Element {
 					self.periodUnits = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "periodUnits", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "periodUnits", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["when"] {
@@ -264,14 +264,14 @@ public class TimingRepeat: Element {
 					self.when = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "when", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "when", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let boundsPeriod = self.boundsPeriod {

@@ -2,8 +2,8 @@
 //  DetectedIssueTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -85,27 +85,6 @@ class DetectedIssueTests: XCTestCase {
 	
 	@discardableResult
 	func runDetectedIssue3(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.DetectedIssue {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "detectedissue-example-lab.json")
-		
-		XCTAssertEqual(inst.id, "lab")
-		XCTAssertEqual(inst.text?.div, "<div>[Put rendering here]</div>")
-		XCTAssertEqual(inst.text?.status, "generated")
-		
-		return inst
-	}
-	
-	func testDetectedIssue4() {
-		do {
-			let instance = try runDetectedIssue4()
-			try runDetectedIssue4(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test DetectedIssue successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runDetectedIssue4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.DetectedIssue {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "detectedissue-example.json")
 		
 		XCTAssertEqual(inst.author?.reference, "Device/dsp")
@@ -126,6 +105,27 @@ class DetectedIssueTests: XCTestCase {
 		XCTAssertEqual(inst.mitigation?[0].author?.reference, "Practitioner/example")
 		XCTAssertEqual(inst.mitigation?[0].date?.description, "2014-01-05")
 		XCTAssertEqual(inst.severity, "high")
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
+	func testDetectedIssue4() {
+		do {
+			let instance = try runDetectedIssue4()
+			try runDetectedIssue4(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test DetectedIssue successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runDetectedIssue4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.DetectedIssue {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "detectedissue-example-lab.json")
+		
+		XCTAssertEqual(inst.id, "lab")
+		XCTAssertEqual(inst.text?.div, "<div>[Put rendering here]</div>")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst

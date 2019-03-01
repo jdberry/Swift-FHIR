@@ -2,8 +2,8 @@
 //  FamilyMemberHistoryTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,39 +34,6 @@ class FamilyMemberHistoryTests: XCTestCase {
 	
 	@discardableResult
 	func runFamilyMemberHistory1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.FamilyMemberHistory {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "familymemberhistory-example-mother.json")
-		
-		XCTAssertEqual(inst.condition?[0].code?.coding?[0].code, "371041009")
-		XCTAssertEqual(inst.condition?[0].code?.coding?[0].display, "Embolic Stroke")
-		XCTAssertEqual(inst.condition?[0].code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.condition?[0].code?.text, "Stroke")
-		XCTAssertEqual(inst.condition?[0].onsetQuantity?.system?.absoluteString, "http://unitsofmeasure.org")
-		XCTAssertEqual(inst.condition?[0].onsetQuantity?.unit, "a")
-		XCTAssertEqual(inst.condition?[0].onsetQuantity?.value, NSDecimalNumber(string: "56"))
-		XCTAssertEqual(inst.id, "mother")
-		XCTAssertEqual(inst.patient?.display, "Peter Patient")
-		XCTAssertEqual(inst.patient?.reference, "Patient/100")
-		XCTAssertEqual(inst.relationship?.coding?[0].code, "mother")
-		XCTAssertEqual(inst.relationship?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/familial-relationship")
-		XCTAssertEqual(inst.status, "completed")
-		XCTAssertEqual(inst.text?.div, "<div>Mother died of a stroke aged 56</div>")
-		XCTAssertEqual(inst.text?.status, "generated")
-		
-		return inst
-	}
-	
-	func testFamilyMemberHistory2() {
-		do {
-			let instance = try runFamilyMemberHistory2()
-			try runFamilyMemberHistory2(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test FamilyMemberHistory successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runFamilyMemberHistory2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.FamilyMemberHistory {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "familymemberhistory-example.json")
 		
 		XCTAssertEqual(inst.condition?[0].code?.coding?[0].code, "315619001")
@@ -85,6 +52,39 @@ class FamilyMemberHistoryTests: XCTestCase {
 		XCTAssertEqual(inst.relationship?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/familial-relationship")
 		XCTAssertEqual(inst.status, "completed")
 		XCTAssertEqual(inst.text?.div, "<div>Father died of a heart attack aged 74</div>")
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
+	func testFamilyMemberHistory2() {
+		do {
+			let instance = try runFamilyMemberHistory2()
+			try runFamilyMemberHistory2(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test FamilyMemberHistory successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runFamilyMemberHistory2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.FamilyMemberHistory {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "familymemberhistory-example-mother.json")
+		
+		XCTAssertEqual(inst.condition?[0].code?.coding?[0].code, "371041009")
+		XCTAssertEqual(inst.condition?[0].code?.coding?[0].display, "Embolic Stroke")
+		XCTAssertEqual(inst.condition?[0].code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.condition?[0].code?.text, "Stroke")
+		XCTAssertEqual(inst.condition?[0].onsetQuantity?.system?.absoluteString, "http://unitsofmeasure.org")
+		XCTAssertEqual(inst.condition?[0].onsetQuantity?.unit, "a")
+		XCTAssertEqual(inst.condition?[0].onsetQuantity?.value, NSDecimalNumber(string: "56"))
+		XCTAssertEqual(inst.id, "mother")
+		XCTAssertEqual(inst.patient?.display, "Peter Patient")
+		XCTAssertEqual(inst.patient?.reference, "Patient/100")
+		XCTAssertEqual(inst.relationship?.coding?[0].code, "mother")
+		XCTAssertEqual(inst.relationship?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/familial-relationship")
+		XCTAssertEqual(inst.status, "completed")
+		XCTAssertEqual(inst.text?.div, "<div>Mother died of a stroke aged 56</div>")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst

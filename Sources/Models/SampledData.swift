@@ -2,8 +2,8 @@
 //  SampledData.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/SampledData) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/SampledData) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the
  *  data.
  */
-public class SampledData: Element {
-	override public class var resourceType: String {
+open class SampledData: Element {
+	override open class var resourceType: String {
 		get { return "SampledData" }
 	}
 	
@@ -56,7 +56,7 @@ public class SampledData: Element {
 		self.period = period
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["data"] {
@@ -65,7 +65,7 @@ public class SampledData: Element {
 					self.data = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "data", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "data", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -77,7 +77,7 @@ public class SampledData: Element {
 					self.dimensions = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "dimensions", wants: UInt.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "dimensions", wants: UInt.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -89,7 +89,7 @@ public class SampledData: Element {
 					self.factor = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "factor", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "factor", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["lowerLimit"] {
@@ -98,7 +98,7 @@ public class SampledData: Element {
 					self.lowerLimit = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "lowerLimit", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "lowerLimit", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["origin"] {
@@ -107,7 +107,7 @@ public class SampledData: Element {
 					self.origin = Quantity(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "origin", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "origin", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -119,7 +119,7 @@ public class SampledData: Element {
 					self.period = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -131,14 +131,14 @@ public class SampledData: Element {
 					self.upperLimit = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "upperLimit", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "upperLimit", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let data = self.data {

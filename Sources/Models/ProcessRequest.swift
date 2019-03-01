@@ -2,8 +2,8 @@
 //  ProcessRequest.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ProcessRequest) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/ProcessRequest) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  This resource provides the target, request and response, and action details for an action to be performed by the
  *  target on or about existing resources.
  */
-public class ProcessRequest: DomainResource {
-	override public class var resourceType: String {
+open class ProcessRequest: DomainResource {
+	override open class var resourceType: String {
 		get { return "ProcessRequest" }
 	}
 	
@@ -80,7 +80,7 @@ public class ProcessRequest: DomainResource {
 		self.action = action
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["action"] {
@@ -89,7 +89,7 @@ public class ProcessRequest: DomainResource {
 					self.action = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "action", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "action", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -101,7 +101,7 @@ public class ProcessRequest: DomainResource {
 					self.created = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "created", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "created", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["exclude"] {
@@ -110,7 +110,7 @@ public class ProcessRequest: DomainResource {
 					self.exclude = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "exclude", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "exclude", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -119,7 +119,7 @@ public class ProcessRequest: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["include"] {
@@ -128,7 +128,7 @@ public class ProcessRequest: DomainResource {
 					self.include = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "include", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "include", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["item"] {
@@ -137,7 +137,7 @@ public class ProcessRequest: DomainResource {
 					self.item = ProcessRequestItem.instantiate(fromArray: val, owner: self) as? [ProcessRequestItem]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "item", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "item", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["nullify"] {
@@ -146,7 +146,7 @@ public class ProcessRequest: DomainResource {
 					self.nullify = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "nullify", wants: Bool.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "nullify", wants: Bool.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["organization"] {
@@ -155,7 +155,7 @@ public class ProcessRequest: DomainResource {
 					self.organization = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "organization", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "organization", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["originalRuleset"] {
@@ -164,7 +164,7 @@ public class ProcessRequest: DomainResource {
 					self.originalRuleset = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "originalRuleset", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "originalRuleset", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["period"] {
@@ -173,7 +173,7 @@ public class ProcessRequest: DomainResource {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["provider"] {
@@ -182,7 +182,7 @@ public class ProcessRequest: DomainResource {
 					self.provider = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "provider", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "provider", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["reference"] {
@@ -191,7 +191,7 @@ public class ProcessRequest: DomainResource {
 					self.reference = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "reference", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "reference", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["request"] {
@@ -200,7 +200,7 @@ public class ProcessRequest: DomainResource {
 					self.request = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "request", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["response"] {
@@ -209,7 +209,7 @@ public class ProcessRequest: DomainResource {
 					self.response = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "response", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "response", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["ruleset"] {
@@ -218,7 +218,7 @@ public class ProcessRequest: DomainResource {
 					self.ruleset = Coding(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "ruleset", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "ruleset", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["target"] {
@@ -227,14 +227,14 @@ public class ProcessRequest: DomainResource {
 					self.target = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "target", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "target", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let action = self.action {
@@ -304,8 +304,8 @@ public class ProcessRequest: DomainResource {
  *
  *  List of top level items to be re-adjudicated, if none specified then the entire submission is re-adjudicated.
  */
-public class ProcessRequestItem: BackboneElement {
-	override public class var resourceType: String {
+open class ProcessRequestItem: BackboneElement {
+	override open class var resourceType: String {
 		get { return "ProcessRequestItem" }
 	}
 	
@@ -324,7 +324,7 @@ public class ProcessRequestItem: BackboneElement {
 		self.sequenceLinkId = sequenceLinkId
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["sequenceLinkId"] {
@@ -333,7 +333,7 @@ public class ProcessRequestItem: BackboneElement {
 					self.sequenceLinkId = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "sequenceLinkId", wants: Int.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "sequenceLinkId", wants: Int.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -343,7 +343,7 @@ public class ProcessRequestItem: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let sequenceLinkId = self.sequenceLinkId {

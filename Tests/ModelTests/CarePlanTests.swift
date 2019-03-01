@@ -2,8 +2,8 @@
 //  CarePlanTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,51 +34,6 @@ class CarePlanTests: XCTestCase {
 	
 	@discardableResult
 	func runCarePlan1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f001-heart.json")
-		
-		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "procedure")
-		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "64915003")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "Operation on heart")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].display, "P. Voigt")
-		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].reference, "Practitioner/f002")
-		XCTAssertTrue(inst.activity?[0].detail?.prohibited ?? false)
-		XCTAssertEqual(inst.activity?[0].detail?.scheduledString, "2011-06-27T09:30:10+01:00")
-		XCTAssertEqual(inst.activity?[0].detail?.status, "completed")
-		XCTAssertEqual(inst.addresses?[0].display, "?????")
-		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f201")
-		XCTAssertEqual(inst.contained?[0].id, "goal")
-		XCTAssertEqual(inst.goal?[0].reference, "#goal")
-		XCTAssertEqual(inst.id, "f001")
-		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://www.bmc.nl/zorgportal/identifiers/careplans")
-		XCTAssertEqual(inst.identifier?[0].use, "official")
-		XCTAssertEqual(inst.identifier?[0].value, "CP2903")
-		XCTAssertEqual(inst.modified?.description, "2011-06-27T09:30:10+01:00")
-		XCTAssertEqual(inst.participant?[0].member?.display, "P. Voigt")
-		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f002")
-		XCTAssertEqual(inst.period?.end?.description, "2011-06-27")
-		XCTAssertEqual(inst.period?.start?.description, "2011-06-26")
-		XCTAssertEqual(inst.status, "completed")
-		XCTAssertEqual(inst.subject?.display, "P. van de Heuvel")
-		XCTAssertEqual(inst.subject?.reference, "Patient/f001")
-		XCTAssertEqual(inst.text?.status, "generated")
-		
-		return inst
-	}
-	
-	func testCarePlan2() {
-		do {
-			let instance = try runCarePlan2()
-			try runCarePlan2(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test CarePlan successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runCarePlan2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f002-lung.json")
 		
 		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "procedure")
@@ -112,6 +67,52 @@ class CarePlanTests: XCTestCase {
 		return inst
 	}
 	
+	func testCarePlan2() {
+		do {
+			let instance = try runCarePlan2()
+			try runCarePlan2(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test CarePlan successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runCarePlan2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f202-malignancy.json")
+		
+		XCTAssertEqual(inst.activity?[0].actionResulting?[0].display, "Roel's Chemotherapy")
+		XCTAssertEqual(inst.activity?[0].actionResulting?[0].reference, "Procedure/f201")
+		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "procedure")
+		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "367336001")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "Chemotherapy")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.activity?[0].detail?.productReference?.reference, "#tpf")
+		XCTAssertFalse(inst.activity?[0].detail?.prohibited ?? true)
+		XCTAssertEqual(inst.activity?[0].detail?.status, "in-progress")
+		XCTAssertEqual(inst.addresses?[0].display, "Roel's head-neck tumor")
+		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f202")
+		XCTAssertEqual(inst.contained?[0].id, "doce")
+		XCTAssertEqual(inst.contained?[1].id, "cisp")
+		XCTAssertEqual(inst.contained?[2].id, "fluo")
+		XCTAssertEqual(inst.contained?[3].id, "tpf")
+		XCTAssertEqual(inst.contained?[4].id, "goal")
+		XCTAssertEqual(inst.goal?[0].reference, "#goal")
+		XCTAssertEqual(inst.id, "f202")
+		XCTAssertEqual(inst.participant?[0].member?.display, "Dokter Bronsig")
+		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f201")
+		XCTAssertEqual(inst.participant?[0].role?.coding?[0].code, "28995006")
+		XCTAssertEqual(inst.participant?[0].role?.coding?[0].display, "Treated with")
+		XCTAssertEqual(inst.participant?[0].role?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.status, "active")
+		XCTAssertEqual(inst.subject?.display, "Roel")
+		XCTAssertEqual(inst.subject?.reference, "Patient/f201")
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
 	func testCarePlan3() {
 		do {
 			let instance = try runCarePlan3()
@@ -124,35 +125,35 @@ class CarePlanTests: XCTestCase {
 	
 	@discardableResult
 	func runCarePlan3(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f003-pharynx.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example.json")
 		
-		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "procedure")
+		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "observation")
 		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "172960003")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "Incision of retropharyngeal abscess")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].display, "E.M. van den broek")
-		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].reference, "Practitioner/f001")
-		XCTAssertTrue(inst.activity?[0].detail?.prohibited ?? false)
-		XCTAssertEqual(inst.activity?[0].detail?.scheduledString, "2011-06-27T09:30:10+01:00")
-		XCTAssertEqual(inst.activity?[0].detail?.status, "completed")
-		XCTAssertEqual(inst.addresses?[0].display, "?????")
-		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f201")
-		XCTAssertEqual(inst.contained?[0].id, "goal")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.text, "a code for weight measurement")
+		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].display, "Peter James Chalmers")
+		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].reference, "Patient/example")
+		XCTAssertFalse(inst.activity?[0].detail?.prohibited ?? true)
+		XCTAssertEqual(inst.activity?[0].detail?.scheduledTiming?.repeat_fhir?.frequency, 1)
+		XCTAssertEqual(inst.activity?[0].detail?.scheduledTiming?.repeat_fhir?.period, NSDecimalNumber(string: "1"))
+		XCTAssertEqual(inst.activity?[0].detail?.scheduledTiming?.repeat_fhir?.periodUnits, "d")
+		XCTAssertEqual(inst.addresses?[0].display, "obesity")
+		XCTAssertEqual(inst.addresses?[0].reference, "#p1")
+		XCTAssertEqual(inst.contained?[0].id, "p1")
+		XCTAssertEqual(inst.contained?[1].id, "pr1")
+		XCTAssertEqual(inst.contained?[2].id, "goal")
 		XCTAssertEqual(inst.goal?[0].reference, "#goal")
-		XCTAssertEqual(inst.id, "f003")
-		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://www.bmc.nl/zorgportal/identifiers/careplans")
-		XCTAssertEqual(inst.identifier?[0].use, "official")
-		XCTAssertEqual(inst.identifier?[0].value, "CP3953")
-		XCTAssertEqual(inst.modified?.description, "2013-06-27T09:30:10+01:00")
-		XCTAssertEqual(inst.participant?[0].member?.display, "E.M. van den broek")
-		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f001")
-		XCTAssertEqual(inst.period?.end?.description, "2013-03-08T09:30:10+01:00")
-		XCTAssertEqual(inst.period?.start?.description, "2013-03-08T09:00:10+01:00")
-		XCTAssertEqual(inst.status, "completed")
-		XCTAssertEqual(inst.subject?.display, "P. van de Heuvel")
-		XCTAssertEqual(inst.subject?.reference, "Patient/f001")
-		XCTAssertEqual(inst.text?.status, "generated")
+		XCTAssertEqual(inst.id, "example")
+		XCTAssertEqual(inst.participant?[0].member?.display, "Peter James Chalmers")
+		XCTAssertEqual(inst.participant?[0].member?.reference, "Patient/example")
+		XCTAssertEqual(inst.participant?[0].role?.text, "responsiblePerson")
+		XCTAssertEqual(inst.participant?[1].member?.display, "Dorothy Dietition")
+		XCTAssertEqual(inst.participant?[1].member?.reference, "#pr1")
+		XCTAssertEqual(inst.participant?[1].role?.text, "adviser")
+		XCTAssertEqual(inst.period?.end?.description, "2013-01-01")
+		XCTAssertEqual(inst.status, "active")
+		XCTAssertEqual(inst.subject?.display, "Peter James Chalmers")
+		XCTAssertEqual(inst.subject?.reference, "Patient/example")
+		XCTAssertEqual(inst.text?.status, "additional")
 		
 		return inst
 	}
@@ -230,99 +231,6 @@ class CarePlanTests: XCTestCase {
 	
 	@discardableResult
 	func runCarePlan5(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f202-malignancy.json")
-		
-		XCTAssertEqual(inst.activity?[0].actionResulting?[0].display, "Roel's Chemotherapy")
-		XCTAssertEqual(inst.activity?[0].actionResulting?[0].reference, "Procedure/f201")
-		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "procedure")
-		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "367336001")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "Chemotherapy")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.activity?[0].detail?.productReference?.reference, "#tpf")
-		XCTAssertFalse(inst.activity?[0].detail?.prohibited ?? true)
-		XCTAssertEqual(inst.activity?[0].detail?.status, "in-progress")
-		XCTAssertEqual(inst.addresses?[0].display, "Roel's head-neck tumor")
-		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f202")
-		XCTAssertEqual(inst.contained?[0].id, "doce")
-		XCTAssertEqual(inst.contained?[1].id, "cisp")
-		XCTAssertEqual(inst.contained?[2].id, "fluo")
-		XCTAssertEqual(inst.contained?[3].id, "tpf")
-		XCTAssertEqual(inst.contained?[4].id, "goal")
-		XCTAssertEqual(inst.goal?[0].reference, "#goal")
-		XCTAssertEqual(inst.id, "f202")
-		XCTAssertEqual(inst.participant?[0].member?.display, "Dokter Bronsig")
-		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f201")
-		XCTAssertEqual(inst.participant?[0].role?.coding?[0].code, "28995006")
-		XCTAssertEqual(inst.participant?[0].role?.coding?[0].display, "Treated with")
-		XCTAssertEqual(inst.participant?[0].role?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.status, "active")
-		XCTAssertEqual(inst.subject?.display, "Roel")
-		XCTAssertEqual(inst.subject?.reference, "Patient/f201")
-		XCTAssertEqual(inst.text?.status, "generated")
-		
-		return inst
-	}
-	
-	func testCarePlan6() {
-		do {
-			let instance = try runCarePlan6()
-			try runCarePlan6(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test CarePlan successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runCarePlan6(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f203-sepsis.json")
-		
-		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "observation")
-		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "241541005")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "High resolution computed tomography of lungs")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertFalse(inst.activity?[0].detail?.prohibited ?? true)
-		XCTAssertEqual(inst.activity?[0].detail?.status, "not-started")
-		XCTAssertEqual(inst.addresses?[0].display, "Roel's sepsis")
-		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f203")
-		XCTAssertEqual(inst.contained?[0].id, "goal")
-		XCTAssertEqual(inst.goal?[0].reference, "#goal")
-		XCTAssertEqual(inst.id, "f203")
-		XCTAssertEqual(inst.modified?.description, "2013-03-11")
-		XCTAssertEqual(inst.participant?[0].member?.display, "Dokter Bronsig")
-		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f201")
-		XCTAssertEqual(inst.participant?[0].role?.coding?[0].code, "425268008")
-		XCTAssertEqual(inst.participant?[0].role?.coding?[0].display, "Review of care plan")
-		XCTAssertEqual(inst.participant?[0].role?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.participant?[1].member?.display, "Luigi Maas")
-		XCTAssertEqual(inst.participant?[1].member?.reference, "Practitioner/f202")
-		XCTAssertEqual(inst.participant?[1].role?.coding?[0].code, "278110001")
-		XCTAssertEqual(inst.participant?[1].role?.coding?[0].display, "Radiographic imaging")
-		XCTAssertEqual(inst.participant?[1].role?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.period?.end?.description, "2013-04-21")
-		XCTAssertEqual(inst.period?.start?.description, "2013-04-14")
-		XCTAssertEqual(inst.status, "completed")
-		XCTAssertEqual(inst.subject?.display, "Roel")
-		XCTAssertEqual(inst.subject?.reference, "Patient/f201")
-		XCTAssertEqual(inst.text?.status, "generated")
-		
-		return inst
-	}
-	
-	func testCarePlan7() {
-		do {
-			let instance = try runCarePlan7()
-			try runCarePlan7(instance.asJSON())
-		}
-		catch {
-			XCTAssertTrue(false, "Must instantiate and test CarePlan successfully, but threw")
-		}
-	}
-	
-	@discardableResult
-	func runCarePlan7(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-GPVisit.json")
 		
 		XCTAssertEqual(inst.activity?[0].actionResulting?[0].reference, "Encounter/example")
@@ -373,10 +281,10 @@ class CarePlanTests: XCTestCase {
 		return inst
 	}
 	
-	func testCarePlan8() {
+	func testCarePlan6() {
 		do {
-			let instance = try runCarePlan8()
-			try runCarePlan8(instance.asJSON())
+			let instance = try runCarePlan6()
+			try runCarePlan6(instance.asJSON())
 		}
 		catch {
 			XCTAssertTrue(false, "Must instantiate and test CarePlan successfully, but threw")
@@ -384,7 +292,7 @@ class CarePlanTests: XCTestCase {
 	}
 	
 	@discardableResult
-	func runCarePlan8(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
+	func runCarePlan6(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
 		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-integrated.json")
 		
 		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "other")
@@ -529,6 +437,96 @@ class CarePlanTests: XCTestCase {
 		return inst
 	}
 	
+	func testCarePlan7() {
+		do {
+			let instance = try runCarePlan7()
+			try runCarePlan7(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test CarePlan successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runCarePlan7(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f003-pharynx.json")
+		
+		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "procedure")
+		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "172960003")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "Incision of retropharyngeal abscess")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].display, "E.M. van den broek")
+		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].reference, "Practitioner/f001")
+		XCTAssertTrue(inst.activity?[0].detail?.prohibited ?? false)
+		XCTAssertEqual(inst.activity?[0].detail?.scheduledString, "2011-06-27T09:30:10+01:00")
+		XCTAssertEqual(inst.activity?[0].detail?.status, "completed")
+		XCTAssertEqual(inst.addresses?[0].display, "?????")
+		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f201")
+		XCTAssertEqual(inst.contained?[0].id, "goal")
+		XCTAssertEqual(inst.goal?[0].reference, "#goal")
+		XCTAssertEqual(inst.id, "f003")
+		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://www.bmc.nl/zorgportal/identifiers/careplans")
+		XCTAssertEqual(inst.identifier?[0].use, "official")
+		XCTAssertEqual(inst.identifier?[0].value, "CP3953")
+		XCTAssertEqual(inst.modified?.description, "2013-06-27T09:30:10+01:00")
+		XCTAssertEqual(inst.participant?[0].member?.display, "E.M. van den broek")
+		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f001")
+		XCTAssertEqual(inst.period?.end?.description, "2013-03-08T09:30:10+01:00")
+		XCTAssertEqual(inst.period?.start?.description, "2013-03-08T09:00:10+01:00")
+		XCTAssertEqual(inst.status, "completed")
+		XCTAssertEqual(inst.subject?.display, "P. van de Heuvel")
+		XCTAssertEqual(inst.subject?.reference, "Patient/f001")
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
+	func testCarePlan8() {
+		do {
+			let instance = try runCarePlan8()
+			try runCarePlan8(instance.asJSON())
+		}
+		catch {
+			XCTAssertTrue(false, "Must instantiate and test CarePlan successfully, but threw")
+		}
+	}
+	
+	@discardableResult
+	func runCarePlan8(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f001-heart.json")
+		
+		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "procedure")
+		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "64915003")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "Operation on heart")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].display, "P. Voigt")
+		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].reference, "Practitioner/f002")
+		XCTAssertTrue(inst.activity?[0].detail?.prohibited ?? false)
+		XCTAssertEqual(inst.activity?[0].detail?.scheduledString, "2011-06-27T09:30:10+01:00")
+		XCTAssertEqual(inst.activity?[0].detail?.status, "completed")
+		XCTAssertEqual(inst.addresses?[0].display, "?????")
+		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f201")
+		XCTAssertEqual(inst.contained?[0].id, "goal")
+		XCTAssertEqual(inst.goal?[0].reference, "#goal")
+		XCTAssertEqual(inst.id, "f001")
+		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "http://www.bmc.nl/zorgportal/identifiers/careplans")
+		XCTAssertEqual(inst.identifier?[0].use, "official")
+		XCTAssertEqual(inst.identifier?[0].value, "CP2903")
+		XCTAssertEqual(inst.modified?.description, "2011-06-27T09:30:10+01:00")
+		XCTAssertEqual(inst.participant?[0].member?.display, "P. Voigt")
+		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f002")
+		XCTAssertEqual(inst.period?.end?.description, "2011-06-27")
+		XCTAssertEqual(inst.period?.start?.description, "2011-06-26")
+		XCTAssertEqual(inst.status, "completed")
+		XCTAssertEqual(inst.subject?.display, "P. van de Heuvel")
+		XCTAssertEqual(inst.subject?.reference, "Patient/f001")
+		XCTAssertEqual(inst.text?.status, "generated")
+		
+		return inst
+	}
+	
 	func testCarePlan9() {
 		do {
 			let instance = try runCarePlan9()
@@ -623,35 +621,37 @@ class CarePlanTests: XCTestCase {
 	
 	@discardableResult
 	func runCarePlan10(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.CarePlan {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "careplan-example-f203-sepsis.json")
 		
 		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].code, "observation")
 		XCTAssertEqual(inst.activity?[0].detail?.category?.coding?[0].system?.absoluteString, "http://hl7.org/fhir/care-plan-activity-category")
-		XCTAssertEqual(inst.activity?[0].detail?.code?.text, "a code for weight measurement")
-		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].display, "Peter James Chalmers")
-		XCTAssertEqual(inst.activity?[0].detail?.performer?[0].reference, "Patient/example")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].code, "241541005")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].display, "High resolution computed tomography of lungs")
+		XCTAssertEqual(inst.activity?[0].detail?.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
 		XCTAssertFalse(inst.activity?[0].detail?.prohibited ?? true)
-		XCTAssertEqual(inst.activity?[0].detail?.scheduledTiming?.repeat_fhir?.frequency, 1)
-		XCTAssertEqual(inst.activity?[0].detail?.scheduledTiming?.repeat_fhir?.period, NSDecimalNumber(string: "1"))
-		XCTAssertEqual(inst.activity?[0].detail?.scheduledTiming?.repeat_fhir?.periodUnits, "d")
-		XCTAssertEqual(inst.addresses?[0].display, "obesity")
-		XCTAssertEqual(inst.addresses?[0].reference, "#p1")
-		XCTAssertEqual(inst.contained?[0].id, "p1")
-		XCTAssertEqual(inst.contained?[1].id, "pr1")
-		XCTAssertEqual(inst.contained?[2].id, "goal")
+		XCTAssertEqual(inst.activity?[0].detail?.status, "not-started")
+		XCTAssertEqual(inst.addresses?[0].display, "Roel's sepsis")
+		XCTAssertEqual(inst.addresses?[0].reference, "Condition/f203")
+		XCTAssertEqual(inst.contained?[0].id, "goal")
 		XCTAssertEqual(inst.goal?[0].reference, "#goal")
-		XCTAssertEqual(inst.id, "example")
-		XCTAssertEqual(inst.participant?[0].member?.display, "Peter James Chalmers")
-		XCTAssertEqual(inst.participant?[0].member?.reference, "Patient/example")
-		XCTAssertEqual(inst.participant?[0].role?.text, "responsiblePerson")
-		XCTAssertEqual(inst.participant?[1].member?.display, "Dorothy Dietition")
-		XCTAssertEqual(inst.participant?[1].member?.reference, "#pr1")
-		XCTAssertEqual(inst.participant?[1].role?.text, "adviser")
-		XCTAssertEqual(inst.period?.end?.description, "2013-01-01")
-		XCTAssertEqual(inst.status, "active")
-		XCTAssertEqual(inst.subject?.display, "Peter James Chalmers")
-		XCTAssertEqual(inst.subject?.reference, "Patient/example")
-		XCTAssertEqual(inst.text?.status, "additional")
+		XCTAssertEqual(inst.id, "f203")
+		XCTAssertEqual(inst.modified?.description, "2013-03-11")
+		XCTAssertEqual(inst.participant?[0].member?.display, "Dokter Bronsig")
+		XCTAssertEqual(inst.participant?[0].member?.reference, "Practitioner/f201")
+		XCTAssertEqual(inst.participant?[0].role?.coding?[0].code, "425268008")
+		XCTAssertEqual(inst.participant?[0].role?.coding?[0].display, "Review of care plan")
+		XCTAssertEqual(inst.participant?[0].role?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.participant?[1].member?.display, "Luigi Maas")
+		XCTAssertEqual(inst.participant?[1].member?.reference, "Practitioner/f202")
+		XCTAssertEqual(inst.participant?[1].role?.coding?[0].code, "278110001")
+		XCTAssertEqual(inst.participant?[1].role?.coding?[0].display, "Radiographic imaging")
+		XCTAssertEqual(inst.participant?[1].role?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.period?.end?.description, "2013-04-21")
+		XCTAssertEqual(inst.period?.start?.description, "2013-04-14")
+		XCTAssertEqual(inst.status, "completed")
+		XCTAssertEqual(inst.subject?.display, "Roel")
+		XCTAssertEqual(inst.subject?.reference, "Patient/f201")
+		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst
 	}

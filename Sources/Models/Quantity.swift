@@ -2,8 +2,8 @@
 //  Quantity.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Quantity) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Quantity) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that
  *  are not precisely quantified, including amounts involving arbitrary units and floating currencies.
  */
-public class Quantity: Element {
-	override public class var resourceType: String {
+open class Quantity: Element {
+	override open class var resourceType: String {
 		get { return "Quantity" }
 	}
 	
@@ -41,7 +41,7 @@ public class Quantity: Element {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["code"] {
@@ -50,7 +50,7 @@ public class Quantity: Element {
 					self.code = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "code", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "code", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["comparator"] {
@@ -59,7 +59,7 @@ public class Quantity: Element {
 					self.comparator = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "comparator", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "comparator", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["system"] {
@@ -68,7 +68,7 @@ public class Quantity: Element {
 					self.system = URL(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "system", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "system", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["unit"] {
@@ -77,7 +77,7 @@ public class Quantity: Element {
 					self.unit = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "unit", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "unit", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["value"] {
@@ -86,14 +86,14 @@ public class Quantity: Element {
 					self.value = NSDecimalNumber(json: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "value", wants: NSNumber.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "value", wants: NSNumber.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let code = self.code {

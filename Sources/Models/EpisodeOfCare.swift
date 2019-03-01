@@ -2,8 +2,8 @@
 //  EpisodeOfCare.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/EpisodeOfCare) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/EpisodeOfCare) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -16,8 +16,8 @@ import Foundation
  *  An association between a patient and an organization / healthcare provider(s) during which time encounters may
  *  occur. The managing organization assumes a level of responsibility for the patient during this time.
  */
-public class EpisodeOfCare: DomainResource {
-	override public class var resourceType: String {
+open class EpisodeOfCare: DomainResource {
+	override open class var resourceType: String {
 		get { return "EpisodeOfCare" }
 	}
 	
@@ -67,7 +67,7 @@ public class EpisodeOfCare: DomainResource {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["careManager"] {
@@ -179,7 +179,7 @@ public class EpisodeOfCare: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let careManager = self.careManager {
@@ -226,8 +226,8 @@ public class EpisodeOfCare: DomainResource {
  *
  *  The list of practitioners that may be facilitating this episode of care for specific purposes.
  */
-public class EpisodeOfCareCareTeam: BackboneElement {
-	override public class var resourceType: String {
+open class EpisodeOfCareCareTeam: BackboneElement {
+	override open class var resourceType: String {
 		get { return "EpisodeOfCareCareTeam" }
 	}
 	
@@ -246,7 +246,7 @@ public class EpisodeOfCareCareTeam: BackboneElement {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["member"] {
@@ -255,7 +255,7 @@ public class EpisodeOfCareCareTeam: BackboneElement {
 					self.member = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "member", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "member", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["period"] {
@@ -264,7 +264,7 @@ public class EpisodeOfCareCareTeam: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["role"] {
@@ -273,14 +273,14 @@ public class EpisodeOfCareCareTeam: BackboneElement {
 					self.role = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "role", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let member = self.member {
@@ -304,8 +304,8 @@ public class EpisodeOfCareCareTeam: BackboneElement {
  *  The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the
  *  resource).
  */
-public class EpisodeOfCareStatusHistory: BackboneElement {
-	override public class var resourceType: String {
+open class EpisodeOfCareStatusHistory: BackboneElement {
+	override open class var resourceType: String {
 		get { return "EpisodeOfCareStatusHistory" }
 	}
 	
@@ -328,7 +328,7 @@ public class EpisodeOfCareStatusHistory: BackboneElement {
 		self.status = status
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["period"] {
@@ -337,7 +337,7 @@ public class EpisodeOfCareStatusHistory: BackboneElement {
 					self.period = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "period", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -349,7 +349,7 @@ public class EpisodeOfCareStatusHistory: BackboneElement {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -359,7 +359,7 @@ public class EpisodeOfCareStatusHistory: BackboneElement {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let period = self.period {

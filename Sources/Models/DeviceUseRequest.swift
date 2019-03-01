@@ -2,8 +2,8 @@
 //  DeviceUseRequest.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DeviceUseRequest) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/DeviceUseRequest) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  Represents a request for a patient to employ a medical device. The device may be an implantable device, or an
  *  external assistive device, such as a walker.
  */
-public class DeviceUseRequest: DomainResource {
-	override public class var resourceType: String {
+open class DeviceUseRequest: DomainResource {
+	override open class var resourceType: String {
 		get { return "DeviceUseRequest" }
 	}
 	
@@ -81,7 +81,7 @@ public class DeviceUseRequest: DomainResource {
 		self.subject = subject
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["bodySiteCodeableConcept"] {
@@ -90,7 +90,7 @@ public class DeviceUseRequest: DomainResource {
 					self.bodySiteCodeableConcept = CodeableConcept(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "bodySiteCodeableConcept", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "bodySiteCodeableConcept", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["bodySiteReference"] {
@@ -99,7 +99,7 @@ public class DeviceUseRequest: DomainResource {
 					self.bodySiteReference = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "bodySiteReference", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "bodySiteReference", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["device"] {
@@ -108,7 +108,7 @@ public class DeviceUseRequest: DomainResource {
 					self.device = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "device", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "device", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -120,7 +120,7 @@ public class DeviceUseRequest: DomainResource {
 					self.encounter = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "encounter", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["identifier"] {
@@ -129,7 +129,7 @@ public class DeviceUseRequest: DomainResource {
 					self.identifier = Identifier.instantiate(fromArray: val, owner: self) as? [Identifier]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "identifier", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["indication"] {
@@ -138,7 +138,7 @@ public class DeviceUseRequest: DomainResource {
 					self.indication = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "indication", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "indication", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["notes"] {
@@ -147,7 +147,7 @@ public class DeviceUseRequest: DomainResource {
 					self.notes = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "notes", wants: Array<String>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "notes", wants: Array<String>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["orderedOn"] {
@@ -156,7 +156,7 @@ public class DeviceUseRequest: DomainResource {
 					self.orderedOn = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "orderedOn", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "orderedOn", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["priority"] {
@@ -165,7 +165,7 @@ public class DeviceUseRequest: DomainResource {
 					self.priority = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "priority", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "priority", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["prnReason"] {
@@ -174,7 +174,7 @@ public class DeviceUseRequest: DomainResource {
 					self.prnReason = CodeableConcept.instantiate(fromArray: val, owner: self) as? [CodeableConcept]
 				}
 				else {
-					errors.append(FHIRJSONError(key: "prnReason", wants: Array<FHIRJSON>.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "prnReason", wants: Array<FHIRJSON>.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["recordedOn"] {
@@ -183,7 +183,7 @@ public class DeviceUseRequest: DomainResource {
 					self.recordedOn = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "recordedOn", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "recordedOn", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["status"] {
@@ -192,7 +192,7 @@ public class DeviceUseRequest: DomainResource {
 					self.status = val
 				}
 				else {
-					errors.append(FHIRJSONError(key: "status", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "status", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["subject"] {
@@ -201,7 +201,7 @@ public class DeviceUseRequest: DomainResource {
 					self.subject = Reference(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "subject", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "subject", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			else {
@@ -213,7 +213,7 @@ public class DeviceUseRequest: DomainResource {
 					self.timingDateTime = DateTime(string: val)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "timingDateTime", wants: String.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "timingDateTime", wants: String.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["timingPeriod"] {
@@ -222,7 +222,7 @@ public class DeviceUseRequest: DomainResource {
 					self.timingPeriod = Period(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "timingPeriod", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "timingPeriod", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 			if let exist = js["timingTiming"] {
@@ -231,14 +231,14 @@ public class DeviceUseRequest: DomainResource {
 					self.timingTiming = Timing(json: val, owner: self)
 				}
 				else {
-					errors.append(FHIRJSONError(key: "timingTiming", wants: FHIRJSON.self, has: type(of: exist)))
+					errors.append(FHIRJSONError(key: "timingTiming", wants: FHIRJSON.self, has: Swift.type(of: exist)))
 				}
 			}
 		}
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let bodySiteCodeableConcept = self.bodySiteCodeableConcept {

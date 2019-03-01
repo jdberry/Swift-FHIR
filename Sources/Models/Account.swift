@@ -2,8 +2,8 @@
 //  Account.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Account) on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Account) on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import Foundation
  *  A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track
  *  charges for a patient, cost centres, etc.
  */
-public class Account: DomainResource {
-	override public class var resourceType: String {
+open class Account: DomainResource {
+	override open class var resourceType: String {
 		get { return "Account" }
 	}
 	
@@ -59,7 +59,7 @@ public class Account: DomainResource {
 		super.init(json: json, owner: owner)
 	}
 	
-	public override func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
+	override open func populate(from json: FHIRJSON?, presentKeys: inout Set<String>) -> [FHIRJSONError]? {
 		var errors = super.populate(from: json, presentKeys: &presentKeys) ?? [FHIRJSONError]()
 		if let js = json {
 			if let exist = js["activePeriod"] {
@@ -165,7 +165,7 @@ public class Account: DomainResource {
 		return errors.isEmpty ? nil : errors
 	}
 	
-	override public func asJSON() -> FHIRJSON {
+	override open func asJSON() -> FHIRJSON {
 		var json = super.asJSON()
 		
 		if let activePeriod = self.activePeriod {

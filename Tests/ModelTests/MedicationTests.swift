@@ -2,8 +2,8 @@
 //  MedicationTests.swift
 //  SwiftFHIR
 //
-//  Generated from FHIR 1.0.2.7202 on 2016-09-16.
-//  2016, SMART Health IT.
+//  Generated from FHIR 1.0.2.7202 on 2019-03-01.
+//  2019, SMART Health IT.
 //
 
 import XCTest
@@ -34,23 +34,16 @@ class MedicationTests: XCTestCase {
 	
 	@discardableResult
 	func runMedication1(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Medication {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f001-combivent.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f005-enalapril.json")
 		
-		XCTAssertEqual(inst.code?.coding?[0].code, "320442002")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Salbutamol+ipratropium bromide 100micrograms/20micrograms inhaler")
+		XCTAssertEqual(inst.code?.coding?[0].code, "318851002")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Enalapril maleate 5mg tablet")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f001")
+		XCTAssertEqual(inst.id, "f005")
 		XCTAssertTrue(inst.isBrand ?? false)
-		XCTAssertEqual(inst.product?.form?.coding?[0].code, "420317006")
-		XCTAssertEqual(inst.product?.form?.coding?[0].display, "Inhaler (qualifier value)")
-		XCTAssertEqual(inst.product?.form?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.product?.ingredient?[0].amount?.denominator?.value, NSDecimalNumber(string: "1"))
-		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.code, "ml")
-		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.system?.absoluteString, "http://unitsofmeasure.org")
-		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.unit, "ml")
-		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.value, NSDecimalNumber(string: "100"))
-		XCTAssertEqual(inst.product?.ingredient?[0].item?.display, "Combivent")
-		XCTAssertEqual(inst.product?.ingredient?[0].item?.reference, "Medication/f001")
+		XCTAssertEqual(inst.package?.container?.coding?[0].code, "398124009")
+		XCTAssertEqual(inst.package?.container?.coding?[0].display, "drug container")
+		XCTAssertEqual(inst.package?.container?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst
@@ -68,16 +61,23 @@ class MedicationTests: XCTestCase {
 	
 	@discardableResult
 	func runMedication2(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Medication {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f002-crestor.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f001-combivent.json")
 		
-		XCTAssertEqual(inst.code?.coding?[0].code, "408036003")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Rosuvastatin 10mg tablet")
+		XCTAssertEqual(inst.code?.coding?[0].code, "320442002")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Salbutamol+ipratropium bromide 100micrograms/20micrograms inhaler")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f002")
+		XCTAssertEqual(inst.id, "f001")
 		XCTAssertTrue(inst.isBrand ?? false)
-		XCTAssertEqual(inst.package?.container?.coding?[0].code, "398124009")
-		XCTAssertEqual(inst.package?.container?.coding?[0].display, "drug container")
-		XCTAssertEqual(inst.package?.container?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.product?.form?.coding?[0].code, "420317006")
+		XCTAssertEqual(inst.product?.form?.coding?[0].display, "Inhaler (qualifier value)")
+		XCTAssertEqual(inst.product?.form?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
+		XCTAssertEqual(inst.product?.ingredient?[0].amount?.denominator?.value, NSDecimalNumber(string: "1"))
+		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.code, "ml")
+		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.system?.absoluteString, "http://unitsofmeasure.org")
+		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.unit, "ml")
+		XCTAssertEqual(inst.product?.ingredient?[0].amount?.numerator?.value, NSDecimalNumber(string: "100"))
+		XCTAssertEqual(inst.product?.ingredient?[0].item?.display, "Combivent")
+		XCTAssertEqual(inst.product?.ingredient?[0].item?.reference, "Medication/f001")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
 		return inst
@@ -122,12 +122,12 @@ class MedicationTests: XCTestCase {
 	
 	@discardableResult
 	func runMedication4(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Medication {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f004-metoprolol.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f002-crestor.json")
 		
-		XCTAssertEqual(inst.code?.coding?[0].code, "318475005")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Metoprolol tartrate 50mg tablet")
+		XCTAssertEqual(inst.code?.coding?[0].code, "408036003")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Rosuvastatin 10mg tablet")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f004")
+		XCTAssertEqual(inst.id, "f002")
 		XCTAssertTrue(inst.isBrand ?? false)
 		XCTAssertEqual(inst.package?.container?.coding?[0].code, "398124009")
 		XCTAssertEqual(inst.package?.container?.coding?[0].display, "drug container")
@@ -149,12 +149,12 @@ class MedicationTests: XCTestCase {
 	
 	@discardableResult
 	func runMedication5(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Medication {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f005-enalapril.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f004-metoprolol.json")
 		
-		XCTAssertEqual(inst.code?.coding?[0].code, "318851002")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Enalapril maleate 5mg tablet")
+		XCTAssertEqual(inst.code?.coding?[0].code, "318475005")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Metoprolol tartrate 50mg tablet")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f005")
+		XCTAssertEqual(inst.id, "f004")
 		XCTAssertTrue(inst.isBrand ?? false)
 		XCTAssertEqual(inst.package?.container?.coding?[0].code, "398124009")
 		XCTAssertEqual(inst.package?.container?.coding?[0].display, "drug container")
@@ -217,15 +217,15 @@ class MedicationTests: XCTestCase {
 	
 	@discardableResult
 	func runMedication7(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Medication {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f202-flucloxacilline.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f203-paracetamol.json")
 		
-		XCTAssertEqual(inst.code?.coding?[0].code, "387544009")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Flucloxacillin")
+		XCTAssertEqual(inst.code?.coding?[0].code, "387517004")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Paracetamol")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f202")
+		XCTAssertEqual(inst.id, "f203")
 		XCTAssertFalse(inst.isBrand ?? true)
-		XCTAssertEqual(inst.product?.form?.coding?[0].code, "385218009")
-		XCTAssertEqual(inst.product?.form?.coding?[0].display, "Injection")
+		XCTAssertEqual(inst.product?.form?.coding?[0].code, "385055001")
+		XCTAssertEqual(inst.product?.form?.coding?[0].display, "Tablet")
 		XCTAssertEqual(inst.product?.form?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
@@ -244,15 +244,15 @@ class MedicationTests: XCTestCase {
 	
 	@discardableResult
 	func runMedication8(_ json: FHIRJSON? = nil) throws -> SwiftFHIR.Medication {
-		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f203-paracetamol.json")
+		let inst = (nil != json) ? instantiateFrom(json: json!) : try instantiateFrom(filename: "medication-example-f202-flucloxacilline.json")
 		
-		XCTAssertEqual(inst.code?.coding?[0].code, "387517004")
-		XCTAssertEqual(inst.code?.coding?[0].display, "Paracetamol")
+		XCTAssertEqual(inst.code?.coding?[0].code, "387544009")
+		XCTAssertEqual(inst.code?.coding?[0].display, "Flucloxacillin")
 		XCTAssertEqual(inst.code?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.id, "f203")
+		XCTAssertEqual(inst.id, "f202")
 		XCTAssertFalse(inst.isBrand ?? true)
-		XCTAssertEqual(inst.product?.form?.coding?[0].code, "385055001")
-		XCTAssertEqual(inst.product?.form?.coding?[0].display, "Tablet")
+		XCTAssertEqual(inst.product?.form?.coding?[0].code, "385218009")
+		XCTAssertEqual(inst.product?.form?.coding?[0].display, "Injection")
 		XCTAssertEqual(inst.product?.form?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
 		XCTAssertEqual(inst.text?.status, "generated")
 		
