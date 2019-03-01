@@ -88,7 +88,7 @@ open class FHIROperation: CustomStringConvertible {
 				throw FHIRError.operationConfigurationError("Operation \(self) cannot be executed in type context")
 			}
 			else if nil == type || !(definition.type!).contains(type!.resourceType) {
-				throw FHIRError.operationConfigurationError("Operation \(self) cannot be executed against \(type ?? nil) type")
+                throw FHIRError.operationConfigurationError("Operation \(self) cannot be executed against \(String(describing: type)) type")
 			}
 		case .instance:
 			if nil == definition.instance || !definition.instance! {
@@ -178,5 +178,5 @@ open class FHIROperation: CustomStringConvertible {
 
 
 /// Alias to `FHIROperation` for neat operation usage.
-public typealias $ = FHIROperation
+public typealias `$` = FHIROperation
 

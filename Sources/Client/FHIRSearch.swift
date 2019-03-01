@@ -88,12 +88,12 @@ open class FHIRSearch
 		// expand
 		let qry = query.expand(extra)
 		if let type = profileType {
-			if qry.characters.count > 0 {
+			if qry.count > 0 {
 				return "\(type.resourceType)?\(qry)"
 			}
 			return type.resourceType
 		}
-		if qry.characters.count > 0 {
+		if qry.count > 0 {
 			return "?\(qry)"
 		}
 		return ""
@@ -216,7 +216,7 @@ class FHIRSearchParam: CustomStringConvertible
 		}
 	}
 	var description: String {
-		return "<FHIRSearchParam> \(name ?? nil) [parent \(parent?.description ?? nil) and \(nil != children ? (children!).count : 0) children]"
+		return "<FHIRSearchParam> \(name ?? "") [parent \(parent?.description ?? "") and \(nil != children ? (children!).count : 0) children]"
 	}
 	
 	init(name: String, parent: FHIRSearchParam?) {
@@ -450,7 +450,7 @@ struct FHIRSearchConstructModifierHandler: FHIRSearchConstructHandler
 			param.children = FHIRSearchParam.from(value, parent: param)
 		}
 		else {
-			fhir_warn("unknown modifier \(param.name)")
+            fhir_warn("unknown modifier \(String(describing: param.name))")
 		}
 	}
 }
@@ -477,7 +477,7 @@ struct FHIRSearchConstructOperatorHandler: FHIRSearchConstructHandler
 			}
 		}
 		else {
-			fhir_warn("unknown operator \(param.name) for \(value)")
+            fhir_warn("unknown operator \(String(describing: param.name)) for \(value)")
 		}
 	}
 }

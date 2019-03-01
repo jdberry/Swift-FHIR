@@ -225,11 +225,11 @@ class LocalPatientServer: FHIROpenServer {
 				callback(handler.response(with: http, data: handler.data))
 			}
 			else {
-				callback(handler.notSent("\(request.httpMethod) without preceding “POST” is not supported"))
+                callback(handler.notSent("\(String(describing: request.httpMethod)) without preceding “POST” is not supported"))
 			}
 		
 		default:
-			callback(handler.notSent("\(request.httpMethod) is not yet supported"))
+            callback(handler.notSent("\(String(describing: request.httpMethod)) is not yet supported"))
 		}
 	}
 }
