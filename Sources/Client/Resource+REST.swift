@@ -30,7 +30,7 @@ public extension Resource {
 	
 	- returns: A Reference instance on success
 	*/
-	public func asRelativeReference() throws -> Reference {
+    func asRelativeReference() throws -> Reference {
 		let path = try relativeURLPath()
 		let reference = Reference(json: nil)
 		reference.reference = path
@@ -41,7 +41,7 @@ public extension Resource {
 	}
 	
 	/** The string used to fill a reference's "display" property for the instance. */
-	public func preferredRelativeReferenceDisplay() -> String? {
+    func preferredRelativeReferenceDisplay() -> String? {
 		return nil
 	}
 	
@@ -53,7 +53,7 @@ public extension Resource {
 	
 	- returns: A string indicating the relative URL base, e.g. "MedicationPrescription"
 	*/
-	public func relativeURLBase() -> String {
+    func relativeURLBase() -> String {
 		return type(of: self).resourceType
 	}
 	
@@ -62,7 +62,7 @@ public extension Resource {
 	
 	- returns: A string indicating the relative URL, e.g. "MedicationPrescription/1234"
 	*/
-	public func relativeURLPath() throws -> String {
+    func relativeURLPath() throws -> String {
 		if let myID = id {
 			return "\(relativeURLBase())/\(myID)"
 		}
@@ -74,7 +74,7 @@ public extension Resource {
 	
 	- returns: The resource's absolute URL, e.g. "https://fhir.smarthealthit.org/MedicationPrescription/1234"
 	*/
-	public func absoluteURL() throws -> URL {
+    func absoluteURL() throws -> URL {
 		let relative = try relativeURLPath()
 		if let server = _server {
 			return server.baseURL.appendingPathComponent(relative)
@@ -90,7 +90,7 @@ public extension Resource {
 	
 	Forwards to class method `readFrom` with the resource's relative URL, created from the supplied id and the resource's base.
 	*/
-	public class func read(_ id: String, server: FHIRServer, callback: @escaping FHIRResourceErrorCallback) {
+    class func read(_ id: String, server: FHIRServer, callback: @escaping FHIRResourceErrorCallback) {
 		let path = "\(resourceType)/\(id)"
 		readFrom(path, server: server, callback: callback)
 	}
@@ -104,7 +104,7 @@ public extension Resource {
 	- parameter server: The server to use
 	- parameter callback: The callback to execute once done. The callback is NOT guaranteed to be executed on the main thread!
 	*/
-	public class func readFrom(_ path: String, server: FHIRServer, callback: @escaping FHIRResourceErrorCallback) {
+    class func readFrom(_ path: String, server: FHIRServer, callback: @escaping FHIRResourceErrorCallback) {
         server.performRequest(ofType: .GET, path: path, resource: nil, additionalHeaders: nil) { response in
 			if let error = response.error {
 				callback(nil, error)
@@ -141,7 +141,7 @@ public extension Resource {
 	- parameter server:   The server on which to create the resource
 	- parameter callback: The callback to execute once done. The callback is NOT guaranteed to be executed on the main thread!
 	*/
-	public func create(_ server: FHIRServer, callback: @escaping FHIRErrorCallback) {
+    func create(_ server: FHIRServer, callback: @escaping FHIRErrorCallback) {
 		guard nil == id else {
 			callback(FHIRError.resourceAlreadyHasId)
 			return
@@ -227,7 +227,7 @@ public extension Resource {
 	
 	- parameter callback: The callback to execute once done. The callback is NOT guaranteed to be executed on the main thread!
 	*/
-	public func update(callback: @escaping FHIRErrorCallback) {
+    func update(callback: @escaping FHIRErrorCallback) {
 		if let server = _server {
 			do {
 				let path = try relativeURLPath()
@@ -255,7 +255,7 @@ public extension Resource {
 	
 	This method forwards to the `delete` class method, substituting the receiver's path and server.
 	*/
-	public func delete(callback: @escaping FHIRErrorCallback) {
+    func delete(callback: @escaping FHIRErrorCallback) {
 		if let server = _server {
 			do {
 				let path = try relativeURLPath()
@@ -275,7 +275,7 @@ public extension Resource {
 	
 	This implementation issues a DELETE call against the given path on the given server.
 	*/
-	public class func delete(_ path: String, server: FHIRServer, callback: @escaping FHIRErrorCallback) {
+    class func delete(_ path: String, server: FHIRServer, callback: @escaping FHIRErrorCallback) {
         server.performRequest(ofType: .DELETE, path: path, resource: nil, additionalHeaders: nil) { response in
 			// TODO: should we do some header inspection (response.headers)?
 			callback(response.error)
@@ -290,7 +290,7 @@ public extension Resource {
 	
 	UNFINISHED.
 	*/
-	public func search(_ query: Any) -> FHIRSearch {
+    func search(_ query: Any) -> FHIRSearch {
 		if let _ = self.id {
 			NSLog("UNFINISHED, must add '_id' reference to search expression")
 			//return FHIRSearch(subject: "_id", reference: myID, type: type(of: self))
@@ -301,7 +301,7 @@ public extension Resource {
 	/**
 	Perform a search, wich the given query construct, against the receiver's compartment.
 	*/
-	public class func search(_ query: Any) -> FHIRSearch {
+    class func search(_ query: Any) -> FHIRSearch {
 		return FHIRSearch(type: self, query: query)
 	}
 	
@@ -311,7 +311,7 @@ public extension Resource {
 	/**
 	Perform a given operation on the receiver.
 	*/
-	public func perform(operation: FHIROperation, callback: @escaping FHIRResourceErrorCallback) {
+    func perform(operation: FHIROperation, callback: @escaping FHIRResourceErrorCallback) {
 		if let server = _server {
 			if let server = server as? FHIROpenServer {
 				operation.instance = self
@@ -329,7 +329,7 @@ public extension Resource {
 	/**
 	Perform a given operation on the receiving type.
 	*/
-	public class func perform(operation: FHIROperation, server: FHIROpenServer, callback: @escaping FHIRResourceErrorCallback) {
+    class func perform(operation: FHIROperation, server: FHIROpenServer, callback: @escaping FHIRResourceErrorCallback) {
 		operation.type = self
 		_perform(operation: operation, server: server, callback: callback)
 	}

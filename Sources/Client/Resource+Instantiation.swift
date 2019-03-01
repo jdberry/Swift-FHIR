@@ -20,7 +20,7 @@ public extension Resource {
 	- parameter path: The local path to read the JSON file from
 	- returns: An instance of the receiving class
 	*/
-	public class func instantiate(fromPath path: String) throws -> Self {
+    class func instantiate(fromPath path: String) throws -> Self {
 		let data = try Data(contentsOf: URL(fileURLWithPath: path), options: [])
 		let json = try JSONSerialization.jsonObject(with: data, options: []) as? FHIRJSON
 		return self.init(json: json)
@@ -38,7 +38,7 @@ public extension Foundation.Bundle {
 	- parameter type: The type the resource is expected to be; must be a subclass of `Resource`
 	- returns:        A Resource subclass corresponding to the "resourceType" entry, as specified under `type`
 	*/
-	public func fhir_bundledResource<T: Resource>(_ name: String, type: T.Type) throws -> T {
+    func fhir_bundledResource<T: Resource>(_ name: String, type: T.Type) throws -> T {
 		return try fhir_bundledResource(name, subdirectory: nil, type: type)
 	}
 	
@@ -51,7 +51,7 @@ public extension Foundation.Bundle {
 	- parameter type:         The type the resource is expected to be; must be a subclass of `Resource`
 	- returns:                A Resource subclass corresponding to the "resourceType" entry, as specified under `type`
 	*/
-	public func fhir_bundledResource<T: Resource>(_ name: String, subdirectory: String?, type: T.Type) throws -> T {
+    func fhir_bundledResource<T: Resource>(_ name: String, subdirectory: String?, type: T.Type) throws -> T {
 		if let url = url(forResource: name, withExtension: "json", subdirectory: subdirectory), let data = try? Data(contentsOf: url) {
 			if let json = try JSONSerialization.jsonObject(with: data, options: []) as? FHIRJSON {
 				if let resource = Resource.instantiate(from: json, owner: nil) as? T {
